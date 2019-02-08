@@ -2,13 +2,13 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const Paperclip = require('node-paperclip');
 
-const travelPic = new Schema({
+const TravelPic = new Schema({
     user_id: { type: Schema.Types.ObjectId, ref: 'User' },
     username: String,
     entry_id: {type: Schema.Types.ObjectId, ref: 'Entry'}
 });
 
-travelPic.plugin(Paperclip.plugins.mongoose, {
+TravelPic.plugin(Paperclip.plugins.mongoose, {
     travel_image: {
         styles: [
             { original: true },
@@ -17,4 +17,4 @@ travelPic.plugin(Paperclip.plugins.mongoose, {
     }
 })
 
-module.exports = mongoose.model('travelPic', travelPic);
+module.exports = mongoose.model('TravelPic', TravelPic);
