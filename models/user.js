@@ -1,44 +1,58 @@
-import React from "react";
+var mongoose = require("mongoose");
 
-class Save extends React.Component {
-  state = {
-    results : []
-  };
+var Schema = mongoose.Schema;
 
-
-  render() {
-    return (
-      <div>
+var UserSchema = new Schema({
+    fiestname: {
+        type: String,
+        trim: true,
+        required: "Firstname is Required"
+    }, 
+    lastname: {
+        type: String,
+        trim: true,
+        required: "Lastname is Required"
+    },
+    email: {
+        type: String,
+        unique: true,
+        match: [/.+@.+\..+/, "Please enter a valid e-mail address"]
+    },
+    password: {
+        type: String,
+        trim: true,
+        required: "Password is Required",
+        match: [/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,16}$/,
+            "Please input a valid password. Your password must be 8-16 characters long and have at least one of each:"
+        + "Upper case letter\nLower case letter\nNumber\nSpecial character"]
+    },
+    status: {
+        type: String,
+        default: "normal"
+    },
+    active: {
+        type: Boolean,
+        default: false
+    },
+    avatar: [
         {
-          this.state.results.map((book) => {
-            return (
-              <div className="container result" key={book._id} style={{visibility : book.title ? "visible" : "hidden"}} >
-                <ul style={{listStyle: "none"}}>
-                  <li >
-                    <button style={{float:"right"}} onClick={()=>{this.deleteBook(book)}} className="btn btn-dark mt-3">Delete</button>
-                    <button style={{float:"right", marginRight:"10px"}} className="btn btn-dark mt-3"><a target ="_ blank" href={book.link}>View</a></button>
-                  </li>
-                </ul>
-                <h5>Title : {book.title}</h5>
-                <p>Written By : {book.author}</p>
-                <div className="row">
-                    <div className="col-md-2">
-                        <img src={book.image} alt=""/>
-                    </div>
-                    <div className="col-md-10">
-                        <p>{book.description}</p>
-                    </div>
-                </div>
-              </div>
-            );
-          })
+          type: Schema.Types.ObjectId,
+          ref: "ProfilePic"
         }
-      </div>
-    );
-  }
-}
+    ],
+    journals: [
+        {
+          type: Schema.Types.ObjectId,
+          ref: "Journal"
+        }
+    ],
+    friends: [ this ],
+    userCreated: {
+        type: Date,
+        default: Date.now
+    }
+});
 
+var User = mongoose.model("User", UserSchema);
 
-export default Save;
-
-
+module.exports = User;
