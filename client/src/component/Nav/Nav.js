@@ -1,6 +1,6 @@
 import React from "react";
-import {NavLink } from "react-router-dom";
-import { Navbar, Icon, SideNav, SideNavItem } from 'react-materialize';
+import { NavLink } from "react-router-dom";
+import { Navbar, Icon, SideNav, SideNavItem } from "react-materialize";
 import "./NavStyles.css";
 
 class Nav extends React.Component {
@@ -22,7 +22,7 @@ class Nav extends React.Component {
                     <NavLink to="" className="tooltipped" data-position="left" data-tooltip="Quick Search"><Icon>search</Icon></NavLink>
                     <NavLink to="" data-activates="sidenav_0" className="tooltipped" data-position="left" data-tooltip="Chat"><Icon>chat</Icon></NavLink>
                     <NavLink to="" className="tooltipped" data-position="left" data-tooltip="Notifications"><Icon>notifications</Icon></NavLink>
-                    <NavLink to="/profile" className="tooltipped" data-position="left" data-tooltip="View Profile"><Icon>person</Icon></NavLink>
+                    <NavLink to="/profile" className="tooltipped" data-position="left" data-tooltip="View Profile"><Icon>account_circle</Icon></NavLink>
                 </Navbar>
 
                 <SideNav
@@ -38,8 +38,8 @@ class Nav extends React.Component {
                         email: "andersoncooper@cnn.com"
                         }}
                     />
-                    <SideNavItem><Icon className="icon-online">rss_feed</Icon>Online Friends</SideNavItem>
-                    {/* <SideNavItem href='#!second'>Second Link</SideNavItem> */}
+                    <SideNavItem className="onlineHeader"><Icon className="icon-online">rss_feed</Icon>Online Friends</SideNavItem>
+                    <SideNavItem className="onlineFriend" href='#!'>Chris Cuomo <Icon className="icon-friend-online">lens</Icon></SideNavItem>
                     <SideNavItem divider />
                     <SideNavItem subheader>Offline Friends</SideNavItem>
                     {/* <SideNavItem waves href='#!third'>Third Link With Waves</SideNavItem>  */}

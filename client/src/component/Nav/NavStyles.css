@@ -32,6 +32,21 @@ nav ul a {
     color: #333333 !important;
 }
 
+.onlineHeader a {
+    font-weight: bold !important;
+    font-size: 16px !important;
+}
+
+.onlineFriend i {
+    float: none !important;
+    margin-left: 8px !important;
+}
+
 .icon-online {
     color: rgb(90, 172, 90) !important;
+}
+
+.icon-friend-online {
+    color: rgb(90, 172, 90) !important;
+    font-size: 10px;
 }
