@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
-var db = require("../models")
-var middleware = require('node-paperclip').middleware
+var db = require("../models");
+var middleware = require('node-paperclip').middleware;
  
 router.post('/post_profile_image',
  
