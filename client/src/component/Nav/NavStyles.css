@@ -1,0 +1,37 @@
+nav {
+    background-color: rgb(83, 119, 83);
+}
+
+.brand-logo {
+    margin-left: 15px;
+}
+
+nav ul a {
+    display: inline-block;
+}
+
+.side-nav {
+    top: inherit;
+    margin-top: 1px;
+}
+
+#sidenav-overlay {
+    top: inherit;
+}
+
+.userView {
+    background: url("https://www.toptal.com/designers/subtlepatterns/patterns/bright_squares.png");
+    border-bottom: 1px solid #dee2e6;
+}
+
+.circle {
+    object-fit: cover;
+}
+
+.name, .email {
+    color: #333333 !important;
+}
+
+.icon-online {
+    color: rgb(90, 172, 90) !important;
+}
