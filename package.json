@@ -22,6 +22,7 @@
     "if-env": "^1.0.4",
     "mongoose": "^5.3.16",
     "path": "^0.12.7",
+    "react-materialize": "^2.6.0",
     "yarn": "^1.13.0"
   }
 }
