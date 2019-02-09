@@ -11,7 +11,7 @@ var JournalSchema = new Schema({
     entries: [
         {
           type: Schema.Types.ObjectId,
-          ref: Entry
+          ref: "Entry"
         }
     ]
 });
