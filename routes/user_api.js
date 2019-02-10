@@ -65,7 +65,7 @@ const db = require("../models")
           return done(null, false, { message: 'That email is not registered' });
         } else {
           // Match password
-          bcrypt.compare(password, user.password, (err, isMatch) => {
+          bcrypt.compare( password, user.password, (err, isMatch) => {
             if (err) throw err;
             if (isMatch) {
               return done(null, user);
@@ -86,6 +86,7 @@ const db = require("../models")
         done(err, user);
       });
     });
+    
       passport.authenticate('local', {
         successRedirect: '/home',
         failureRedirect: '/users/login',
