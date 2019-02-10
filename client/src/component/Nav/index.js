@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { Navbar, Icon, SideNav, SideNavItem } from "react-materialize";
-import "./NavStyles.css";
+import "./style.css";
 
 class Nav extends React.Component {
 

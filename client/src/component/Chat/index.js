@@ -1,7 +1,7 @@
 import React from "react";
 // import { NavLink } from "react-router-dom";
 import { Button, Icon, Input } from "react-materialize";
-import "./ChatStyles.css";
+import "./style.css";
 
 class Chat extends React.Component {
 

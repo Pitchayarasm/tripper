@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import Nav from "./component/Nav/Nav.js";
-import Chat from "./component/Chat/Chat.js";
+import Nav from "./component/Nav";
+import Chat from "./component/Chat";
 import Profile from "./component/Pages/Profile.js";
 
 
