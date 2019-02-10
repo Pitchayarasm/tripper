@@ -8,7 +8,29 @@ import Profile from "./component/Pages/Profile.js";
 class App extends Component {
   
     state = {
+        chat: {
+            user1: "",
+            user2: "",
+            active: false,
+            user1_Id: "",
+            user2_Id: ""
+        }
+    }
 
+    // Fn to start chat. Communicating with Nav.js.
+    startChat = (chatStatus) => {
+        console.log(chatStatus);
+        let chat = {...this.state.chat};
+            chat.active = chatStatus;
+        this.setState({chat});
+    }
+
+    // Fn to end chat. Communicating with Chat.js.
+    endChat = (chatStatus) => {
+        console.log(chatStatus);
+        let chat = {...this.state.chat};
+            chat.active = chatStatus;
+        this.setState({chat});
     }
 
     render() {
@@ -16,9 +38,9 @@ class App extends Component {
         return (
             <Router>
                 <>
-                    <Nav></Nav>
+                    <Nav startChat={this.startChat}></Nav>
                     <Route exact path="/profile" render={(props) => <Profile {...props} />} />
-                    <Chat></Chat>
+                    <Chat endChat={this.endChat} chatStatus={this.state.chat.active}></Chat>
                 </>
             </Router>
         );

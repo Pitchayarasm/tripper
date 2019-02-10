@@ -39,7 +39,7 @@ class Nav extends React.Component {
                         }}
                     />
                     <SideNavItem className="onlineHeader"><Icon className="icon-online">rss_feed</Icon>Online Friends</SideNavItem>
-                    <SideNavItem className="onlineFriend" href='#!'>Chris Cuomo <Icon className="icon-friend-online">lens</Icon></SideNavItem>
+                    <SideNavItem className="onlineFriend" onClick={() => this.props.startChat(true)}>Chris Cuomo <Icon className="icon-friend-online">lens</Icon></SideNavItem>
                     <SideNavItem divider />
                     <SideNavItem subheader>Offline Friends</SideNavItem>
                     {/* <SideNavItem waves href='#!third'>Third Link With Waves</SideNavItem>  */}

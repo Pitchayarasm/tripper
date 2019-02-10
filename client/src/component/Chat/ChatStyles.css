@@ -97,6 +97,10 @@
     margin: 0 !important;
 }
 
+.card-content {
+    border-top: 1px solid #dee2e6;
+}
+
 .card-content strong {
     color: darkblue;
 }
@@ -116,8 +120,23 @@ textarea.materialize-textarea:focus:not([readonly]) {
     box-shadow: 0 1px 0 0 rgb(83, 119, 83);
 }
 
-.chatBtn:hover {
-    color: #dee2e6;
-    transition: color .3s;
+.chatEndBtn {
+    margin-right: 10px;
+    text-align: right;
+    font-size: 20px;
+    vertical-align: text-bottom;
+}
 
+.endChatBtn, .endChat {
+    color: #dee2e6;
+}
+
+.endChatBtn:hover, .endChat:hover {
+    color: #000000;
+    transition: color .3s;
+}
+
+.endChat:hover {
+    font-weight: bold;
+    cursor: pointer;
 }
