@@ -1,6 +1,5 @@
 import React from "react";
 import { Row, Col, Icon, Button, Modal, Input } from "react-materialize";
-import "./home.css";
 
 class Journal extends React.Component {
     state = {
