@@ -1,14 +1,10 @@
 import React from "react";
 import { Row, Input, Modal, Button, Parallax } from "react-materialize";
-import "./home.css";
-​
-​
+import "./home.css"
 class Home extends React.Component {
   state = {
     user: []
-  };
-​
-​
+  }
   render() {
     return (
       <div>
@@ -27,7 +23,6 @@ class Home extends React.Component {
                   <Input placeholder s={6} label="First Name" />
                   <Input s={6} label="Last Name" />
                   <Input type="email" label="Email" s={12} />
-                  <Input type="file" label="Profile picture" s={12} />
                   <Input type="password" label="password" s={12} />
 ​
                 </Row>
@@ -52,6 +47,4 @@ class Home extends React.Component {
     );
   }
 }
-​
-​
 export default Home;
