@@ -1,10 +1,10 @@
 import React from "react";
-import {Row, Col, Button } from "react-materialize";
+import {Row, Col, Icon } from "react-materialize";
 import "./home.css";
 
 class Journal extends React.Component {
     state = {
-        user: []
+        
     };
 
 
@@ -15,13 +15,13 @@ class Journal extends React.Component {
                 <Col s={3} className='grid-example'></Col>
                 <Col s={3} className='grid-example'>
 
-                    <h2>My trip to the fridge.</h2>
+                    <h2>My trip to the fridge. <span id="editBtn"><Icon>edit</Icon></span></h2>
+                    <hr />
                     <p>Quis occaecat consequat quis pariatur reprehenderit. Laboris nulla non irure sint et irure do commodo. Enim proident ex ut non do adipisicing reprehenderit laboris veniam exercitation ad eu deserunt et.
-<br /><br />
+                        <br /><br />
                         Exercitation cupidatat ad laboris voluptate dolor ex eiusmod. Qui eiusmod velit eu est deserunt duis consequat. Enim est cupidatat cupidatat commodo sunt laborum sint.
-<br /><br />
+                        <br /><br />
                         Qui dolor nostrud sunt occaecat dolor commodo consequat exercitation voluptate Lorem. Sint laborum elit ut voluptate in anim cillum duis adipisicing consequat amet adipisicing et ex. Magna occaecat est nulla nostrud tempor nisi sint cillum est eu mollit do.</p>
-                        <Button>Edit</Button>
                         </Col>
                         
                         
@@ -36,10 +36,7 @@ class Journal extends React.Component {
 
                         </Col>
                         <Col s={2} className='grid-example'></Col>
-
                     </Row>
-
-                
             </div>
         );
     }

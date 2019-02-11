@@ -69,3 +69,14 @@ div.modal-content {
     padding: 0 5px 0 5px !important;
     float: right !important;
 }
+
+#editBtn i {
+    color: #000000;
+}
+
+#editBtn i:hover {
+    color: rgb(83, 119, 83);
+    transition: .3s;
+    transition-property: color;
+    cursor: pointer;
+}
