@@ -19,12 +19,12 @@ class Journal extends React.Component {
 
     makeNewEntry = () => {
         //not sure how to access id for user, journal, or entry, but i think those will be necessary for making distinctions
-        router.post("/journal/:userID/:journalID/:entryID", {
-            entryTitle: this.state.entryTitle,
-            entryText: this.state.entryText
-        }).catch(err => {
-            console.log(err);
-        });
+        // router.post("/journal/:userID/:journalID/:entryID", {
+        //     entryTitle: this.state.entryTitle,
+        //     entryText: this.state.entryText
+        // }).catch(err => {
+        //     console.log(err);
+        // });
 
         this.setState({
             entryText: "",
@@ -46,7 +46,14 @@ class Journal extends React.Component {
                             Exercitation cupidatat ad laboris voluptate dolor ex eiusmod. Qui eiusmod velit eu est deserunt duis consequat. Enim est cupidatat cupidatat commodo sunt laborum sint.
                         <br /><br />
                             Qui dolor nostrud sunt occaecat dolor commodo consequat exercitation voluptate Lorem. Sint laborum elit ut voluptate in anim cillum duis adipisicing consequat amet adipisicing et ex. Magna occaecat est nulla nostrud tempor nisi sint cillum est eu mollit do.</p>
-                        <Button>Edit</Button>
+                            <Modal
+                            header='Modal Header'
+                            trigger={<Button waves='light'>Edit<Icon right>insert_chart</Icon></Button>}>
+                            <Input type='title' />
+
+                            <Input type='textarea' />
+
+                        </Modal>
 
                     </Col>
 
