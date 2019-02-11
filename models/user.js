@@ -3,7 +3,7 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 var UserSchema = new Schema({
-    fiestName: {
+    firstName: {
         type: String,
         trim: true,
         required: "Firstname is Required"
@@ -22,9 +22,7 @@ var UserSchema = new Schema({
         type: String,
         trim: true,
         required: "Password is Required",
-        match: [/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,16}$/,
-            "Please input a valid password. Your password must be 8-16 characters long and have at least one of each:"
-        + "Upper case letter\nLower case letter\nNumber\nSpecial character"]
+        match: [/.{8,}/ ,"Password must be at least 8 characters."]
     },
     status: {
         type: String,

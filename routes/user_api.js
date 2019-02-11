@@ -6,58 +6,39 @@ const LocalStrategy = require('passport-local').Strategy;
 const db = require("../models")
 
 // Register
-  router.post('/register', (req, res) => {
-    const { firstname, lastname, email, password, password2 } = req.body;
-    let errors = [];
-
-    if (!firstname || !lastname || !email || !password || !password2) {
-      errors.push({ message : 'Please enter all fields' });
-    }
-
-    if (password != password2) {
-      errors.push({ message : 'Passwords do not match' });
-    }
-
-    if (errors.length > 0) {
-      res.json({ errors, firstname, lastname, email, password, password2 });
-
-    } else {
+  router.post("/register", (req, res) => {
+    const { firstName, lastName, email, password } = req.body;
         db.User.findOne({ email: email })
         .then( user => {
           if (user) {
-            errors.push({ message : 'Email already exists' });
-            res.json({ errors, firstname, lastname, email, password, password2 });
+            res.json({ msg: "This email is already exist" , firstName, lastName, email, password });
 
           } else {
-            const newUser = new User({
-              firstname,
-              lastname,
-              email,
-              password
-            });
-
-          bcrypt.genSalt(10, (err, salt) => {
-            bcrypt.hash(newUser.password , salt, ( err, hash) => {
+            bcrypt.hash( password, 10 , (err,hash) => {
               if (err) throw err;
-              newUser.password = hash;
-              newUser
-                .save()
-                .then( user => {
-                  res.redirect('/users/login');
-                })
-                .catch( err => console.log(err) );
+              db.User.create({
+                  firstName,
+                  lastName,
+                  email,
+                  password: hash
+              })
+              .then((dbUser) => {
+                  res.json(dbUser);
+                  console.log(dbUser);
+              })
+              .catch((err) => {
+                  res.json(err);
+              });
             });
-          });
-        }
+          }
       });
-    }
   });
 
   // Login
   router.post('/login', (req, res, next) => {
     passport.use(new LocalStrategy({ usernameField: 'email' }, (email, password, done) => {
       // Match user
-      User.findOne({
+      db.User.findOne({
         email: email
       })
       .then( user => {
@@ -88,8 +69,8 @@ const db = require("../models")
     });
     
       passport.authenticate('local', {
-        successRedirect: '/home',
-        failureRedirect: '/users/login',
+        successRedirect: '/',
+        failureRedirect: '/',
         failureFlash: true
       })(req, res, next);
   });

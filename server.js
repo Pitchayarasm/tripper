@@ -6,6 +6,7 @@ const session = require("express-session");
 const flash = require("connect-flash");
 const PORT = process.env.PORT || 3001;
 const app = express();
+const logger = require("morgan")
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
@@ -23,6 +24,8 @@ app.use(
 // Passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use(logger("dev"));
 
 // Connect flash
 app.use(flash());
