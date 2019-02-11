@@ -1,5 +1,5 @@
 import React from "react";
-import {Row, Col, Icon } from "react-materialize";
+import {Row, Col, Icon,Button, Modal, Input } from "react-materialize";
 import "./home.css";
 
 class Journal extends React.Component {
@@ -35,7 +35,14 @@ class Journal extends React.Component {
                         <img className="fit_img" src="https://via.placeholder.com/150/666.png/fff" alt="tripper"/>
                         <img className="fit_img" src="https://via.placeholder.com/150/666.png/fff" alt="tripper"/>
                         <img className="fit_img" src="https://via.placeholder.com/150/666.png/fff" alt="tripper"/>
-                        <Button>Add</Button>
+                        <Modal
+  header='Modal Header'
+  trigger={<Button waves='light'>Add<Icon right>insert_chart</Icon></Button>}>
+      <Input type='title' />
+
+    <Input type='textarea' />
+
+</Modal>
 
                         </Col>
                         <Col s={2} className='grid-example'></Col>

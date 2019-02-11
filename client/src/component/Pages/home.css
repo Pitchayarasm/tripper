@@ -12,7 +12,6 @@
     margin-top: 3%;
 }
 
-<<<<<<< HEAD
 .topImg {
     width: 100%;
     overflow-y: inherit;
@@ -80,7 +79,7 @@ div.modal-content {
     transition: .3s;
     transition-property: color;
     cursor: pointer;
-=======
+}
 .FriendProfile{
 margin-top: 1%;
 }
@@ -141,5 +140,4 @@ margin-top: 1%;
 
 .card{
     margin: .5rem 1rem 1rem 0;
->>>>>>> day3
 }
