@@ -16,7 +16,7 @@ class Home extends React.Component {
 
   handleSignUp = () => {
 
-    if (password1 === password2) {
+    if (this.state.password1 === this.state.password2) {
       axios.post("/register", {
         firstName: this.state.firstName,
         lastName: this.state.lastName,
@@ -43,7 +43,6 @@ class Home extends React.Component {
 
   handleLogin = () => {
     var passObj = { email: this.state.loginEmail, password: this.state.loginPassword };
-
     console.log("Someone tried to sign in!");
     console.log(`Their information is:
     email: ${passObj.email}
@@ -85,11 +84,11 @@ class Home extends React.Component {
               actions={<><Button className="cancel modal-action modal-close">Cancel</Button><Button id="signUpSubmit" onClick={this.handleSignUp}>Submit</Button></>}
             >
               <Row id="signUpForm">
-                <Input id="firstName" placeholder s={5} label="First Name" onChange={this.handleInputChange} />
+                <Input id="firstName" s={5} label="First Name" onChange={this.handleInputChange} />
                 <Input id="lastName" s={6} label="Last Name" onChange={this.handleInputChange} />
                 <Input id="email" type="email" label="Email" s={12} onChange={this.handleInputChange} />
                 <Input id="password1" type="password" label="password" s={12} onChange={this.handleInputChange} />
-                <Input id="password2" type="password" label="password" s={12} onChange={this.handleInputChange} />
+                <Input id="password2" type="password" label="confirm password" s={12} onChange={this.handleInputChange} />
               </Row>
             </Modal>
 

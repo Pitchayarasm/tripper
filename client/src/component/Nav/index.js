@@ -9,7 +9,8 @@ class Nav extends React.Component {
     state = {
         firstName: "",
         lastName: "",
-        password: "",
+        password1: "",
+        password2: "",
         email: "",
         loginEmail: "",
         loginPassword: "",
@@ -32,7 +33,8 @@ class Nav extends React.Component {
         this.setState({
           firstName: "",
           lastName: "",
-          password: "",
+          password1: "",
+          password2: "",
           email: "",
           loginEmail: "",
           loginPassword: ""
@@ -52,7 +54,8 @@ class Nav extends React.Component {
       this.setState({
         firstName: "",
         lastName: "",
-        password: "",
+        password1: "",
+        password2: "",
         email: "",
         loginEmail: "",
         loginPassword: ""
@@ -96,7 +99,8 @@ class Nav extends React.Component {
                         <Input id="firstName" s={5} label="First Name" onChange={this.handleInputChange} />
                         <Input id="lastName" s={6} label="Last Name" onChange={this.handleInputChange} />
                         <Input id="email" type="email" label="Email" s={12} onChange={this.handleInputChange} />
-                        <Input id="password" type="password" label="password" s={12} onChange={this.handleInputChange} />
+                        <Input id="password1" type="password" label="password" s={12} onChange={this.handleInputChange} />
+                        <Input id="password2" type="password" label="confirm password" s={12} onChange={this.handleInputChange} />
                     </Row>
                     </Modal>
 
