@@ -3,12 +3,12 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 var UserSchema = new Schema({
-    fiestname: {
+    fiestName: {
         type: String,
         trim: true,
         required: "Firstname is Required"
     }, 
-    lastname: {
+    lastName: {
         type: String,
         trim: true,
         required: "Lastname is Required"
