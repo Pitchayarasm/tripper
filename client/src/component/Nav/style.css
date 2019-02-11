@@ -54,8 +54,7 @@ nav ul a {
 .navBtn {
     margin: inherit !important;
     width: inherit !important;
-    padding: 5px !important;
-    height: inherit !important;
+    padding: 0 5px 0 5px !important;
     float: none !important;
 }
 

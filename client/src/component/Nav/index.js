@@ -33,7 +33,7 @@ class Nav extends React.Component {
             navbar = (
                 <Navbar id="navBarOut" brand='tripper' right>
                     <Button id="signUp" className="navBtn">Sign Up</Button>
-                    <Button className="navBtn">Login</Button>
+                    <Button id="login" className="navBtn">Login</Button>
                 </Navbar>
             );
         }

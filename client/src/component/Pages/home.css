@@ -21,8 +21,7 @@
 .homeBtn {
     margin: inherit !important;
     width: inherit !important;
-    padding: 5px !important;
-    height: inherit !important;
+    padding: 0 5px 0 5px !important;
     float: none !important;
 }
 
@@ -34,15 +33,13 @@
 #signUpSubmit {
     margin: 1% !important;
     width: auto !important;
-    padding: 5px !important;
-    height: fit-content !important;
+    padding: 0 5px 0 5px !important;
 }
 
 #loginBtn {
     margin: 1% !important;
     width: auto !important;
-    padding: 5px !important;
-    height: fit-content !important;
+    padding: 0 5px 0 5px !important;
 }
 
 .file-field .btn {
