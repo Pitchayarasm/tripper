@@ -1,7 +1,6 @@
 import React from "react";
-import { Row, Input, Modal, Button, Parallax } from "react-materialize";
+import { Row, Input, Modal, Button, Parallax, Col } from "react-materialize";
 import axios from "axios";
-import "./home.css";
 
 class Home extends React.Component {
   state = {
@@ -70,12 +69,14 @@ class Home extends React.Component {
 
   render() {
     return (
-      <>
-        <Parallax className="topImg" imageSrc="http://materializecss.com/images/parallax1.jpg" />
+      <Row>
+                    <Col s={12} className='grid-example'>
+      <div>
+      <Parallax imageSrc="http://materializecss.com/images/parallax1.jpg"/>
         <div className="section white">
           <div className="row container btnContainer">
             <h2 className="header">tripper</h2>
-            <p className="grey-text text-darken-3 lighten-3">tripper is social network for adventorous travelers. Sign up and start telling your story!</p>
+            <p className="grey-text text-darken-3 lighten-3">Tripper is social network for adventorous travelers. Sign up and start telling your story!</p>
             <br />
 
             <Modal
@@ -104,10 +105,12 @@ class Home extends React.Component {
             </Modal>
           </div>
         </div>
-        <Parallax imageSrc="http://materializecss.com/images/parallax2.jpg" />
-      </>
+        <Parallax imageSrc="http://materializecss.com/images/parallax2.jpg"/>
+</div></Col>
+</Row>
     );
   }
 }
 
 export default Home;
+

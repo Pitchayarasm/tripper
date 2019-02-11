@@ -1,6 +1,5 @@
 import React from "react";
 import { Row, Col, Card, CardTitle, Icon } from "react-materialize";
-import "./home.css";
 
 class Top extends React.Component {
     state = {

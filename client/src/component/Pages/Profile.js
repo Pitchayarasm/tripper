@@ -1,6 +1,5 @@
 import React from "react";
 import { Row, Col, Button } from "react-materialize";
-import "./home.css";
 
 class Profile extends React.Component {
     state = {

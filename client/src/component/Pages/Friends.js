@@ -1,6 +1,5 @@
 import React from "react";
 import {Row, Col} from "react-materialize";
-import "./home.css";
 
 class Friends extends React.Component {
     state = {
