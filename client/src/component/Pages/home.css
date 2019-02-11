@@ -53,3 +53,19 @@
 div.modal-content {
     padding-bottom: 0 !important;
 }
+
+#signUpForm > .s6 {
+    float: right;
+}
+
+#signUpForm > .file-field {
+    padding-right: 0 !important;
+}
+
+.cancel {
+    display: inline-block !important;
+    margin: 1% !important;
+    width: auto !important;
+    padding: 0 5px 0 5px !important;
+    float: right !important;
+}

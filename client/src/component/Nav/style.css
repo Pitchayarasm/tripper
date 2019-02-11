@@ -65,3 +65,51 @@ nav ul a {
 #navBarOut {
     padding-right: 20px;
 }
+
+#navBarOut a {
+    float: left;
+}
+
+#navBarOut ul div {
+    display: inline-block !important;
+}
+
+#signUpSubmit {
+    margin: 1% !important;
+    width: auto !important;
+    padding: 0 5px 0 5px !important;
+}
+
+#loginBtn {
+    margin: 1% !important;
+    width: auto !important;
+    padding: 0 5px 0 5px !important;
+}
+
+.file-field .btn {
+    margin: 1% !important;
+    width: auto !important;
+    padding: 5px !important;
+    height: inherit !important;
+    line-height: inherit !important;
+}
+
+div.modal-content {
+    padding-bottom: 0 !important;
+}
+
+#signUpForm > .s6 {
+    float: right;
+}
+
+#signUpForm > .file-field {
+    padding-right: 0 !important;
+}
+
+.cancel {
+    display: inline-block !important;
+    margin: 1% !important;
+    width: auto !important;
+    padding: 0 5px 0 5px !important;
+    float: right !important;
+}
