@@ -1,29 +1,126 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { Navbar, Icon, SideNav, SideNavItem } from "react-materialize";
+import { Navbar, Icon, SideNav, SideNavItem, Button, Modal, Row, Input } from "react-materialize";
+import axios from "axios";
 import "./style.css";
 
 class Nav extends React.Component {
 
     state = {
+        firstName: "",
+        lastName: "",
+        password: "",
+        email: "",
+        loginEmail: "",
+        loginPassword: "",
+        loggedIn: false,
         user: "",
         image: "",
-        email: "",
         notifications: 0,
         onlineFriends: [],
-        offlineFriends: []
+        offlineFriends: [],
     }
 
+    handleSignUp = () => {
+      axios.post("/register", {
+        firstName: this.state.firstName,
+        lastName: this.state.lastName,
+        password: this.state.password,
+        email: this.state.email,
+      }).then(res => {
+        console.log(res);
+        this.setState({
+          firstName: "",
+          lastName: "",
+          password: "",
+          email: "",
+          loginEmail: "",
+          loginPassword: ""
+        });
+      }).catch(() => {
+        alert("Unable to create account.");
+      });
+    };
+  
+    handleLogin = () => {
+      var passObj = {email: this.state.loginEmail, password: this.state.loginPassword};
+  
+      console.log("Someone tried to sign in!");
+      console.log(`Their information is:
+      email: ${passObj.email}
+      password: ${passObj.password}`);
+      this.setState({
+        firstName: "",
+        lastName: "",
+        password: "",
+        email: "",
+        loginEmail: "",
+        loginPassword: ""
+      });
+      //fill in this information here
+    };
+  
+    handleInputChange = event => {
+      const value = event.target.value;
+      const name = event.target.id;
+  
+      this.setState({
+        [name]: value
+      });
+    };
+    
     render() {
+
+        let navbar;
+
+        if (this.state.loggedIn) {
+            navbar = (
+                <Navbar brand='tripper' right>
+                    <NavLink to="" className="tooltipped" data-position="left" data-tooltip="Quick Search"><Icon className="navIcon">search</Icon></NavLink>
+                    <NavLink to="" data-activates="sidenav_0" className="tooltipped" data-position="left" data-tooltip="Chat"><Icon className="navIcon">chat</Icon></NavLink>
+                    <NavLink to="" className="tooltipped" data-position="left" data-tooltip="Notifications"><Icon className="navIcon">notifications</Icon></NavLink>
+                    <NavLink to="/profile" className="tooltipped" data-position="left" data-tooltip="View Profile"><Icon className="navIcon">account_circle</Icon></NavLink>
+                </Navbar>
+            );
+        }
+        else {
+            navbar = (
+                <Navbar id="navBarOut" brand='tripper' right>
+
+                    <Modal
+                    header='tripper Account Sign Up'
+                    trigger={<Button id="signUp" className="navBtn">Sign Up</Button>}
+                    actions={<><Button className="cancel modal-action modal-close">Cancel</Button><Button id="signUpSubmit" onClick={this.handleSignUp}>Submit</Button></>}
+                    >
+                    <Row id="signUpForm">
+                        <Input id="firstName" placeholder s={5} label="First Name" onChange={this.handleInputChange} />
+                        <Input id="lastName" s={6} label="Last Name" onChange={this.handleInputChange} />
+                        <Input id="email" type="email" label="Email" s={12} onChange={this.handleInputChange} />
+                        <Input type="file" label="Image" s={12} onChange={this.handleInputChange} />
+                        <Input id="password" type="password" label="password" s={12} onChange={this.handleInputChange} />
+                    </Row>
+                    </Modal>
+
+                    <Modal
+                    header='tripper Login'
+                    trigger={<Button id="login" className="navBtn">Login</Button>}
+                    actions={<><Button className="cancel modal-action modal-close">Cancel</Button><Button id="loginBtn" onClick={this.handleLogin}>Login</Button></>}
+                    >
+                    <Row>
+                        <Input id="email" type="email" label="Email" s={12} onChange={this.handleInputChange} />
+                        <Input id="loginPassword" type="password" label="password" s={12} onChange={this.handleInputChange} />
+                    </Row>
+                    </Modal>
+
+                    {/* <Button id="signUp" className="navBtn">Sign Up</Button> */}
+                    {/* <Button id="login" className="navBtn">Login</Button> */}
+                </Navbar>
+            );
+        }
 
         return (
             <>
-                <Navbar brand='tripper' right>
-                    <NavLink to="" className="tooltipped" data-position="left" data-tooltip="Quick Search"><Icon>search</Icon></NavLink>
-                    <NavLink to="" data-activates="sidenav_0" className="tooltipped" data-position="left" data-tooltip="Chat"><Icon>chat</Icon></NavLink>
-                    <NavLink to="" className="tooltipped" data-position="left" data-tooltip="Notifications"><Icon>notifications</Icon></NavLink>
-                    <NavLink to="/profile" className="tooltipped" data-position="left" data-tooltip="View Profile"><Icon>account_circle</Icon></NavLink>
-                </Navbar>
+                {navbar}
 
                 <SideNav
                     trigger={<span style={{display: "none"}}></span>}
