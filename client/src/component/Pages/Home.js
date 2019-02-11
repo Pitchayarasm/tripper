@@ -1,17 +1,17 @@
 import React from "react";
 import { Row, Input, Modal, Button, Parallax } from "react-materialize";
 import axios from "axios";
-import "./home.css"
+import "./home.css";
+
 class Home extends React.Component {
   state = {
-    //user: [],
     firstName: "",
     lastName: "",
     password: "",
     email: "",
     loginEmail: "",
     loginPassword: ""
-  }
+  };
 
   handleSignUp = () => {
     axios.post("/register", {
@@ -30,9 +30,9 @@ class Home extends React.Component {
         loginPassword: ""
       });
     }).catch(() => {
-      alert("Unable to create account");
+      alert("Unable to create account.");
     });
-  }
+  };
 
   handleLogin = () => {
     var passObj = {email: this.state.loginEmail, password: this.state.loginPassword};
@@ -50,11 +50,11 @@ class Home extends React.Component {
       loginPassword: ""
     });
     //fill in this information here
-  }
+  };
 
   handleInputChange = event => {
     const value = event.target.value;
-    const name = event.target.name;
+    const name = event.target.id;
 
     this.setState({
       [name]: value
@@ -63,58 +63,44 @@ class Home extends React.Component {
 
   render() {
     return (
-      <div>
-        <div>
-
-          <Parallax imageSrc="http://materializecss.com/images/parallax1.jpg" />
+      <>
+        <Parallax className="topImg" imageSrc="http://materializecss.com/images/parallax1.jpg" />
           <div className="section white">
-            <div className="row container">
-              <h2 className="header">Tripper</h2>
-              <p className="grey-text text-darken-3 lighten-3">Tripper is social network for adventurous travelers, join if you dare to tell your story:</p>
+            <div className="row container btnContainer">
+              <h2 className="header">tripper</h2>
+              <p className="grey-text text-darken-3 lighten-3">tripper is social network for adventorous travelers. Sign up and start telling your story!</p>
+              <br/>
 
               <Modal
-                header='Modal Header'
-                trigger={<Button>Sign up</Button>}>
-                <form
-                  onSubmit={e => {
-                    e.preventDefault();
-                    this.handleSignUp()
-                  }}
+                header='tripper Account Sign Up'
+                trigger={<Button className="homeBtn">Sign Up</Button>}
+                actions={<><Button className="cancel modal-action modal-close">Cancel</Button><Button id="signUpSubmit" onClick={this.handleSignUp}>Submit</Button></>}
                 >
-                  <Row>
-                    <Input placeholder s={6} label="First Name" name="firstName" onChange={this.handleInputChange} />
-                    <Input s={6} label="Last Name" name="lastName" onChange={this.handleInputChange} />
-                    <Input type="email" label="Email" s={12} name="email" onChange={this.handleInputChange} />
-                    <Input type="password" label="password" s={12} name="password" onChange={this.handleInputChange} />
-                    <Button type="button" type="submit" onClick={this.handleSignUp}>Sign Up</Button>
-                  </Row>
-                </form>
+                <Row id="signUpForm">
+                  <Input id="firstName" placeholder s={5} label="First Name" onChange={this.handleInputChange} />
+                  <Input id="lastName" s={6} label="Last Name" onChange={this.handleInputChange} />
+                  <Input id="email" type="email" label="Email" s={12} onChange={this.handleInputChange} />
+                  <Input type="file" label="Image" s={12} onChange={this.handleInputChange} />
+                  <Input id="password" type="password" label="password" s={12} onChange={this.handleInputChange} />
+                </Row>
               </Modal>
+
               <Modal
-                header='Modal Header'
-                trigger={<Button>Log in</Button>}>
-                <form
-                  onSubmit={e => {
-                    e.preventDefault();
-                    this.handleSignUp()
-                  }}
+                header='tripper Login'
+                trigger={<Button className="homeBtn">Login</Button>}
+                actions={<><Button className="cancel modal-action modal-close">Cancel</Button><Button id="loginBtn" onClick={this.handleLogin}>Login</Button></>}
                 >
-                  <Row>
-                    <Input type="email" label="Email" s={12} name="loginEmail" onChange={this.handleInputChange} />
-                    <Input type="password" label="password" s={12} name="loginPassword" onChange={this.handleInputChange} />
-                    <Button type="button" type="submit" onClick={this.handleLogin}>Log In</Button>
-                  </Row>
-                </form>
+                <Row>
+                  <Input id="email" type="email" label="Email" s={12} onChange={this.handleInputChange} />
+                  <Input id="loginPassword" type="password" label="password" s={12} onChange={this.handleInputChange} />
+                </Row>
               </Modal>
             </div>
           </div>
-          <Parallax imageSrc="http://materializecss.com/images/parallax2.jpg" />
-
-        </div>
-
-
-      </div>
+        <Parallax imageSrc="http://materializecss.com/images/parallax2.jpg" />
+      </>
     );
   }
 }
+
 export default Home;
