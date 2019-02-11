@@ -46,3 +46,30 @@ margin-top: 1%;
     text-align: justify;
     padding: 2%;
 }
+
+.SearchCard{
+    width: 100%;
+    text-align: center;
+}
+
+.SearchCard img{
+    border-radius: 50%;
+}
+
+.Pics{
+    margin: .4%;
+    float: left;
+}
+
+.ProfileCard{
+    text-align: center;
+    line-height: normal;
+    width: 200px;
+    float: left;
+    height: 200px;
+    margin: .4%;
+}
+
+.card{
+    margin: .5rem 1rem 1rem 0;
+}
