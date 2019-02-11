@@ -14,12 +14,13 @@ class Home extends React.Component {
   };
 
   handleSignUp = () => {
+    console.log(this.state)
     axios.post("/register", {
       firstName: this.state.firstName,
       lastName: this.state.lastName,
       password: this.state.password,
       email: this.state.email,
-    }).then(res => {
+    }).then( res => {
       console.log(res);
       this.setState({
         firstName: "",
@@ -77,7 +78,7 @@ class Home extends React.Component {
                 actions={<><Button className="cancel modal-action modal-close">Cancel</Button><Button id="signUpSubmit" onClick={this.handleSignUp}>Submit</Button></>}
                 >
                 <Row id="signUpForm">
-                  <Input id="firstName" placeholder s={5} label="First Name" onChange={this.handleInputChange} />
+                  <Input id="firstName" s={5} label="First Name" onChange={this.handleInputChange} />
                   <Input id="lastName" s={6} label="Last Name" onChange={this.handleInputChange} />
                   <Input id="email" type="email" label="Email" s={12} onChange={this.handleInputChange} />
                   <Input id="password" type="password" label="password" s={12} onChange={this.handleInputChange} />
