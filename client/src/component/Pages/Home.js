@@ -14,7 +14,7 @@ class Home extends React.Component {
           <div className="section white">
             <div className="row container">
               <h2 className="header">Tripper</h2>
-              <p className="grey-text text-darken-3 lighten-3">Tripper is social network for adventorous travelers, join if you dare to tell your story:</p>
+              <p className="grey-text text-darken-3 lighten-3">Tripper is social network for adventurous travelers, join if you dare to tell your story:</p>
 ​
               <Modal
                 header='Modal Header'
