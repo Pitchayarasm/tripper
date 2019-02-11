@@ -35,10 +35,12 @@ class Home extends React.Component {
   }
 
   handleLogin = () => {
+    var passObj = {email: this.state.loginEmail, password: this.state.loginPassword};
+
     console.log("Someone tried to sign in!");
     console.log(`Their information is:
-    email: ${this.state.loginEmail}
-    password: ${this.state.loginPassword}`);
+    email: ${passObj.email}
+    password: ${passObj.password}`);
     this.setState({
       firstName: "",
       lastName: "",
