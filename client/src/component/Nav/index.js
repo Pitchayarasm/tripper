@@ -1,11 +1,12 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { Navbar, Icon, SideNav, SideNavItem } from "react-materialize";
+import { Navbar, Icon, SideNav, SideNavItem, Button } from "react-materialize";
 import "./style.css";
 
 class Nav extends React.Component {
 
     state = {
+        loggedIn: false,
         user: "",
         image: "",
         email: "",
@@ -16,14 +17,30 @@ class Nav extends React.Component {
 
     render() {
 
+        let navbar;
+
+        if (this.state.loggedIn) {
+            navbar = (
+                <Navbar brand='tripper' right>
+                    <NavLink to="" className="tooltipped" data-position="left" data-tooltip="Quick Search"><Icon className="navIcon">search</Icon></NavLink>
+                    <NavLink to="" data-activates="sidenav_0" className="tooltipped" data-position="left" data-tooltip="Chat"><Icon className="navIcon">chat</Icon></NavLink>
+                    <NavLink to="" className="tooltipped" data-position="left" data-tooltip="Notifications"><Icon className="navIcon">notifications</Icon></NavLink>
+                    <NavLink to="/profile" className="tooltipped" data-position="left" data-tooltip="View Profile"><Icon className="navIcon">account_circle</Icon></NavLink>
+                </Navbar>
+            );
+        }
+        else {
+            navbar = (
+                <Navbar id="navBarOut" brand='tripper' right>
+                    <Button id="signUp" className="navBtn">Sign Up</Button>
+                    <Button className="navBtn">Login</Button>
+                </Navbar>
+            );
+        }
+
         return (
             <>
-                <Navbar brand='tripper' right>
-                    <NavLink to="" className="tooltipped" data-position="left" data-tooltip="Quick Search"><Icon>search</Icon></NavLink>
-                    <NavLink to="" data-activates="sidenav_0" className="tooltipped" data-position="left" data-tooltip="Chat"><Icon>chat</Icon></NavLink>
-                    <NavLink to="" className="tooltipped" data-position="left" data-tooltip="Notifications"><Icon>notifications</Icon></NavLink>
-                    <NavLink to="/profile" className="tooltipped" data-position="left" data-tooltip="View Profile"><Icon>account_circle</Icon></NavLink>
-                </Navbar>
+                {navbar}
 
                 <SideNav
                     trigger={<span style={{display: "none"}}></span>}

@@ -11,3 +11,48 @@
 .journal_pics{
     margin-top: 3%;
 }
+
+.topImg {
+    width: 100%;
+    overflow-y: inherit;
+    overflow-x: inherit;
+}
+
+.homeBtn {
+    margin: inherit !important;
+    width: inherit !important;
+    padding: 5px !important;
+    height: inherit !important;
+    float: none !important;
+}
+
+.btnContainer > div {
+    display: inline-block !important;
+    margin-right: 10px;
+}
+
+#signUpSubmit {
+    margin: 1% !important;
+    width: auto !important;
+    padding: 5px !important;
+    height: fit-content !important;
+}
+
+#loginBtn {
+    margin: 1% !important;
+    width: auto !important;
+    padding: 5px !important;
+    height: fit-content !important;
+}
+
+.file-field .btn {
+    margin: 1% !important;
+    width: auto !important;
+    padding: 5px !important;
+    height: inherit !important;
+    line-height: inherit !important;
+}
+
+div.modal-content {
+    padding-bottom: 0 !important;
+}

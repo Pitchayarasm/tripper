@@ -50,3 +50,19 @@ nav ul a {
     color: rgb(90, 172, 90) !important;
     font-size: 10px;
 }
+
+.navBtn {
+    margin: inherit !important;
+    width: inherit !important;
+    padding: 5px !important;
+    height: inherit !important;
+    float: none !important;
+}
+
+#signUp {
+    margin-right: 20px !important;
+}
+
+#navBarOut {
+    padding-right: 20px;
+}
