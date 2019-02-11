@@ -27,13 +27,8 @@ class Journal extends React.Component {
         });
 
         this.setState({
-            firstName: "",
-            lastName: "",
-            password1: "",
-            password2: "",
-            email: "",
-            loginEmail: "",
-            loginPassword: ""
+            entryText: "",
+            entryTitle: ""
         });
     }
 
