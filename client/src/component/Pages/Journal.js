@@ -19,18 +19,37 @@ class Journal extends React.Component {
 
     makeNewEntry = () => {
         //not sure how to access id for user, journal, or entry, but i think those will be necessary for making distinctions
-        // router.post("/journal/:userID/:journalID/:entryID", {
-        //     entryTitle: this.state.entryTitle,
-        //     entryText: this.state.entryText
-        // }).catch(err => {
-        //     console.log(err);
-        // });
+        router.post("/journal/:userID/:journalID/:entryID", {
+            entryTitle: this.state.entryTitle,
+            entryText: this.state.entryText
+        }).catch(err => {
+            console.log(err);
+        });
 
         this.setState({
             entryText: "",
-            entryTitle: ""
+            entryTitle: "",
+            entryChange: "",
+            titleChage: ""
         });
     }
+
+    updateEntry = () => {
+        //not sure how to access id for user, journal, or entry, but i think those will be necessary for making distinctions
+        router.post("/journal/:userID/:journalID/:entryID", {
+            entryTitle: this.state.entryTitle,
+            entryText: this.state.entryText
+        }).catch(err => {
+            console.log(err);
+        });
+
+        this.setState({
+            entryText: "",
+            entryTitle: "",
+            entryChange: "",
+            titleChage: ""
+        });
+    }    
 
     render() {
         return (
@@ -46,13 +65,15 @@ class Journal extends React.Component {
                             Exercitation cupidatat ad laboris voluptate dolor ex eiusmod. Qui eiusmod velit eu est deserunt duis consequat. Enim est cupidatat cupidatat commodo sunt laborum sint.
                         <br /><br />
                             Qui dolor nostrud sunt occaecat dolor commodo consequat exercitation voluptate Lorem. Sint laborum elit ut voluptate in anim cillum duis adipisicing consequat amet adipisicing et ex. Magna occaecat est nulla nostrud tempor nisi sint cillum est eu mollit do.</p>
-                            <Modal
+                        <Modal
                             header='Modal Header'
                             trigger={<Button waves='light'>Edit<Icon right>insert_chart</Icon></Button>}>
-                            <Input type='title' />
+                            <Row id="updateEntryForm">
+                                <Input id="titleChange" value={this.state.titleChage} onChange={this.handleInputChange} type='title' />
 
-                            <Input type='textarea' />
-
+                                <Input id="entryChange" value={this.state.entryChange} onChange={this.handleInputChange} type='textarea' />
+                                <Button id="newEntryConfirm" onClick={this.updateEntry} />
+                            </Row>
                         </Modal>
 
                     </Col>
@@ -70,9 +91,9 @@ class Journal extends React.Component {
                             header='Modal Header'
                             trigger={<Button waves='light'>Add<Icon right>insert_chart</Icon></Button>}>
                             <Row id="addNewEntryForm">
-                                <Input type='title' id="entryTitle" onChange={this.handleInputChange} />
+                                <Input type='title' id="entryTitle" value={this.state.entryTitle} onChange={this.handleInputChange} />
 
-                                <Input type='textarea' id="entryText" onChange={this.handleInputChange} />
+                                <Input type='textarea' id="entryText" value={this.state.entryText} onChange={this.handleInputChange} />
 
                                 <Button id="newEntryConfirm" onClick={this.makeNewEntry} />
                             </Row>
