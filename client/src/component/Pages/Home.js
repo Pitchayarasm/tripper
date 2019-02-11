@@ -1,14 +1,11 @@
 import React from "react";
 import { Row, Input, Modal, Button, Parallax } from "react-materialize";
 import "./home.css";
-​
-​
+
 class Home extends React.Component {
   state = {
     user: []
   };
-​
-​
   render() {
     return (
       <div>
@@ -21,7 +18,7 @@ class Home extends React.Component {
               <p className="grey-text text-darken-3 lighten-3">Tripper is social network for adventorous travelers, join if you dare to tell your story:</p>
 ​
               <Modal
-                header='Modal Header'
+                header="Modal Header"
                 trigger={<Button>Sign up</Button>}>
                 <Row>
                   <Input placeholder s={6} label="First Name" />
@@ -52,6 +49,5 @@ class Home extends React.Component {
     );
   }
 }
-​
-​
+
 export default Home;
