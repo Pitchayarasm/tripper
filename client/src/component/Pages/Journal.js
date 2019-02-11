@@ -22,6 +22,8 @@ class Journal extends React.Component {
                         Exercitation cupidatat ad laboris voluptate dolor ex eiusmod. Qui eiusmod velit eu est deserunt duis consequat. Enim est cupidatat cupidatat commodo sunt laborum sint.
                         <br /><br />
                         Qui dolor nostrud sunt occaecat dolor commodo consequat exercitation voluptate Lorem. Sint laborum elit ut voluptate in anim cillum duis adipisicing consequat amet adipisicing et ex. Magna occaecat est nulla nostrud tempor nisi sint cillum est eu mollit do.</p>
+                        <Button>Edit</Button>                        
+
                         </Col>
                         
                         
@@ -33,6 +35,7 @@ class Journal extends React.Component {
                         <img className="fit_img" src="https://via.placeholder.com/150/666.png/fff" alt="tripper"/>
                         <img className="fit_img" src="https://via.placeholder.com/150/666.png/fff" alt="tripper"/>
                         <img className="fit_img" src="https://via.placeholder.com/150/666.png/fff" alt="tripper"/>
+                        <Button>Add</Button>
 
                         </Col>
                         <Col s={2} className='grid-example'></Col>

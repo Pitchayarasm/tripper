@@ -12,6 +12,7 @@
     margin-top: 3%;
 }
 
+<<<<<<< HEAD
 .topImg {
     width: 100%;
     overflow-y: inherit;
@@ -79,4 +80,66 @@ div.modal-content {
     transition: .3s;
     transition-property: color;
     cursor: pointer;
+=======
+.FriendProfile{
+margin-top: 1%;
+}
+
+.Friend{
+    margin: 0;
+    padding: 0;
+    float: left;
+}
+
+.row .col.s4{
+    padding: 0;
+}
+
+.row .col.s3{
+    padding: 0;
+}
+
+.row .col.s3 .btn{
+    margin: 40px 30%;
+    width: 35%;
+}
+
+.textBox h2{
+    margin: 2% auto;
+    line-height: 110%;
+    text-align: left;
+}
+
+.textBox{
+    height: 356px;
+    text-align: justify;
+    padding: 2%;
+}
+
+.SearchCard{
+    width: 100%;
+    text-align: center;
+}
+
+.SearchCard img{
+    border-radius: 50%;
+}
+
+.Pics{
+    margin: .4%;
+    float: left;
+}
+
+.ProfileCard{
+    text-align: center;
+    line-height: normal;
+    width: 200px;
+    float: left;
+    height: 200px;
+    margin: .4%;
+}
+
+.card{
+    margin: .5rem 1rem 1rem 0;
+>>>>>>> day3
 }
