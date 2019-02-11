@@ -5,7 +5,9 @@ import "./home.css";
 class Journal extends React.Component {
     state = {
         entryTitle: "",
-        entryText: ""
+        entryText: "",
+        entryChange: "",
+        titleChage: ""
     };
 
     handleInputChange = event => {
