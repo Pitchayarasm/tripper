@@ -10,6 +10,9 @@ import Profile from "./component/Pages/Profile.js";
 class App extends Component {
   
     state = {
+        nav: {
+            loggedIn: true
+        },
         chat: {
             user1: "",
             user2: "",
@@ -19,6 +22,7 @@ class App extends Component {
         }
     }
 
+    // CHAT FUNCTIONS
     // Fn to start chat. Communicating with Nav.js.
     startChat = (chatStatus) => {
         console.log(chatStatus);
@@ -40,7 +44,7 @@ class App extends Component {
         return (
             <Router>
                 <>
-                    <Nav startChat={this.startChat}></Nav>
+                    <Nav loginStatus={this.state.nav.loggedIn} startChat={this.startChat}></Nav>
                     <Route exact path="/" render={(props) => <Home {...props} />} />
                     <Route exact path="/journal" render={(props) => <Journal {...props} />} />
                     <Route exact path="/profile" render={(props) => <Profile {...props} />} />

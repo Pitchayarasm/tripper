@@ -14,7 +14,6 @@ class Nav extends React.Component {
         email: "",
         loginEmail: "",
         loginPassword: "",
-        loggedIn: false,
         user: "",
         image: "",
         notifications: 0,
@@ -76,7 +75,7 @@ class Nav extends React.Component {
 
         let navbar;
 
-        if (this.state.loggedIn) {
+        if (this.props.loginStatus) {
             navbar = (
                 <Navbar brand='tripper' right>
                     <NavLink to="" className="tooltipped" data-position="left" data-tooltip="Quick Search"><Icon className="navIcon">search</Icon></NavLink>

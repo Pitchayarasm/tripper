@@ -17,6 +17,7 @@ nav ul a {
 
 #sidenav-overlay {
     top: inherit;
+    display: none;
 }
 
 .userView {
