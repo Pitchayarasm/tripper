@@ -7,8 +7,7 @@ class Friends extends React.Component {
     };
     
     componentDidMount() {
-        let user = JSON.parse(localStorage.getItem("user"));
-        this.setState({user});
+    
     }
 
     render() {
