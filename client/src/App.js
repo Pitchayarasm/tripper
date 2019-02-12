@@ -28,23 +28,28 @@ class App extends Component {
             user2_Id: ""
         },
         user: null
-    }
+    };
 
     setUser = (data) => {
+        let navLogin = {...this.state.nav};
+        navLogin.loggedIn = true;
+
+
         this.setState({
-            user : data
-        })
-    }
+            nav: navLogin,
+            user: data
+        });
+    };
 
     componentDidMount() {
         axios.get("/isLogin").then(res => {
             if (res.data) {
                 this.setState({
                     user : res.data
-                }) 
-            }
+                }); 
+            };
         });
-    }
+    };
 
     // CHAT FUNCTIONS
     // Fn to start chat. Communicating with Nav.js.
@@ -53,7 +58,7 @@ class App extends Component {
         let chat = {...this.state.chat};
             chat.active = chatStatus;
         this.setState({chat});
-    }
+    };
 
     // Fn to end chat. Communicating with Chat.js.
     endChat = (chatStatus) => {
@@ -61,14 +66,14 @@ class App extends Component {
         let chat = {...this.state.chat};
             chat.active = chatStatus;
         this.setState({chat});
-    }
+    };
 
     render() {
 
         return (
             <Router>
                 <>
-                    <Nav loginStatus={this.state.nav.loggedIn} startChat={this.startChat}></Nav>
+                    <Nav loginStatus={this.state.nav.loggedIn} startChat={this.startChat} setUser={this.setUser}></Nav>
                     <Switch>
                         <Route exact path="/" render={(props) => <Home {...props} user={this.state.user} setUser={this.setUser} />} />
                         {!this.state.user ? <Redirect to="/" /> : null }

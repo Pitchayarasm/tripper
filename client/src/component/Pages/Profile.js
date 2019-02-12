@@ -21,7 +21,7 @@ class Profile extends React.Component {
                     </Col>
                     <Col s={3} className='grid-example'>
                         {/* <img className="Friend" src="https://via.placeholder.com/346/666.png/fff" alt="tripper" /> */}
-                        <button style={{width: "346px", height: "346px", backgroundColor: "#dee2e6", fontSize: "75px", opacity: "0.4"}}>+</button>
+                        <input type="file" value="+" style={{width: "346px", height: "346px", backgroundColor: "#dee2e6", fontSize: "75px", opacity: "0.4"}} />
                         <div className="textBox">
                         <h2>The moon is great!</h2>
                         <p>Quis occaecat consequat quis pariatur reprehenderit. Laboris nulla non irure sint et irure do commodo. Enim proident ex ut non do adipisicing reprehenderit laboris veniam exercitation ad eu deserunt et.</p>

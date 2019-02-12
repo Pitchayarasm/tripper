@@ -14,6 +14,7 @@ class Nav extends React.Component {
         email: "",
         loginEmail: "",
         loginPassword: "",
+        login : false,
         user: "",
         image: "",
         notifications: 0,
@@ -57,20 +58,14 @@ class Nav extends React.Component {
         password: this.state.loginPassword
       }).then(res => {
         if (res.statusText === "OK"){
+            this.setState({
+              login : true
+            })
             this.props.setUser(res.data);
             this.props.history.push("/profile")
         } 
-        // else {
-        //   this.setState({
-        //     loginEmail: "",
-        //     loginPassword: ""
-        //   });
-        // }
-        // window.location.href = "/pro"
       }).catch( (err) => {
-        this.setState({
-          errors : "Invalid email or password.."
-        })
+        alert("Invalid email or password..")
       });
     };
   
