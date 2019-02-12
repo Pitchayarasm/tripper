@@ -1,6 +1,14 @@
+/* ==============================
+   BASE STYLES
+   ============================== */
+
+// Import your "base" styles here
+
+
 .btn{
     float: left;
     margin: 1%;
+    
 }
 .wrapper{
     width: 25%;
@@ -13,16 +21,15 @@
 }
 
 .topImg {
-    width: 100%;
     overflow-y: inherit;
     overflow-x: inherit;
 }
 
 .homeBtn {
     margin: inherit !important;
-    width: inherit !important;
     padding: 0 5px 0 5px !important;
     float: none !important;
+    width: 80px;
 }
 
 .btnContainer > div {
@@ -140,4 +147,8 @@ margin-top: 1%;
 
 .card{
     margin: .5rem 1rem 1rem 0;
+}
+
+.parallax-container{
+    width: 100%;
 }
