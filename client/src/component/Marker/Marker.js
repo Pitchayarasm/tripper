@@ -5,9 +5,7 @@
 //     map: map
 //   });
 
-//WHAT IS THIS?
-
-//const evtNames = ['click', 'mouseover'];
+const evtNames = ['click', 'mouseover'];
 
 export class Marker extends React.Component {
     state = {
