@@ -1,0 +1,22 @@
+.entryTitle div {
+    display: inline-block;
+    margin-left: 15px;
+}
+
+.addEntry {
+    width: 150px;
+    height: 150px;
+    display: inline-block;
+    margin: 0;
+    background-color: #dee2e6;
+}
+
+.addEntry button {
+    margin: 50px;
+    background-color: rgb(83, 119, 83) !important;
+
+}
+
+.addEntry button.waves-effect {
+    transition: .15s ease-out;
+}

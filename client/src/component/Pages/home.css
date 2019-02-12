@@ -1,0 +1,78 @@
+.wrapper{
+    width: 25%;
+}
+.fit_img{
+    float: left;
+}
+.journal_pics{
+    margin-top: 3%;
+}
+
+.topImg {
+    width: 100%;
+    overflow-y: inherit;
+    overflow-x: inherit;
+}
+
+.homeBtn {
+    margin: inherit !important;
+    width: inherit !important;
+    padding: 0 5px 0 5px !important;
+    float: none !important;
+}
+
+.btnContainer > div {
+    display: inline-block !important;
+    margin-right: 10px;
+}
+
+#signUpSubmit {
+    margin: 1% !important;
+    width: auto !important;
+    padding: 0 5px 0 5px !important;
+}
+
+#loginBtn {
+    margin: 1% !important;
+    width: auto !important;
+    padding: 0 5px 0 5px !important;
+}
+
+.file-field .btn {
+    margin: 1% !important;
+    width: auto !important;
+    padding: 5px !important;
+    height: inherit !important;
+    line-height: inherit !important;
+}
+
+div.modal-content {
+    padding-bottom: 0 !important;
+}
+
+#signUpForm > .s6 {
+    float: right;
+}
+
+#signUpForm > .file-field {
+    padding-right: 0 !important;
+}
+
+.cancel {
+    display: inline-block !important;
+    margin: 1% !important;
+    width: auto !important;
+    padding: 0 5px 0 5px !important;
+    float: right !important;
+}
+
+#editBtn i {
+    color: #000000;
+}
+
+#editBtn i:hover {
+    color: rgb(83, 119, 83);
+    transition: .3s;
+    transition-property: color;
+    cursor: pointer;
+}

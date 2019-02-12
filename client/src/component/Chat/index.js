@@ -37,7 +37,7 @@ class Chat extends React.Component {
                                     <Input label="Chat" type="textarea" maxLength="140"/>
                                 </div>
                                 <div className="col s2">
-                                    <Button className="btn"><Icon className="chatSendBtn">reply</Icon></Button>
+                                    <Button className="btn tripperBtn"><Icon className="chatSendBtn">reply</Icon></Button>
                                 </div>
                             </div>
                         </div>

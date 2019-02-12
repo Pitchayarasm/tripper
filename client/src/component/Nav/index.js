@@ -91,8 +91,8 @@ class Nav extends React.Component {
 
                     <Modal
                     header='tripper Account Sign Up'
-                    trigger={<Button id="signUp" className="navBtn">Sign Up</Button>}
-                    actions={<><Button className="cancel modal-action modal-close">Cancel</Button><Button id="signUpSubmit" onClick={this.handleSignUp}>Submit</Button></>}
+                    trigger={<Button id="signUp" className="navBtn tripperBtn">Sign Up</Button>}
+                    actions={<><Button className="cancel modal-action modal-close tripperBtn">Cancel</Button><Button id="signUpSubmit" className="tripperBtn" onClick={this.handleSignUp}>Submit</Button></>}
                     >
                     <Row id="signUpForm">
                         <Input id="firstName" s={5} label="First Name" onChange={this.handleInputChange} />
@@ -105,8 +105,8 @@ class Nav extends React.Component {
 
                     <Modal
                     header='tripper Login'
-                    trigger={<Button id="login" className="navBtn">Login</Button>}
-                    actions={<><Button className="cancel modal-action modal-close">Cancel</Button><Button id="loginBtn" onClick={this.handleLogin}>Login</Button></>}
+                    trigger={<Button id="login" className="navBtn tripperBtn">Login</Button>}
+                    actions={<><Button className="cancel modal-action modal-close tripperBtn">Cancel</Button><Button id="loginBtn" className="tripperBtn" onClick={this.handleLogin}>Login</Button></>}
                     >
                     <Row>
                         <Input id="email" type="email" label="Email" s={12} onChange={this.handleInputChange} />

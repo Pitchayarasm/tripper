@@ -57,8 +57,8 @@
     transition: background-color .3s;
 }
 
-.btn {
-    width: 40px;
+.tripperBtn {
+    /* width: 40px; */
     padding: 0;
     float: right;
     background-color: rgb(83, 119, 83) !important;
@@ -68,7 +68,7 @@
     margin-top: 15px;
 }
 
-.btn:hover {
+.tripperBtn:hover {
     background-color: rgb(55, 80, 55) !important;
     transition: background-color .3s;
 }

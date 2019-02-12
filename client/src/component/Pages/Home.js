@@ -2,6 +2,7 @@ import React from "react";
 import { Row, Input, Modal, Button, Parallax, Col } from "react-materialize";
 import axios from "axios";
 import {Redirect} from "react-router-dom";
+import "./home.css";
 
 class Home extends React.Component {
   state = {
@@ -95,8 +96,8 @@ class Home extends React.Component {
 
             <Modal
               header='tripper Account Sign Up'
-              trigger={<Button className="homeBtn">Sign Up</Button>}
-              actions={<><Button className="cancel modal-action modal-close">Cancel</Button><Button id="signUpSubmit" onClick={this.handleSignUp}>Submit</Button></>}
+              trigger={<Button className="homeBtn tripperBtn">Sign Up</Button>}
+              actions={<><Button className="cancel modal-action modal-close tripperBtn">Cancel</Button><Button id="signUpSubmit" className="tripperBtn" onClick={this.handleSignUp}>Submit</Button></>}
             >
               <Row id="signUpForm">
                 <Input id="firstName" value={this.state.firstName} s={5} label="First Name" onChange={this.handleInputChange} />
@@ -109,8 +110,8 @@ class Home extends React.Component {
 
             <Modal
               header='tripper Login'
-              trigger={<Button className="homeBtn">Login</Button>}
-              actions={<><Button className="cancel modal-action modal-close">Cancel</Button><Button id="loginBtn" onClick={this.handleLogin}>Login</Button></>}
+              trigger={<Button className="homeBtn tripperBtn">Login</Button>}
+              actions={<><Button className="cancel modal-action modal-close tripperBtn">Cancel</Button><Button id="loginBtn" className="tripperBtn" onClick={this.handleLogin}>Login</Button></>}
             >
               <Row>
                 <Input id="loginEmail" value={this.state.loginEmail} type="email" label="Email" s={12} onChange={this.handleInputChange} />
@@ -120,8 +121,9 @@ class Home extends React.Component {
           </div>
         </div>
         <Parallax imageSrc="http://materializecss.com/images/parallax2.jpg"/>
-</div></Col>
-</Row>
+      </div>
+    </Col>
+  </Row>
     );
   }
 }
