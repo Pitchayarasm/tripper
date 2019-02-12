@@ -82,7 +82,7 @@ class Home extends React.Component {
             <Modal
               header='tripper Account Sign Up'
               trigger={<Button className="homeBtn">Sign Up</Button>}
-              actions={<><Button className="cancel modal-action modal-close">Cancel</Button><Button id="signUpSubmit" onClick={this.handleSignUp}>Submit</Button></>}
+              actions={<><Button className="cancel modal-action modal-close">Cancel</Button><Button id="signUpSubmit" className="cancel modal-action modal-close" onClick={this.handleSignUp}>Submit</Button></>}
             >
               <Row id="signUpForm">
                 <Input id="firstName" s={5} label="First Name" onChange={this.handleInputChange} />
@@ -96,7 +96,7 @@ class Home extends React.Component {
             <Modal
               header='tripper Login'
               trigger={<Button className="homeBtn">Login</Button>}
-              actions={<><Button className="cancel modal-action modal-close">Cancel</Button><Button id="loginBtn" onClick={this.handleLogin}>Login</Button></>}
+              actions={<><Button className="cancel modal-action modal-close">Cancel</Button><Button id="loginBtn" className="cancel modal-action modal-close" onClick={this.handleLogin}>Login</Button></>}
             >
               <Row>
                 <Input id="email" type="email" label="Email" s={12} onChange={this.handleInputChange} />

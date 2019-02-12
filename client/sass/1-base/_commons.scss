@@ -1,0 +1,155 @@
+/* ==============================
+   BASE STYLES
+   ============================== */
+
+// Import your "base" styles here
+
+
+.btn{
+    float: left;
+    margin: 1%;
+    
+}
+.wrapper{
+    width: 25%;
+}
+.fit_img{
+    float: left;
+}
+.journal_pics{
+    margin-top: 3%;
+}
+
+.topImg {
+    overflow-y: inherit;
+    overflow-x: inherit;
+}
+
+.homeBtn {
+    margin: inherit !important;
+    padding: 0 5px 0 5px !important;
+    float: none !important;
+    width: 80px;
+}
+
+.btnContainer > div {
+    display: inline-block !important;
+    margin-right: 10px;
+}
+
+#signUpSubmit {
+    margin: 1% !important;
+    width: auto !important;
+    padding: 0 5px 0 5px !important;
+}
+
+#loginBtn {
+    margin: 1% !important;
+    width: auto !important;
+    padding: 0 5px 0 5px !important;
+}
+
+.file-field .btn {
+    margin: 1% !important;
+    width: auto !important;
+    padding: 5px !important;
+    height: inherit !important;
+    line-height: inherit !important;
+}
+
+div.modal-content {
+    padding-bottom: 0 !important;
+}
+
+#signUpForm > .s6 {
+    float: right;
+}
+
+#signUpForm > .file-field {
+    padding-right: 0 !important;
+}
+
+.cancel {
+    display: inline-block !important;
+    margin: 1% !important;
+    width: auto !important;
+    padding: 0 5px 0 5px !important;
+    float: right !important;
+}
+
+#editBtn i {
+    color: #000000;
+}
+
+#editBtn i:hover {
+    color: rgb(83, 119, 83);
+    transition: .3s;
+    transition-property: color;
+    cursor: pointer;
+}
+.FriendProfile{
+margin-top: 1%;
+}
+
+.Friend{
+    margin: 0;
+    padding: 0;
+    float: left;
+}
+
+.row .col.s4{
+    padding: 0;
+}
+
+.row .col.s3{
+    padding: 0;
+}
+
+.row .col.s3 .btn{
+    margin: 40px 30%;
+    width: 35%;
+}
+
+.textBox h2{
+    margin: 2% auto;
+    line-height: 110%;
+    text-align: left;
+}
+
+.textBox{
+    height: 356px;
+    text-align: justify;
+    padding: 2%;
+}
+
+.SearchCard{
+    width: 100%;
+    text-align: center;
+    border-radius: 50%;
+}
+
+.SearchCard img{
+    border-radius: 50%;
+}
+
+.Pics{
+    margin: .4%;
+    float: left;
+}
+
+.ProfileCard{
+    text-align: center;
+    line-height: normal;
+    width: 200px;
+    float: left;
+    height: 200px;
+    margin: .4%;
+}
+
+.card{
+    margin: .5rem 1rem 1rem 0;
+}
+
+.parallax-container{
+    width: 100%;
+}
