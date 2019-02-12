@@ -2,6 +2,7 @@ import React from "react";
 import { Row, Input, Modal, Button, Parallax } from "react-materialize";
 import axios from "axios";
 import "./home.css";
+import {Redirect} from "react-router-dom";
 
 class Home extends React.Component {
   state = {
@@ -44,17 +45,23 @@ class Home extends React.Component {
     }
   };
 
-  handleLogin = () => {
+  handleLogin = (e) => {
+    e.preventDefault();
     axios.post("/login", {
       email: this.state.loginEmail,
       password: this.state.loginPassword
     }).then(res => {
-      console.log(res);
+      if (res.statusText === "OK"){
+        const {data} = res,
+              user = JSON.stringify(data);
+              localStorage.setItem("user", user);
+              this.props.history.push("/profile");
+      }
       this.setState({
         loginEmail: "",
         loginPassword: ""
       });
-      window.location.href = "/"
+      // window.location.href = "/pro"
     }).catch((err) => {
       console.log(err)
     });

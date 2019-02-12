@@ -4,9 +4,13 @@ import "./home.css";
 
 class Profile extends React.Component {
     state = {
-        user: []
+        user: null
     };
-
+    
+    componentDidMount() {
+        let user = JSON.parse(localStorage.getItem("user"));
+        this.setState({user});
+    }
 
     render() {
         return (

@@ -1,6 +1,7 @@
 import React from "react";
 import { Row, Col, Icon, Button, Modal, Input } from "react-materialize";
 import "./home.css";
+import axios from "axios"
 
 class Journal extends React.Component {
     state = {
@@ -21,7 +22,7 @@ class Journal extends React.Component {
 
     makeNewEntry = () => {
         //not sure how to access id for user, journal, or entry, but i think those will be necessary for making distinctions
-        router.post("/journal/:userID/:journalID/:entryID", {
+        axios.post(`/journal/:userID/:journalID/:entryID`, {
             entryTitle: this.state.entryTitle,
             entryText: this.state.entryText
         }).catch(err => {
@@ -38,7 +39,7 @@ class Journal extends React.Component {
 
     updateEntry = () => {
         //not sure how to access id for user, journal, or entry, but i think those will be necessary for making distinctions
-        router.post("/journal/:userID/:journalID/:entryID", {
+        axios.post("/journal/:userID/:journalID/:entryID", {
             entryTitle: this.state.entryTitle,
             entryText: this.state.entryText
         }).catch(err => {

@@ -49,7 +49,10 @@ const db = require("../models")
           bcrypt.compare( password, user.password, (err, isMatch) => {
             if (err) throw err;
             if (isMatch) {
-              return done(null, user);
+              let { _id ,firstName, lastName, email } = user,
+                  payload = { _id ,firstName, lastName, email };
+                  console.log(payload);
+                  return res.json(payload);
             } else {
               return done(null, false, { message: 'Password incorrect' });
             }

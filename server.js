@@ -15,11 +15,11 @@ app.use(express.json());
 // Express session
 app.use(
   session({
-    secret: "secret",
-    resave: true,
-    saveUninitialized: true
-  })
-);
+    secret: "secret", 
+    resave: false,
+    saveUninitialized: true,
+    cookie: {secure: "auto"}
+}));
 
 // Passport middleware
 app.use(passport.initialize());
