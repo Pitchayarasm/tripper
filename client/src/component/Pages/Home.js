@@ -84,7 +84,7 @@ class Home extends React.Component {
       }
     return (
       <Row>
-                    <Col s={12} className='grid-example'>
+        <Col s={12} className='grid-example'>
       <div>
       <Parallax imageSrc="http://materializecss.com/images/parallax1.jpg"/>
         <div className="section white">
