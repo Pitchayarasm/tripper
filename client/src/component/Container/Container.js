@@ -51,5 +51,5 @@ export class Container extends React.Component {
 }
 
 export default GoogleApiComponent({
-  apiKey: __GAPI_KEY__ //steal this from .env file?
+  apiKey: AIzaSyCsd5GbDBaiJBZ94ei5j9hfU1Cy6TRP6Ws
 })(Container)
