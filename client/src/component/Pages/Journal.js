@@ -88,13 +88,13 @@ class Journal extends React.Component {
 
 
                     <Col s={4} className='journal_pics'>
-                        <img className="fit_img" src="https://via.placeholder.com/150/666.png/fff" alt="tripper" />
-                        <img className="fit_img" src="https://via.placeholder.com/300x150/666.png/fff" alt="tripper" />
-                        <img className="fit_img" src="https://via.placeholder.com/150x300/666.png/fff" alt="tripper" />
-                        <img className="fit_img" src="https://via.placeholder.com/150/666.png/fff" alt="tripper" />
-                        <img className="fit_img" src="https://via.placeholder.com/150/666.png/fff" alt="tripper" />
-                        <img className="fit_img" src="https://via.placeholder.com/150/666.png/fff" alt="tripper" />
-                        <img className="fit_img" src="https://via.placeholder.com/150/666.png/fff" alt="tripper" />
+                    <img className="fit_img tile" src="https://via.placeholder.com/150/666.png/fff" alt="tripper" />                        
+                        <img className="fit_img tile" src="https://via.placeholder.com/300x150/666.png/fff" alt="tripper" />
+                        <img className="fit_img tile" src="https://via.placeholder.com/150x300/666.png/fff" alt="tripper" />
+                        <img className="fit_img tile" src="https://via.placeholder.com/150/666.png/fff" alt="tripper" />
+                        <img className="fit_img tile" src="https://via.placeholder.com/150/666.png/fff" alt="tripper" />
+                        <img className="fit_img tile" src="https://via.placeholder.com/150/666.png/fff" alt="tripper" />
+                        <img className="fit_img tile" src="https://via.placeholder.com/150/666.png/fff" alt="tripper" />
                         <Modal
                             header='Modal Header'
                             trigger={<Button waves='light'>Add<Icon right>insert_chart</Icon></Button>}>

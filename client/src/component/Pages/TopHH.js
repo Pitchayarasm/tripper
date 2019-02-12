@@ -26,21 +26,18 @@ class Top extends React.Component {
                     </Col>
                     <Col s={3} className='grid-example'>
                         <Card header={<CardTitle reveal image={"https://via.placeholder.com/346/666.png/fff"} waves='light' />}
-                            title="The moon"
+                            title="Antarctica"
                             reveal={<p>Here is some more information about this product that is only revealed once clicked on.</p>}>
                             <span><Icon tiny>favorite</Icon>0<Icon tiny>textsms</Icon>0</span>
                         </Card>
                     </Col>
                     <Col s={3} className='grid-example'>
                         <Card header={<CardTitle reveal image={"https://via.placeholder.com/346/666.png/fff"} waves='light' />}
-                            title="The moon"
+                            title="Acapulco"
                             reveal={<p>Here is some more information about this product that is only revealed once clicked on.</p>}>
                             <span><Icon tiny>favorite</Icon>0<Icon tiny>textsms</Icon>0</span>
                         </Card>
                     </Col>
-                    
-                   
-
                 </Row>
 
 
