@@ -103,7 +103,7 @@ class Home extends React.Component {
             <Modal
               header='tripper Login'
               trigger={<Button className="homeBtn">Login</Button>}
-              actions={<><Button className="cancel modal-action modal-close">Cancel</Button><Button id="loginBtn" className={this.state.login ? "cancel modal-action modal-close" : null} onClick={this.handleLogin}>Login</Button></>}
+              actions={<><Button className="cancel modal-action modal-close">Cancel</Button><Button id="loginBtn" className="cancel modal-action modal-close" onClick={this.handleLogin}>Login</Button></>}
             >
               <Row>
                 <Input id="loginEmail" value={this.state.loginEmail} type="email" label="Email" s={12} onChange={this.handleInputChange} />
