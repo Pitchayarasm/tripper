@@ -97,12 +97,10 @@
     margin: 0 !important;
 }
 
-.card-content {
+.messages {
     border-top: 1px solid #dee2e6;
-}
-
-.card-content strong {
-    color: darkblue;
+    padding-bottom: 12px !important;
+    overflow-y: scroll;
 }
 
 .input-field.col label {
@@ -139,4 +137,58 @@ textarea.materialize-textarea:focus:not([readonly]) {
 .endChat:hover {
     font-weight: bold;
     cursor: pointer;
+}
+
+.user1 {
+    color: #ffffff !important;
+	position: relative;
+	background: darkblue;
+    border-radius: .4em;
+    float: right;
+    padding: 5px 10px 5px 10px;
+    margin-top: 10px !important;
+    box-shadow: 0 2px 5px #888888;
+    clear: both;
+}
+
+.user1:after {
+	content: '';
+	position: absolute;
+	right: 0;
+	top: 50%;
+	width: 0;
+	height: 0;
+	border: 0.5em solid transparent;
+	border-left-color: darkblue;
+	border-right: 0;
+	border-bottom: 0;
+	margin-top: -0.25em;
+	margin-right: -0.5em;
+}
+
+.user2 {
+    color: #ffffff !important;
+	position: relative;
+	background: #888888;
+    border-radius: .4em;
+    float: left;
+    padding: 5px 10px 5px 10px;
+    margin-top: 10px !important;
+    box-shadow: 0 2px 5px #444444;
+    clear: both;
+}
+
+.user2:after {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 50%;
+	width: 0;
+	height: 0;
+	border: 0.5em solid transparent;
+	border-right-color: #888888;
+	border-left: 0;
+	border-bottom: 0;
+	margin-top: -0.25em;
+	margin-left: -0.5em;
 }

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import io from "socket.io-client";
 import Nav from "./component/Nav";
 import Chat from "./component/Chat";
 import Home from "./component/Pages/Home.js";
@@ -14,20 +15,28 @@ class App extends Component {
             loggedIn: true
         },
         chat: {
-            user1: "",
+            user1: "Anderson Cooper",
             user2: "",
             active: false,
             user1_Id: "",
-            user2_Id: ""
+            user2_Id: "",
+            chatroom: ""
         }
     }
 
     // CHAT FUNCTIONS
     // Fn to start chat. Communicating with Nav.js.
-    startChat = (chatStatus) => {
-        console.log(chatStatus);
+    startChat = (chatStatus, chattingWith) => {
+
+        this.socket = io("localhost:3001");
+
+        console.log(chatStatus, chattingWith);
         let chat = {...this.state.chat};
             chat.active = chatStatus;
+            chat.user2 = chattingWith;
+            chat.chatroom = chat.user1.split(" ")[1] + chat.user2.split(" ")[1];
+
+        this.socket.emit("create", chat.chatroom);
         this.setState({chat});
     }
 
@@ -48,7 +57,7 @@ class App extends Component {
                     <Route exact path="/" render={(props) => <Home {...props} />} />
                     <Route exact path="/journal" render={(props) => <Journal {...props} />} />
                     <Route exact path="/profile" render={(props) => <Profile {...props} />} />
-                    <Chat endChat={this.endChat} chatStatus={this.state.chat.active}></Chat>
+                    <Chat endChat={this.endChat} chatStatus={this.state.chat.active} chat={this.state.chat}></Chat>
                 </>
             </Router>
         );

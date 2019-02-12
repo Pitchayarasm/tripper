@@ -17,8 +17,8 @@ class Nav extends React.Component {
         user: "",
         image: "",
         notifications: 0,
-        onlineFriends: [],
-        offlineFriends: [],
+        onlineFriends: ["Chris Cuomo", "Don Lemon", "Van Jones"],
+        offlineFriends: ["Jake Tapper", "Wolf Blitzer"]
     }
 
     handleSignUp = () => {
@@ -138,10 +138,14 @@ class Nav extends React.Component {
                         }}
                     />
                     <SideNavItem className="onlineHeader"><Icon className="icon-online">rss_feed</Icon>Online Friends</SideNavItem>
-                    <SideNavItem className="onlineFriend" onClick={() => this.props.startChat(true)}>Chris Cuomo <Icon className="icon-friend-online">lens</Icon></SideNavItem>
+                    {this.state.onlineFriends.map((item) => {
+                        return <SideNavItem className="onlineFriend" waves="light" onClick={() => this.props.startChat(true, item)}>{item} <Icon className="icon-friend-online">lens</Icon></SideNavItem>
+                    })}
                     <SideNavItem divider />
                     <SideNavItem subheader>Offline Friends</SideNavItem>
-                    {/* <SideNavItem waves href='#!third'>Third Link With Waves</SideNavItem>  */}
+                    {this.state.offlineFriends.map((item) => {
+                        return <li className="offlineFriend">{item}</li> 
+                    })}
                 </SideNav>
             </>
         );
