@@ -69,6 +69,7 @@ nav ul a {
 
 #navBarOut a {
     float: left;
+    margin-bottom: 10px;
 }
 
 #navBarOut ul div {
@@ -113,4 +114,8 @@ div.modal-content {
     width: auto !important;
     padding: 0 5px 0 5px !important;
     float: right !important;
+}
+
+.FriendProfile {
+    margin-top: 10px;
 }

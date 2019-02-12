@@ -77,12 +77,20 @@ class Nav extends React.Component {
 
         if (this.props.loginStatus) {
             navbar = (
+                <>
                 <Navbar brand='tripper' right>
                     <NavLink to="" className="tooltipped" data-position="left" data-tooltip="Quick Search"><Icon className="navIcon">search</Icon></NavLink>
-                    <NavLink to="" data-activates="sidenav_0" className="tooltipped" data-position="left" data-tooltip="Chat"><Icon className="navIcon">chat</Icon></NavLink>
+                    <NavLink to="" data-activates="sidenav_3" className="tooltipped" data-position="left" data-tooltip="Chat"><Icon className="navIcon">chat</Icon></NavLink>
                     <NavLink to="" className="tooltipped" data-position="left" data-tooltip="Notifications"><Icon className="navIcon">notifications</Icon></NavLink>
                     <NavLink to="/profile" className="tooltipped" data-position="left" data-tooltip="View Profile"><Icon className="navIcon">account_circle</Icon></NavLink>
                 </Navbar>
+
+                <Button floating fab="horizontal" icon="navigation" className="red" large style={{bottom: "45px", right: "24px"}}>
+                    <Button floating icon="add" className="blue darken-4" data-position="top" tooltip="Create Journal"/>
+                    <Button floating icon="group" className="yellow darken-3" data-position="top" tooltip="Friends"/>
+                    <Button floating icon="power_settings_new" className="red darken-1" data-position="top" tooltip="Logout"/>
+                </Button>
+                </>
             );
         }
         else {
