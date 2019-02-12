@@ -11,7 +11,7 @@ const db = require("../models")
         db.User.findOne({ email: email })
         .then( user => {
           if (user) {
-            res.json({ msg: "This email is already exist" , firstName, lastName, email, password });
+            res.json({ msg: "This email has already been registered." , firstName, lastName, email, password });
 
           } else {
             bcrypt.hash( password, 10 , (err,hash) => {
@@ -42,7 +42,7 @@ const db = require("../models")
     })
     .then( user => {
       if (!user) {
-        return done(null, false, { message: 'That email is not registered' });
+        return done(null, false, { message: 'That email is not registered.' });
       } else {
         // Match password
         bcrypt.compare( password, user.password, (err, isMatch) => {
@@ -50,7 +50,7 @@ const db = require("../models")
           if (isMatch) {
             return done(null, user)
           } else {
-            return done(null, false, { message: 'Password incorrect' });
+            return done(null, false, { message: 'Password incorrect.' });
           }
         });
       }

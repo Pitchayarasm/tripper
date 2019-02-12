@@ -27,7 +27,7 @@ class App extends Component {
             user1_Id: "",
             user2_Id: ""
         },
-        user: null
+        user: "null"
     }
 
     setUser = (data) => {
