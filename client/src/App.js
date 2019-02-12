@@ -11,7 +11,8 @@ import SearchFriends from "./component/Pages/Friends.js";
 import TopHH from "./component/Pages/TopHH.js";
 import axios from "axios";
 
-
+//SASS
+import "./css/style.css";
 
 class App extends Component {
   
