@@ -22,44 +22,56 @@ class Nav extends React.Component {
     }
 
     handleSignUp = () => {
-      axios.post("/register", {
-        firstName: this.state.firstName,
-        lastName: this.state.lastName,
-        password: this.state.password,
-        email: this.state.email,
-      }).then(res => {
-        console.log(res);
-        this.setState({
-          firstName: "",
-          lastName: "",
-          password1: "",
-          password2: "",
-          email: "",
-          loginEmail: "",
-          loginPassword: ""
-        });
-      }).catch(() => {
-        alert("Unable to create account.");
-      });
+      if (this.state.firstName && this.state.lastName && this.state.email && this.state.password1) {
+        if (this.state.password1 === this.state.password2) {
+          axios.post("/register", {
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
+            password: this.state.password1,
+            email: this.state.email,
+          }).then(res => {
+            console.log(res);
+            this.setState({
+              firstName: "",
+              lastName: "",
+              password1: "",
+              password2: "",
+              email: ""
+            });
+            this.props.history.push("/")
+          }).catch((err) => {
+            console.log(err)
+          });
+        }
+        else
+          alert("Passwords do not match!");
+      } else {
+        alert("Please make sure you have filled out all fields!");
+      }
     };
   
-    handleLogin = () => {
-      var passObj = {email: this.state.loginEmail, password: this.state.loginPassword};
-  
-      console.log("Someone tried to sign in!");
-      console.log(`Their information is:
-      email: ${passObj.email}
-      password: ${passObj.password}`);
-      this.setState({
-        firstName: "",
-        lastName: "",
-        password1: "",
-        password2: "",
-        email: "",
-        loginEmail: "",
-        loginPassword: ""
+    handleLogin = (e) => {
+      e.preventDefault();
+      axios.post("/login", {
+        email: this.state.loginEmail,
+        password: this.state.loginPassword
+      }).then(res => {
+        if (res.statusText === "OK"){
+            this.props.setUser(res.data);
+            this.props.history.push("/profile")
+        } 
+        // else {
+        //   this.setState({
+        //     loginEmail: "",
+        //     loginPassword: ""
+        //   });
+        // }
+        // window.location.href = "/pro"
+      }).catch( (err) => {
+        this.setState({
+          errors : "Invalid email or password.."
+        })
       });
-      //fill in this information here
     };
   
     handleInputChange = event => {

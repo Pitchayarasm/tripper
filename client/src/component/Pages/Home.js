@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Input, Modal, Button, Parallax, Col } from "react-materialize";
+import { Row, Input, Modal, Button, Parallax, Col, Toast } from "react-materialize";
 import {Redirect} from "react-router-dom"
 import axios from "axios";
 
@@ -12,7 +12,7 @@ class Home extends React.Component {
     email: "",
     loginEmail: "",
     loginPassword: "",
-    err : null
+    login : false
   };
 
   handleSignUp = () => {
@@ -51,18 +51,14 @@ class Home extends React.Component {
       password: this.state.loginPassword
     }).then(res => {
       if (res.statusText === "OK"){
+          this.setState({
+            login : true
+          })
           this.props.setUser(res.data);
           this.props.history.push("/profile")
       } 
-      // else {
-      //   this.setState({
-      //     loginEmail: "",
-      //     loginPassword: ""
-      //   });
-      // }
-      // window.location.href = "/pro"
-    }).catch((err) => {
-      alert("Invalid email oe password")
+    }).catch( (err) => {
+      alert("Invalid email or password..")
     });
   };
 
@@ -107,11 +103,12 @@ class Home extends React.Component {
             <Modal
               header='tripper Login'
               trigger={<Button className="homeBtn">Login</Button>}
-              actions={<><Button className="cancel modal-action modal-close">Cancel</Button><Button id="loginBtn" className="cancel modal-action modal-close" onClick={this.handleLogin}>Login</Button></>}
+              actions={<><Button className="cancel modal-action modal-close">Cancel</Button><Button id="loginBtn" className={this.state.login ? "cancel modal-action modal-close" : null} onClick={this.handleLogin}>Login</Button></>}
             >
               <Row>
                 <Input id="loginEmail" value={this.state.loginEmail} type="email" label="Email" s={12} onChange={this.handleInputChange} />
                 <Input id="loginPassword" value={this.state.loginPassword} type="password" label="password" s={12} onChange={this.handleInputChange} />
+                {/* {this.state.err ? <Toast >{this.state.err}</Toast> : null} */}
               </Row>
             </Modal>
           </div>
