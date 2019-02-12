@@ -35,48 +35,43 @@ const db = require("../models")
       });
   });
 
+  passport.use( new LocalStrategy({ usernameField: 'email' }, (email, password, done) => {
+    // Match user
+    db.User.findOne({
+      email: email
+    })
+    .then( user => {
+      if (!user) {
+        return done(null, false, { message: 'That email is not registered' });
+      } else {
+        // Match password
+        bcrypt.compare( password, user.password, (err, isMatch) => {
+          if (err) throw err;
+          if (isMatch) {
+            return done(null, user)
+          } else {
+            return done(null, false, { message: 'Password incorrect' });
+          }
+        });
+      }
+    });
+  }))
+
+  passport.serializeUser(function(user, done) {
+    done(null, user.id);
+  });
+
+  passport.deserializeUser(function(id, done) {
+    console.log(id)
+    db.User.findById(id, function(err, user) {
+      console.log(user)
+      done(err, user);
+    });
+  });
+
   // Login
-  router.post('/login', (req, res, next) => {
-    passport.use( new LocalStrategy({ usernameField: 'email' }, (email, password, done) => {
-      // Match user
-      db.User.findOne({
-        email: email
-      })
-      .then( user => {
-        if (!user) {
-          return done(null, false, { message: 'That email is not registered' });
-        } else {
-          // Match password
-          bcrypt.compare( password, user.password, (err, isMatch) => {
-            if (err) throw err;
-            if (isMatch) {
-              let { _id ,firstName, lastName, email, active } = user,
-                  payload = { _id ,firstName, lastName, email, active };
-                  console.log(payload);
-                  return res.json(payload);
-            } else {
-              return done(null, false, { message: 'Password incorrect' });
-            }
-          });
-        }
-      });
-    }))
-
-    passport.serializeUser(function(user, done) {
-      done(null, user.id);
-    });
-
-    passport.deserializeUser(function(id, done) {
-      User.findById(id, function(err, user) {
-        done(err, user);
-      });
-    });
-    
-      passport.authenticate('local', {
-        successRedirect: '/profile',
-        failureRedirect: '/',
-        failureFlash: true
-      })(req, res, next);
+  router.post('/login', passport.authenticate("local"), (req, res, next) => {
+    res.json(req.user)
   });
 
   // Logout
@@ -85,4 +80,8 @@ const db = require("../models")
     res.redirect('/users/login');
   });
 
+  router.get("/isLogin" , (req,res) => {
+    console.log(req.user)
+    res.json(req.user)
+  })
 module.exports = router;

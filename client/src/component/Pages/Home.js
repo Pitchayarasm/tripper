@@ -1,7 +1,7 @@
 import React from "react";
 import { Row, Input, Modal, Button, Parallax, Col } from "react-materialize";
+import {Redirect} from "react-router-dom"
 import axios from "axios";
-import {Redirect} from "react-router-dom";
 
 class Home extends React.Component {
   state = {
@@ -11,8 +11,7 @@ class Home extends React.Component {
     password2: "",
     email: "",
     loginEmail: "",
-    loginPassword: "",
-    redirect: false
+    loginPassword: ""
   };
 
   handleSignUp = () => {
@@ -51,18 +50,19 @@ class Home extends React.Component {
       email: this.state.loginEmail,
       password: this.state.loginPassword
     }).then(res => {
+      console.log(res)
       if (res.statusText === "OK"){
         const {data} = res,
               user = JSON.stringify(data);
               localStorage.setItem("user", user);
-        this.setState({ 
-          redirect: true 
-        })
+              this.props.setUser(data);
+              this.props.history.push("/profile")
+      } else {
+        this.setState({
+          loginEmail: "",
+          loginPassword: ""
+        });
       }
-      this.setState({
-        loginEmail: "",
-        loginPassword: ""
-      });
       // window.location.href = "/pro"
     }).catch((err) => {
       console.log(err)
@@ -78,10 +78,10 @@ class Home extends React.Component {
   };
 
   render() {
-    const { redirect } = this.state;
-      if (redirect) {
-        return <Redirect to="profile"/>;
-      }
+    if ( this.props.user) {
+      return < Redirect to="/profile" />
+    }
+
     return (
       <Row>
                     <Col s={12} className='grid-example'>
@@ -96,7 +96,7 @@ class Home extends React.Component {
             <Modal
               header='tripper Account Sign Up'
               trigger={<Button className="homeBtn">Sign Up</Button>}
-              actions={<><Button className="cancel modal-action modal-close">Cancel</Button><Button id="signUpSubmit" onClick={this.handleSignUp}>Submit</Button></>}
+              actions={<><Button className="cancel modal-action modal-close">Cancel</Button><Button id="signUpSubmit" className="cancel modal-action modal-close" onClick={this.handleSignUp}>Submit</Button></>}
             >
               <Row id="signUpForm">
                 <Input id="firstName" value={this.state.firstName} s={5} label="First Name" onChange={this.handleInputChange} />
@@ -110,7 +110,7 @@ class Home extends React.Component {
             <Modal
               header='tripper Login'
               trigger={<Button className="homeBtn">Login</Button>}
-              actions={<><Button className="cancel modal-action modal-close">Cancel</Button><Button id="loginBtn" onClick={this.handleLogin}>Login</Button></>}
+              actions={<><Button className="cancel modal-action modal-close">Cancel</Button><Button id="loginBtn" className="cancel modal-action modal-close" onClick={this.handleLogin}>Login</Button></>}
             >
               <Row>
                 <Input id="loginEmail" value={this.state.loginEmail} type="email" label="Email" s={12} onChange={this.handleInputChange} />

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import {Redirect,Switch} from "react-router-dom";
 import Nav from "./component/Nav";
 import Chat from "./component/Chat";
 import Home from "./component/Pages/Home.js";
@@ -8,6 +9,7 @@ import Profile from "./component/Pages/Profile.js";
 import FriendProfile from "./component/Pages/Friend_Profile.js";
 import SearchFriends from "./component/Pages/Friends.js";
 import TopHH from "./component/Pages/TopHH.js";
+import axios from "axios";
 
 
 
@@ -23,7 +25,24 @@ class App extends Component {
             active: false,
             user1_Id: "",
             user2_Id: ""
-        }
+        },
+        user: null
+    }
+
+    setUser = (data) => {
+        this.setState({
+            user : data
+        })
+    }
+
+    componentDidMount() {
+        axios.get("/isLogin").then(res => {
+            if (res.data) {
+                this.setState({
+                    user : res.data
+                }) 
+            }
+        });
     }
 
     // CHAT FUNCTIONS
@@ -49,12 +68,15 @@ class App extends Component {
             <Router>
                 <>
                     <Nav loginStatus={this.state.nav.loggedIn} startChat={this.startChat}></Nav>
-                    <Route exact path="/" render={(props) => <Home {...props} />} />
-                    <Route exact path="/journal" render={(props) => <Journal {...props} />} />
-                    <Route exact path="/profile" render={(props) => <Profile {...props} />} />
-                    <Route exact path="/friend_profile" render={(props) => <FriendProfile {...props} />} />
-                    <Route exact path="/friends" render={(props) => <SearchFriends {...props} />} />
-                    <Route exact path="/top_hikers" render={(props) => <TopHH {...props} />} />
+                    <Switch>
+                        <Route exact path="/" render={(props) => <Home {...props} user={this.state.user} setUser={this.setUser} />} />
+                        {!this.state.user ? <Redirect to="/" /> : null }
+                        <Route exact path="/journal" render={(props) => <Journal {...props} />} />
+                        <Route exact path="/profile" render={(props) => <Profile {...props} />} />
+                        <Route exact path="/friend_profile" render={(props) => <FriendProfile {...props} />} />
+                        <Route exact path="/friends" render={(props) => <SearchFriends {...props} />} />
+                        <Route exact path="/top_hikers" render={(props) => <TopHH {...props} />} />
+                    </Switch>
                     <Chat endChat={this.endChat} chatStatus={this.state.chat.active}></Chat>
                 </>
             </Router>
