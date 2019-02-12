@@ -18,7 +18,7 @@ class App extends Component {
   
     state = {
         nav: {
-            loggedIn: true
+            loggedIn: false
         },
         chat: {
             user1: "",
@@ -33,7 +33,6 @@ class App extends Component {
     setUser = (data) => {
         let navLogin = {...this.state.nav};
         navLogin.loggedIn = true;
-
 
         this.setState({
             nav: navLogin,
