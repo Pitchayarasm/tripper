@@ -82,7 +82,7 @@ class Nav extends React.Component {
 
         let navbar;
 
-        if (this.props.loginStatus) {
+        if (this.props.user) {
             navbar = (
                 <>
                 <Navbar brand='tripper' right>

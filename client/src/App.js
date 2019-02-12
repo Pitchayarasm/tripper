@@ -17,9 +17,6 @@ import "./css/style.css";
 class App extends Component {
   
     state = {
-        nav: {
-            loggedIn: false
-        },
         chat: {
             user1: "",
             user2: "",
@@ -31,13 +28,11 @@ class App extends Component {
     };
 
     setUser = (data) => {
-        let navLogin = {...this.state.nav};
-        navLogin.loggedIn = true;
-
-        this.setState({
-            nav: navLogin,
-            user: data
-        });
+        if (data) {
+            this.setState({
+                user: data
+            });
+        }
     };
 
     componentDidMount() {
@@ -72,7 +67,7 @@ class App extends Component {
         return (
             <Router>
                 <>
-                    <Nav loginStatus={this.state.nav.loggedIn} startChat={this.startChat} setUser={this.setUser}></Nav>
+                    <Nav user={this.state.user} startChat={this.startChat} setUser={this.setUser}></Nav>
                     <Switch>
                         <Route exact path="/" render={(props) => <Home {...props} user={this.state.user} setUser={this.setUser} />} />
                         {!this.state.user ? <Redirect to="/" /> : null }
