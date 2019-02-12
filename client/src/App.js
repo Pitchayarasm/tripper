@@ -18,7 +18,7 @@ class App extends Component {
   
     state = {
         nav: {
-            loggedIn: true
+            loggedIn: false
         },
         chat: {
             user1: "",
