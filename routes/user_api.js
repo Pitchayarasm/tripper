@@ -20,7 +20,8 @@ const db = require("../models")
                   firstName,
                   lastName,
                   email,
-                  password: hash
+                  password: hash,
+                  active: true
               })
               .then((dbUser) => {
                   res.json(dbUser);
@@ -36,7 +37,7 @@ const db = require("../models")
 
   // Login
   router.post('/login', (req, res, next) => {
-    passport.use(new LocalStrategy({ usernameField: 'email' }, (email, password, done) => {
+    passport.use( new LocalStrategy({ usernameField: 'email' }, (email, password, done) => {
       // Match user
       db.User.findOne({
         email: email
@@ -49,8 +50,8 @@ const db = require("../models")
           bcrypt.compare( password, user.password, (err, isMatch) => {
             if (err) throw err;
             if (isMatch) {
-              let { _id ,firstName, lastName, email } = user,
-                  payload = { _id ,firstName, lastName, email };
+              let { _id ,firstName, lastName, email, active } = user,
+                  payload = { _id ,firstName, lastName, email, active };
                   console.log(payload);
                   return res.json(payload);
             } else {
@@ -72,7 +73,7 @@ const db = require("../models")
     });
     
       passport.authenticate('local', {
-        successRedirect: '/',
+        successRedirect: '/profile',
         failureRedirect: '/',
         failureFlash: true
       })(req, res, next);

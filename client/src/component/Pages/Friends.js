@@ -3,9 +3,13 @@ import {Row, Col} from "react-materialize";
 
 class Friends extends React.Component {
     state = {
-        user: []
+        user: null
     };
-
+    
+    componentDidMount() {
+        let user = JSON.parse(localStorage.getItem("user"));
+        this.setState({user});
+    }
 
     render() {
         return (

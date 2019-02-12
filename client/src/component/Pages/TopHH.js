@@ -3,8 +3,13 @@ import { Row, Col, Card, CardTitle, Icon } from "react-materialize";
 
 class Top extends React.Component {
     state = {
-        user: []
+        user: null
     };
+    
+    componentDidMount() {
+        let user = JSON.parse(localStorage.getItem("user"));
+        this.setState({user});
+    }
 
 
     render() {

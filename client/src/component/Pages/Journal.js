@@ -1,6 +1,5 @@
 import React from "react";
 import { Row, Col, Icon, Button, Modal, Input } from "react-materialize";
-import "./home.css";
 import axios from "axios"
 
 class Journal extends React.Component {
@@ -8,9 +7,15 @@ class Journal extends React.Component {
         entryTitle: "",
         entryText: "",
         entryChange: "",
-        titleChage: ""
+        titleChage: "",
+        user: null
     };
 
+    componentDidMount() {
+        let user = JSON.parse(localStorage.getItem("user"));
+        this.setState({user});
+    }
+    
     handleInputChange = event => {
         const value = event.target.value;
         const name = event.target.id;

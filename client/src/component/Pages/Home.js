@@ -1,7 +1,6 @@
 import React from "react";
 import { Row, Input, Modal, Button, Parallax, Col } from "react-materialize";
 import axios from "axios";
-import "./home.css";
 import {Redirect} from "react-router-dom";
 
 class Home extends React.Component {
@@ -12,7 +11,8 @@ class Home extends React.Component {
     password2: "",
     email: "",
     loginEmail: "",
-    loginPassword: ""
+    loginPassword: "",
+    redirect: false
   };
 
   handleSignUp = () => {
@@ -55,7 +55,9 @@ class Home extends React.Component {
         const {data} = res,
               user = JSON.stringify(data);
               localStorage.setItem("user", user);
-              this.props.history.push("/profile");
+        this.setState({ 
+          redirect: true 
+        })
       }
       this.setState({
         loginEmail: "",
@@ -76,6 +78,10 @@ class Home extends React.Component {
   };
 
   render() {
+    const { redirect } = this.state;
+      if (redirect) {
+        return <Redirect to="profile"/>;
+      }
     return (
       <Row>
                     <Col s={12} className='grid-example'>
