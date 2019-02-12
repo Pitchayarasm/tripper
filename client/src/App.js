@@ -10,7 +10,6 @@ import SearchFriends from "./component/Pages/Friends.js";
 import TopHH from "./component/Pages/TopHH.js";
 
 
-
 class App extends Component {
   
     state = {

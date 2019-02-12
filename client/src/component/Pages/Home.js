@@ -1,7 +1,6 @@
 import React from "react";
 import { Row, Input, Modal, Button, Parallax } from "react-materialize";
 import axios from "axios";
-import "./home.css";
 
 class Home extends React.Component {
   state = {
