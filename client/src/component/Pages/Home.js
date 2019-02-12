@@ -11,7 +11,8 @@ class Home extends React.Component {
     password2: "",
     email: "",
     loginEmail: "",
-    loginPassword: ""
+    loginPassword: "",
+    err : null
   };
 
   handleSignUp = () => {
@@ -31,10 +32,9 @@ class Home extends React.Component {
             password2: "",
             email: ""
           });
-          window.location.href = "/"
+          this.props.history.push("/")
         }).catch((err) => {
           console.log(err)
-          // alert("Unable to create account.");
         });
       }
       else
@@ -50,22 +50,19 @@ class Home extends React.Component {
       email: this.state.loginEmail,
       password: this.state.loginPassword
     }).then(res => {
-      console.log(res)
       if (res.statusText === "OK"){
-        const {data} = res,
-              user = JSON.stringify(data);
-              localStorage.setItem("user", user);
-              this.props.setUser(data);
-              this.props.history.push("/profile")
-      } else {
-        this.setState({
-          loginEmail: "",
-          loginPassword: ""
-        });
-      }
+          this.props.setUser(res.data);
+          this.props.history.push("/profile")
+      } 
+      // else {
+      //   this.setState({
+      //     loginEmail: "",
+      //     loginPassword: ""
+      //   });
+      // }
       // window.location.href = "/pro"
     }).catch((err) => {
-      console.log(err)
+      alert("Invalid email oe password")
     });
   };
 
