@@ -8,17 +8,7 @@ class Journal extends React.Component {
         importText : "",
         entryTitle : "",
         entryText : "",
-        user: null
     };
-
-    componentDidMount() {
-        if (this.props.user) {
-            console.log(this.props.user)
-            this.setState({
-                user : this.props.user
-            })
-          }
-    }
 
     handleInputChange = event => {
         const value = event.target.value;

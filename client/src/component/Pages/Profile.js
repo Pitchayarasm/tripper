@@ -4,7 +4,6 @@ import axios from "axios";
 
 class Profile extends React.Component {
     state = {
-        images: [],
     };
 
     handleselectedFile = () => {

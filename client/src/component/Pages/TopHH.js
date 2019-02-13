@@ -3,19 +3,8 @@ import { Row, Col, Card, CardTitle, Icon } from "react-materialize";
 
 class Top extends React.Component {
     state = {
-        user: null
     };
-
-    componentDidMount() {
-        if (this.props.user) {
-            console.log(this.props.user)
-            this.setState({
-                user : this.props.user
-            })
-          }
-    }
-
-
+    
     render() {
         return (
             <div>
