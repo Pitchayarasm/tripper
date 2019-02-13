@@ -23,7 +23,7 @@ class Nav extends React.Component {
             .then((res) => {
                 this.props.setUser(res.data);
                 window.location.href = "/"
-            })
+            });
     }
 
     render() {
