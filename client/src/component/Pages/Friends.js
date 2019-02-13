@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col, Card, CardTitle } from "react-materialize";
+import { Row, Col } from "react-materialize";
 
 class Friends extends React.Component {
     state = {
@@ -23,7 +23,7 @@ class Friends extends React.Component {
                     <Col s={1} className='grid-example'></Col>
                     <Col s={3} className='grid-example'>
                     <div className="SearchCard">
-                            <img className="Friend" src="https://via.placeholder.com/200/666.png/fff" alt="tripper" />
+                            <img src="https://via.placeholder.com/200/666.png/fff" alt="tripper" />
                             <h3>Mr. Nobody</h3>
                             <p>CEO & Director</p>
                         </div>
