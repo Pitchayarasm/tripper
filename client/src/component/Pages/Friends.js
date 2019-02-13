@@ -18,11 +18,11 @@ class Friends extends React.Component {
                 journals: [0]
             }
         ],
-        friendsHTML: <></>
+        friendsHTML: []
     };
 
     componentDidMount() {
-        /*axios.get({ user: this.props.user._id }).friends;} */
+ /*axios.get({ user: this.props.user._id }).friends;} */
         this.loadFriends();
     }
 
@@ -43,7 +43,7 @@ class Friends extends React.Component {
 
         this.setState({ friendsHTML: html });
     }
-
+    
     generateRow(i, friendList) {
         let html = [];
         for (let j = 0; j < 3 && i * 3 + j < friendList.length; j++) {
@@ -110,7 +110,7 @@ class Friends extends React.Component {
                     </Col>
                     <Col s={1} className='grid-example'></Col>
                 </Row> */}
-            </>
+            </> 
         );
     }
 }
