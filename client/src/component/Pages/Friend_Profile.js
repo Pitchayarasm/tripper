@@ -8,14 +8,16 @@ class FriendProfile extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="wrapper">
                 <Row className="FriendProfile">
                     <Col s={1} className='grid-example'></Col>
                     <Col s={3} className='grid-example'>
                         <div className="textBox">
                             <h2>About me</h2>
-                            <p>Nisi cillum magna ipsum veniam laboris Lorem ipsum nostrud anim. Nulla mollit excepteur labore laboris exercitation fugiat minim aute anim do. Sint minim aliquip ullamco mollit reprehenderit tempor do anim aliqua mollit nostrud quis. Eu excepteur sit amet cupidatat nisi veniam consequat proident adipisicing et ea do excepteur.</p>
-                            <p><strong>Sunt ipsum enim tempor officia est ut eiusmod proident nisi aute laboris.</strong></p>
+                            <p>Christopher Charles Cuomo (/ˈkwoʊmoʊ/; born August 9, 1970) is an American television journalist who currently works at CNN, where he presents Cuomo Prime Time, a regular weeknight CNN show.
+
+Cuomo has previously been the ABC News chief law and justice correspondent and the co-anchor for ABC's 20/20., and before his current show, he was one of two co-anchors of the weekday edition of New Day, a three-hour morning news show, until May 24, 2018.</p>
+                            <p><strong>Cuomo was born in the New York City borough of Queens.</strong></p>
                         </div>
                     </Col>
                     <Col s={6} className='grid-example run-flip'>
@@ -33,7 +35,7 @@ class FriendProfile extends React.Component {
                         </div>
                         <div className="ProfileCard trigger">
                             <h3>Chris Cuomo</h3>
-                            <p>News anchor</p>
+                            <p>Television journalist</p>
                         </div>
                         <div className="trigger">
                             <div class="flip-box">
