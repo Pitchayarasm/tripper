@@ -77,7 +77,8 @@ const db = require("../models")
   // Logout
   router.get('/logout', (req, res) => {
     req.logout();
-    res.redirect('/users/login');
+    console.log(req.user)
+    res.json(req.user)
   });
 
   router.get("/isLogin" , (req,res) => {

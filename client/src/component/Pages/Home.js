@@ -11,8 +11,7 @@ class Home extends React.Component {
     password2: "",
     email: "",
     loginEmail: "",
-    loginPassword: "",
-    login : false
+    loginPassword: ""
   };
 
   handleSignUp = () => {

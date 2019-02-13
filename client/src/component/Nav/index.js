@@ -7,14 +7,6 @@ import "./style.css";
 class Nav extends React.Component {
 
     state = {
-        firstName: "",
-        lastName: "",
-        password1: "",
-        password2: "",
-        email: "",
-        loginEmail: "",
-        loginPassword: "",
-        login : false,
         user: "",
         image: "",
         notifications: 0,
@@ -22,67 +14,23 @@ class Nav extends React.Component {
         offlineFriends: [],
     }
 
-    handleSignUp = () => {
-      if (this.state.firstName && this.state.lastName && this.state.email && this.state.password1) {
-        if (this.state.password1 === this.state.password2) {
-          axios.post("/register", {
-            firstName: this.state.firstName,
-            lastName: this.state.lastName,
-            password: this.state.password1,
-            email: this.state.email,
-          }).then(res => {
-            console.log(res);
-            this.setState({
-              firstName: "",
-              lastName: "",
-              password1: "",
-              password2: "",
-              email: ""
-            });
-            this.props.history.push("/")
-          }).catch((err) => {
-            console.log(err)
-          });
-        }
-        else
-          alert("Passwords do not match!");
-      } else {
-        alert("Please make sure you have filled out all fields!");
-      }
-    };
-  
-    handleLogin = (e) => {
-      e.preventDefault();
-      axios.post("/login", {
-        email: this.state.loginEmail,
-        password: this.state.loginPassword
-      }).then(res => {
-        if (res.statusText === "OK"){
-            this.setState({
-              login : true
-            })
-            this.props.setUser(res.data);
-            this.props.history.push("/profile")
-        } 
-      }).catch( (err) => {
-        alert("Invalid email or password..")
-      });
-    };
-  
-    handleInputChange = event => {
-      const value = event.target.value;
-      const name = event.target.id;
-  
-      this.setState({
-        [name]: value
-      });
-    };
+    friendsPage = () => {
+        window.location.href = "/friends"
+    }
+    
+    handleLogout = () => {
+      axios.get("/logout")
+      .then( (res) => {
+        this.props.setUser(res.data);
+        window.location.href = "/"
+      })
+    }
     
     render() {
 
         let navbar;
 
-        if (this.props.loginStatus) {
+        if (this.props.user) {
             navbar = (
                 <>
                 <Navbar brand='tripper' right>
@@ -94,12 +42,13 @@ class Nav extends React.Component {
 
                 <Button floating fab="horizontal" icon="navigation" className="red" large style={{bottom: "45px", right: "24px"}}>
                     <Button floating icon="add" className="blue darken-4" data-position="top" tooltip="Create Journal"/>
-                    <Button floating icon="group" className="yellow darken-3" data-position="top" tooltip="Friends"/>
-                    <Button floating icon="power_settings_new" className="red darken-1" data-position="top" tooltip="Logout"/>
+                    <Button floating icon="group" className="yellow darken-3" data-position="top" onClick={this.friendsPage} tooltip="Friends"/>
+                    <Button floating icon="power_settings_new" className="red darken-1" onClick={this.handleLogout} data-position="top" tooltip="Logout"/>
                 </Button>
                 </>
             );
         }
+<<<<<<< HEAD
         else {
             navbar = (
                 <Navbar id="navBarOut" brand='tripper' right>
@@ -134,6 +83,13 @@ class Nav extends React.Component {
                 </Navbar>
             );
         }
+=======
+         else {
+             navbar = (
+                 <Navbar id="navBarOut" brand='tripper' right></Navbar>
+             );
+         }
+>>>>>>> 7fcbbb8535943e5dc61b78b167e3ec75c60e8bbe
 
         return (
             <>
