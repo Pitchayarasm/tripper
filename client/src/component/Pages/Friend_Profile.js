@@ -7,16 +7,6 @@ class FriendProfile extends React.Component {
     };
 
     componentDidMount() {
-<<<<<<< HEAD
-
-=======
-        if (this.props.user) {
-            console.log(this.props.user)
-            this.setState({
-                user : this.props.user
-            })
-          }
->>>>>>> 1a8c0e86e47f6a0fd234f2113477cf592f8b7c6f
     }
 
 
