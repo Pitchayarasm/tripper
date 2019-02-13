@@ -7,7 +7,7 @@ import "./style.css";
 class Nav extends React.Component {
 
     state = {
-        user: "",
+        user: null,
         image: "",
         notifications: 0,
         onlineFriends: [],
