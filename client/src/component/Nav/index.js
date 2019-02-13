@@ -14,7 +14,6 @@ class Nav extends React.Component {
         email: "",
         loginEmail: "",
         loginPassword: "",
-        login : false,
         user: "",
         image: "",
         notifications: 0,
@@ -68,6 +67,14 @@ class Nav extends React.Component {
         alert("Invalid email or password..")
       });
     };
+
+    handleLogout = () => {
+      axios.get("/logout")
+      .then( (res) => {
+        this.props.setUser(res.data);
+        window.location.href = "/"
+      })
+    }
   
     handleInputChange = event => {
       const value = event.target.value;
@@ -95,7 +102,7 @@ class Nav extends React.Component {
                 <Button floating fab="horizontal" icon="navigation" className="red" large style={{bottom: "45px", right: "24px"}}>
                     <Button floating icon="add" className="blue darken-4" data-position="top" tooltip="Create Journal"/>
                     <Button floating icon="group" className="yellow darken-3" data-position="top" tooltip="Friends"/>
-                    <Button floating icon="power_settings_new" className="red darken-1" data-position="top" tooltip="Logout"/>
+                    <Button floating icon="power_settings_new" className="red darken-1" onClick={this.handleLogout} data-position="top" tooltip="Logout"/>
                 </Button>
                 </>
             );

@@ -70,7 +70,7 @@ class App extends Component {
                     <Nav user={this.state.user} startChat={this.startChat} setUser={this.setUser}></Nav>
                     <Switch>
                         <Route exact path="/" render={(props) => <Home {...props} user={this.state.user} setUser={this.setUser} />} />
-                        {!this.state.user ? <Redirect to="/" /> : null }
+                        {/* {!this.state.user ? <Redirect to="/" /> : null } */}
                         <Route exact path="/journal" render={(props) => <Journal {...props} />} />
                         <Route exact path="/profile" render={(props) => <Profile {...props} />} />
                         <Route exact path="/friend_profile" render={(props) => <FriendProfile {...props} />} />
