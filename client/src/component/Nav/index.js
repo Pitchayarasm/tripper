@@ -48,48 +48,11 @@ class Nav extends React.Component {
                 </>
             );
         }
-<<<<<<< HEAD
-        else {
-            navbar = (
-                <Navbar id="navBarOut" brand='tripper' right>
-
-                    <Modal
-                    header='tripper Account Sign Up'
-                    trigger={<Button id="signUp" className="navBtn">Sign Up</Button>}
-                    actions={<><Button className="cancel modal-action modal-close">Cancel</Button><Button id="signUpSubmit" className="modal-action modal-close" onClick={this.handleSignUp}>Submit</Button></>}
-                    >
-                    <Row id="signUpForm">
-                        <Input id="firstName" s={5} label="First Name" onChange={this.handleInputChange} />
-                        <Input id="lastName" s={6} label="Last Name" onChange={this.handleInputChange} />
-                        <Input id="email" type="email" label="Email" s={12} onChange={this.handleInputChange} />
-                        <Input id="password1" type="password" label="password" s={12} onChange={this.handleInputChange} />
-                        <Input id="password2" type="password" label="confirm password" s={12} onChange={this.handleInputChange} />
-                    </Row>
-                    </Modal>
-
-                    <Modal
-                    header='tripper Login'
-                    trigger={<Button id="login" className="navBtn">Login</Button>}
-                    actions={<><Button className="cancel modal-action modal-close">Cancel</Button><Button id="loginBtn" className="modal-action modal-close" onClick={this.handleLogin}>Login</Button></>}
-                    >
-                    <Row>
-                        <Input id="email" type="email" label="Email" s={12} onChange={this.handleInputChange} />
-                        <Input id="loginPassword" type="password" label="password" s={12} onChange={this.handleInputChange} />
-                    </Row>
-                    </Modal>
-
-                    {/* <Button id="signUp" className="navBtn">Sign Up</Button> */}
-                    {/* <Button id="login" className="navBtn">Login</Button> */}
-                </Navbar>
-            );
-        }
-=======
          else {
              navbar = (
                  <Navbar id="navBarOut" brand='tripper' right></Navbar>
              );
          }
->>>>>>> 7fcbbb8535943e5dc61b78b167e3ec75c60e8bbe
 
         return (
             <>
