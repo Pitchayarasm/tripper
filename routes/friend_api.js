@@ -2,10 +2,41 @@ const express = require('express');
 const router = express.Router();
 const db = require("../models")
 
-app.post("/submit:userId:friendId", function(req, res) {
+// add friend to user
+router.post("/submit/:userId/:friendId", function(req, res) {
     db.User.findByIdAndUpdate(
         req.params.userId, 
-        {  friends: db.User.friendId  }, { new: true });
-});
+        { $push: 
+            { friends : req.params.friendId }
+        }, { new: true }
+    ).then( data => {
+        console.log(data)
+        res.end();
+    }).catch( err => {
+        console.log(err)
+    })
+    ;
+})
+
+router.get("/friendList/:userId", function(req, res) {
+    db.User.find({
+        _id : req.params.userId
+    })
+      .populate({
+          path : "friends",
+          populate : {
+              path: "journals",
+              populate : {
+                  path : "entries"
+              }
+          }
+      })
+      .then(function(userDb) {
+        res.json(userDb);
+      })
+      .catch(function(err) {
+        res.json(err);
+      });
+  });
 
 module.exports = router;
