@@ -5,10 +5,14 @@ class Top extends React.Component {
     state = {
         user: null
     };
-    
+
     componentDidMount() {
-        let user = JSON.parse(localStorage.getItem("user"));
-        this.setState({user});
+        if (this.props.user) {
+            console.log(this.props.user)
+            this.setState({
+                user : this.props.user
+            })
+          }
     }
 
 

@@ -32,7 +32,7 @@ var UserSchema = new Schema({
         type: Boolean,
         default: false
     },
-    avatar: [
+    profilePics: [
         {
           type: Schema.Types.ObjectId,
           ref: "ProfilePic"
