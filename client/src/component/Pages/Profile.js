@@ -55,7 +55,7 @@ class Profile extends React.Component {
                     {profile}
                     <Col s={3} className='grid-example'>
                     <div className="textBox">
-                        <h2>{this.props.user.firstName}</h2>
+                        <h2>{this.props.user.firstName} {this.props.user.lastName}</h2>
                         <p>Quis occaecat consequat quis pariatur reprehenderit. Laboris nulla non irure sint et irure do commodo. Enim proident ex ut non do adipisicing reprehenderit laboris veniam exercitation ad eu deserunt et.</p>
                         <img className="Friend" src="https://via.placeholder.com/346/666.png/fff" alt="tripper" />
                         </div>
