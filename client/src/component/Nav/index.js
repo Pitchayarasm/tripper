@@ -1,7 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { Navbar, Icon, SideNav, SideNavItem, Button, Modal, Input } from "react-materialize";
+import { Navbar, Icon, SideNav, SideNavItem, Button } from "react-materialize";
 import axios from "axios";
+import BlueButton from "../BlueButton"
 import "./style.css";
 
 class Nav extends React.Component {
@@ -56,12 +57,7 @@ class Nav extends React.Component {
                     </Navbar>
 
                     <Button floating fab="horizontal" icon="navigation" className="red" large style={{ bottom: "45px", right: "24px" }}>
-                        <Modal
-                            header='Title'
-                            trigger={<Button floating icon="add" className="blue darken-4" data-position="top" tooltip="Create Journal" />}
-                            actions={<><Button className="cancel modal-action modal-close">Cancel</Button><Button id="loginBtn" className="cancel modal-action modal-close" onClick={this.newJournal}>Create</Button></>}>
-                            <Input s={6} id="title" label="Title" value={this.state.title} onChange={this.handleInputChange} validate><Icon>account_circle</Icon></Input>
-                        </Modal>
+                        <BlueButton/>
                         <Button floating icon="group" className="yellow darken-3" data-position="top" onClick={this.friendsPage} tooltip="Friends" />
                         <Button floating icon="power_settings_new" className="red darken-1" onClick={this.handleLogout} data-position="top" tooltip="Logout" />
                     </Button>
