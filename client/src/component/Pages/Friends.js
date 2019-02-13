@@ -8,43 +8,54 @@ import axios from "axios";
 
 class Friends extends React.Component {
     state = {
+        friends: [
+            {
+                firstName: "Anderson",
+                lastName: "Cooper",
+                profilePics: ["https://timenewsfeed.files.wordpress.com/2012/07/anderson1.jpg?w=600&h=400&crop=1"],
+                journals: [0, 1]
+            },
+            {
+                firstName: "Chris",
+                lastName: "Cuomo",
+                profilePics: ["https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_auto:good%2Cw_300/MTU0MTgyMjI1MDAzMjkxOTg0/chris-cuomo-attends-the-2017-turner-upfront-at-madison-square-garden-on-may-17-2017-in-new-york-city-photo-by-daniel-zuchnikwireimage-square.jpg"],
+                journals: [0]
+            }
+        ],
+        friendsHTML: <></>
     };
 
     componentDidMount() {
-        if (this.props.user) {
-            console.log(this.props.user)
-            this.setState({
-                user: this.props.user
-            }, this.loadFriends());
-        }
+        /*axios.get({ user: this.props.user._id }).friends;} */
+        this.loadFriends();
     }
 
     loadFriends() {
-        //the following line is meant to get the list of the user's friends
-        let friendList = axios.get({ user: this.props.user._id }).friends;
+        let html = [];
 
-        let html = <></>;
-
-        for (let i = 0; i < Math.ceil(friendList / 3); i++) {
+        for (let i = 0; i < Math.ceil(this.state.friends.length / 3); i++) {
             //if we want to cap at a certain number of friends, or make pages of friends, we can change the second part of the conditional to read:
             // i * 3 + j < (maxValue)
-            html += (<Row className="FriendProfile">
-                <Col s={1} className='grid-example'></Col>
-                {this.generateRow(i, friendList)}
-                <Col s={1} className='grid-example'></Col>
-            </Row>);
+            html.push(
+                <Row className="FriendProfile">
+                    <Col s={1} className='grid-example'></Col>
+                    {this.generateRow(i, this.state.friends)}
+                    <Col s={1} className='grid-example'></Col>
+                </Row>
+            );
         }
-        return html;
+
+        this.setState({ friendsHTML: html });
     }
 
     generateRow(i, friendList) {
-        let html = <></>;
+        let html = [];
         for (let j = 0; j < 3 && i * 3 + j < friendList.length; j++) {
-            html += (<Col s={3} className='grid-example'>
+            html.push(<Col s={3} className='grid-example'>
                 <div className="SearchCard">
-                    <img className="Friend" src="https://via.placeholder.com/200/666.png/fff" alt="tripper" />
-                    <h3>{friendList[i].firstName + " " + friendList[i].lastName}</h3>
-                    <p>Number of Journals {friendList[i].journals.length}</p>
+                    <img className="Friend" src={friendList[3 * i + j].profilePics[0]} alt="tripper" />
+                    <h3>{friendList[3 * i + j].firstName + " " + friendList[3 * i + j].lastName}</h3>
+                    <p>Journals {friendList[3 * i + j].journals.length}</p>
                 </div>
             </Col>);
         }
@@ -55,7 +66,8 @@ class Friends extends React.Component {
     render() {
         return (
             <>
-                <Row className="FriendProfile">
+                {this.state.friendsHTML}
+                {/* <Row className="FriendProfile">
                     <Col s={1} className='grid-example'></Col>
                     <Col s={3} className='grid-example'>
 <<<<<<< HEAD
@@ -106,8 +118,8 @@ class Friends extends React.Component {
                         </div>
                     </Col>
                     <Col s={1} className='grid-example'></Col>
-                </Row>
-            </> 
+                </Row> */}
+            </>
         );
     }
 }
