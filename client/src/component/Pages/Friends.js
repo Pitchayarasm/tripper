@@ -1,10 +1,6 @@
 import React from "react";
-<<<<<<< HEAD
-import { Row, Col } from "react-materialize";
-=======
-import { Row, Col, Card, CardTitle } from "react-materialize";
 import axios from "axios";
->>>>>>> 1a8c0e86e47f6a0fd234f2113477cf592f8b7c6f
+import { Row, Col } from "react-materialize";
 
 class Friends extends React.Component {
     state = {
@@ -58,13 +54,8 @@ class Friends extends React.Component {
                 <Row className="FriendProfile">
                     <Col s={1} className='grid-example'></Col>
                     <Col s={3} className='grid-example'>
-<<<<<<< HEAD
-                    <div className="SearchCard">
-                            <img src="https://via.placeholder.com/200/666.png/fff" alt="tripper" />
-=======
                         <div className="SearchCard">
                             <img className="Friend" src="https://via.placeholder.com/200/666.png/fff" alt="tripper" />
->>>>>>> 1a8c0e86e47f6a0fd234f2113477cf592f8b7c6f
                             <h3>Mr. Nobody</h3>
                             <p>CEO & Director</p>
                         </div>
