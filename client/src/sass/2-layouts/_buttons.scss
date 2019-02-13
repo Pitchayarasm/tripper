@@ -1,0 +1,40 @@
+.journal-button .btn {
+    background-color: rgba($color: #000000, $alpha: 0) !important;
+    box-shadow: none;
+    margin: 0px !important;
+    width: 13% !important;
+    display: block;
+    float:right;
+}
+
+.create-journal {
+    cursor: pointer;
+    width: 100%;
+    float: left;
+}
+
+.file-field .btn {
+    margin: 1% !important;
+    width: auto !important;
+    padding: 5px !important;
+    height: inherit !important;
+    line-height: inherit !important;
+}
+
+#editBtn i {
+    color: #000000;
+}
+
+#editBtn i:hover {
+    color: rgb(83, 119, 83);
+    transition: .3s;
+    transition-property: color;
+    cursor: pointer;
+}
+
+#loginBtn {
+    margin: 1% !important;
+    width: auto !important;
+    padding: 0 5px 0 5px !important;
+}
+

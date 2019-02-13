@@ -81,6 +81,33 @@ class Nav extends React.Component {
             </>
         );
     }
+
+    return (
+      <>
+        {navbar}
+
+        <SideNav
+          trigger={<span style={{ display: "none" }}></span>}
+          options={{ closeOnClick: true, edge: "right" }}
+        >
+          <SideNavItem
+            userView
+            user={{
+              background: "",
+              image: "https://www.thefamouspeople.com/profiles/images/anderson-cooper-5.jpg",
+              name: "Anderson Cooper",
+              email: "andersoncooper@cnn.com"
+            }}
+          />
+          <SideNavItem className="onlineHeader"><Icon className="icon-online">rss_feed</Icon>Online Friends</SideNavItem>
+          <SideNavItem className="onlineFriend" onClick={() => this.props.startChat(true)}>Chris Cuomo <Icon className="icon-friend-online">lens</Icon></SideNavItem>
+          <SideNavItem divider />
+          <SideNavItem subheader>Offline Friends</SideNavItem>
+          {/* <SideNavItem waves href='#!third'>Third Link With Waves</SideNavItem>  */}
+        </SideNav>
+      </>
+    );
+  }
 }
 
 export default Nav;
