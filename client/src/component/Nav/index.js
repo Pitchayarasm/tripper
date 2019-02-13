@@ -98,8 +98,12 @@ class Nav extends React.Component {
           </Navbar>
 
           <Button floating fab="horizontal" icon="navigation" className="red" large style={{ bottom: "45px", right: "24px" }}>
-            <Button floating icon="add" className="blue darken-4" data-position="top" tooltip="Create Journal" />
-              <Input s={6} label="Name" validate defaultValue='Write your name here' />
+            <Modal
+              header='Search'
+              trigger={<Button floating icon="add" className="blue darken-4" data-position="top" tooltip="Create Journal" />
+              }>
+              <Input s={6} label="First Name" validate><Icon>account_circle</Icon></Input>
+            </Modal>
             <Button floating icon="group" className="yellow darken-3" data-position="top" tooltip="Friends" />
             <Button floating icon="power_settings_new" className="red darken-1" data-position="top" tooltip="Logout" />
           </Button>
