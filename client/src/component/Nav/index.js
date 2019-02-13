@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { Navbar, Icon, SideNav, SideNavItem, Button, Modal, Row, Input } from "react-materialize";
+import { Navbar, Icon, SideNav, SideNavItem, Button } from "react-materialize";
 import axios from "axios";
 import "./style.css";
 
@@ -57,7 +57,6 @@ class Nav extends React.Component {
         return (
             <>
                 {navbar}
-
                 <SideNav
                     trigger={<span style={{display: "none"}}></span>}
                     options={{ closeOnClick: true, edge: "right" }}

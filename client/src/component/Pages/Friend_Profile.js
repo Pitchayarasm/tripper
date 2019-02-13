@@ -5,9 +5,14 @@ class FriendProfile extends React.Component {
     state = {
         user: null
     };
-    
+
     componentDidMount() {
-        
+        if (this.props.user) {
+            console.log(this.props.user)
+            this.setState({
+                user : this.props.user
+            })
+          }
     }
 
 
