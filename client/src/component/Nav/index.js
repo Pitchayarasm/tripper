@@ -7,66 +7,12 @@ import "./style.css";
 class Nav extends React.Component {
 
     state = {
-        firstName: "",
-        lastName: "",
-        password1: "",
-        password2: "",
-        email: "",
-        loginEmail: "",
-        loginPassword: "",
         user: "",
         image: "",
         notifications: 0,
         onlineFriends: [],
         offlineFriends: [],
     }
-
-    handleSignUp = () => {
-      if (this.state.firstName && this.state.lastName && this.state.email && this.state.password1) {
-        if (this.state.password1 === this.state.password2) {
-          axios.post("/register", {
-            firstName: this.state.firstName,
-            lastName: this.state.lastName,
-            password: this.state.password1,
-            email: this.state.email,
-          }).then(res => {
-            console.log(res);
-            this.setState({
-              firstName: "",
-              lastName: "",
-              password1: "",
-              password2: "",
-              email: ""
-            });
-            this.props.history.push("/")
-          }).catch((err) => {
-            console.log(err)
-          });
-        }
-        else
-          alert("Passwords do not match!");
-      } else {
-        alert("Please make sure you have filled out all fields!");
-      }
-    };
-  
-    handleLogin = (e) => {
-      e.preventDefault();
-      axios.post("/login", {
-        email: this.state.loginEmail,
-        password: this.state.loginPassword
-      }).then(res => {
-        if (res.statusText === "OK"){
-            this.setState({
-              login : true
-            })
-            this.props.setUser(res.data);
-            this.props.history.push("/profile")
-        } 
-      }).catch( (err) => {
-        alert("Invalid email or password..")
-      });
-    };
 
     handleLogout = () => {
       axios.get("/logout")
@@ -75,15 +21,6 @@ class Nav extends React.Component {
         window.location.href = "/"
       })
     }
-  
-    handleInputChange = event => {
-      const value = event.target.value;
-      const name = event.target.id;
-  
-      this.setState({
-        [name]: value
-      });
-    };
     
     render() {
 
@@ -107,40 +44,11 @@ class Nav extends React.Component {
                 </>
             );
         }
-        else {
-            navbar = (
-                <Navbar id="navBarOut" brand='tripper' right>
-
-                    <Modal
-                    header='tripper Account Sign Up'
-                    trigger={<Button id="signUp" className="navBtn">Sign Up</Button>}
-                    actions={<><Button className="cancel modal-action modal-close">Cancel</Button><Button id="signUpSubmit" onClick={this.handleSignUp}>Submit</Button></>}
-                    >
-                    <Row id="signUpForm">
-                        <Input id="firstName" s={5} label="First Name" onChange={this.handleInputChange} />
-                        <Input id="lastName" s={6} label="Last Name" onChange={this.handleInputChange} />
-                        <Input id="email" type="email" label="Email" s={12} onChange={this.handleInputChange} />
-                        <Input id="password1" type="password" label="password" s={12} onChange={this.handleInputChange} />
-                        <Input id="password2" type="password" label="confirm password" s={12} onChange={this.handleInputChange} />
-                    </Row>
-                    </Modal>
-
-                    <Modal
-                    header='tripper Login'
-                    trigger={<Button id="login" className="navBtn">Login</Button>}
-                    actions={<><Button className="cancel modal-action modal-close">Cancel</Button><Button id="loginBtn" onClick={this.handleLogin}>Login</Button></>}
-                    >
-                    <Row>
-                        <Input id="email" type="email" label="Email" s={12} onChange={this.handleInputChange} />
-                        <Input id="loginPassword" type="password" label="password" s={12} onChange={this.handleInputChange} />
-                    </Row>
-                    </Modal>
-
-                    {/* <Button id="signUp" className="navBtn">Sign Up</Button> */}
-                    {/* <Button id="login" className="navBtn">Login</Button> */}
-                </Navbar>
-            );
-        }
+         else {
+             navbar = (
+                 <Navbar id="navBarOut" brand='tripper' right></Navbar>
+             );
+         }
 
         return (
             <>

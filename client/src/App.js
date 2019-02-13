@@ -71,11 +71,11 @@ class App extends Component {
                     <Switch>
                         <Route exact path="/" render={(props) => <Home {...props} user={this.state.user} setUser={this.setUser} />} />
                         {/* {!this.state.user ? <Redirect to="/" /> : null } */}
-                        <Route exact path="/journal" render={(props) => <Journal {...props} />} />
-                        <Route exact path="/profile" render={(props) => <Profile {...props} />} />
-                        <Route exact path="/friend_profile" render={(props) => <FriendProfile {...props} />} />
-                        <Route exact path="/friends" render={(props) => <SearchFriends {...props} />} />
-                        <Route exact path="/top_hikers" render={(props) => <TopHH {...props} />} />
+                        <Route exact path="/journal" render={(props) => <Journal {...props} user={this.state.user}/>} />
+                        <Route exact path="/profile" render={(props) => <Profile {...props} user={this.state.user}/>} />
+                        <Route exact path="/friend_profile" render={(props) => <FriendProfile {...props} user={this.state.user}/>} />
+                        <Route exact path="/friends" render={(props) => <SearchFriends {...props} user={this.state.user}/>} />
+                        <Route exact path="/top_hikers" render={(props) => <TopHH {...props} user={this.state.user}/>} />
                     </Switch>
                     <Chat endChat={this.endChat} chatStatus={this.state.chat.active}></Chat>
                 </>
