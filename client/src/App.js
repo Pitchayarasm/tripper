@@ -73,7 +73,7 @@ class App extends Component {
         return (
             <Router>
                 <>
-                    <Nav loginStatus={this.state.nav.loggedIn} startChat={this.startChat} setUser={this.setUser}></Nav>
+                    <Nav loginStatus={this.state.nav.loggedIn} startChat={this.startChat} user={this.state.user} setUser={this.setUser}></Nav>
                     <Switch>
                         <Route exact path="/" render={(props) => <Home {...props} user={this.state.user} setUser={this.setUser} />} />
                         {!this.state.user ? <Redirect to="/" /> : null }

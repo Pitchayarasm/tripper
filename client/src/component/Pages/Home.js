@@ -83,7 +83,7 @@ class Home extends React.Component {
         <div className="section white">
           <div className="row container btnContainer">
             <h2 className="header">tripper</h2>
-            <p className="grey-text text-darken-3 lighten-3">Tripper is social network for adventorous travelers. Sign up and start telling your story!</p>
+            <p className="grey-text text-darken-3 lighten-3">Tripper is a social network for adventorous travelers. Sign up and start telling your story!</p>
             <br />
 
             <Modal

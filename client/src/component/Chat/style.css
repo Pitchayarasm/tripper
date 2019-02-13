@@ -6,15 +6,16 @@
     margin-right: 15px;
     width: 350px;
     height: 425px;
+    z-index: 999;
 }
 
 .chatInactive {
     display: inline-block;
-    position: absolute;
-    bottom: 0;
+    position: fixed;
+    bottom: 90px;
     right: 0;
     margin-right: 15px;
-    width: 350px;
+    width: 250px;
     height: 40px;
     font-weight: bold;
 }

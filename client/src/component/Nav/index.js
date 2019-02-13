@@ -107,7 +107,7 @@ class Nav extends React.Component {
                     <Modal
                     header='tripper Account Sign Up'
                     trigger={<Button id="signUp" className="navBtn">Sign Up</Button>}
-                    actions={<><Button className="cancel modal-action modal-close">Cancel</Button><Button id="signUpSubmit" onClick={this.handleSignUp}>Submit</Button></>}
+                    actions={<><Button className="cancel modal-action modal-close">Cancel</Button><Button id="signUpSubmit" className="modal-action modal-close" onClick={this.handleSignUp}>Submit</Button></>}
                     >
                     <Row id="signUpForm">
                         <Input id="firstName" s={5} label="First Name" onChange={this.handleInputChange} />
@@ -121,7 +121,7 @@ class Nav extends React.Component {
                     <Modal
                     header='tripper Login'
                     trigger={<Button id="login" className="navBtn">Login</Button>}
-                    actions={<><Button className="cancel modal-action modal-close">Cancel</Button><Button id="loginBtn" onClick={this.handleLogin}>Login</Button></>}
+                    actions={<><Button className="cancel modal-action modal-close">Cancel</Button><Button id="loginBtn" className="modal-action modal-close" onClick={this.handleLogin}>Login</Button></>}
                     >
                     <Row>
                         <Input id="email" type="email" label="Email" s={12} onChange={this.handleInputChange} />
@@ -142,6 +142,7 @@ class Nav extends React.Component {
                 <SideNav
                     trigger={<span style={{display: "none"}}></span>}
                     options={{ closeOnClick: true, edge: "right" }}
+                    data-sidenav="mySideNav"
                 >
                     <SideNavItem
                     userView
