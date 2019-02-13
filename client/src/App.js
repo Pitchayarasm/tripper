@@ -1,19 +1,23 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import io from "socket.io-client";
+import {Redirect,Switch} from "react-router-dom";
 import Nav from "./component/Nav";
 import Chat from "./component/Chat";
 import Home from "./component/Pages/Home.js";
 import Journal from './component/Pages/Journal.js';
 import Profile from "./component/Pages/Profile.js";
+import FriendProfile from "./component/Pages/Friend_Profile.js";
+import SearchFriends from "./component/Pages/Friends.js";
+import TopHH from "./component/Pages/TopHH.js";
+import axios from "axios";
 
+//SASS
+import "./css/style.css";
 
 class App extends Component {
   
     state = {
-        nav: {
-            loggedIn: true
-        },
         chat: {
             user1: "Anderson Cooper",
             user2: "",
@@ -21,8 +25,27 @@ class App extends Component {
             user1_Id: "",
             user2_Id: "",
             chatroom: ""
+        },
+        user: null
+    };
+
+    setUser = (data) => {
+        if (data) {
+            this.setState({
+                user: data
+            });
         }
-    }
+    };
+
+    componentDidMount() {
+        axios.get("/isLogin").then(res => {
+            if (res.data) {
+                this.setState({
+                    user : res.data
+                }); 
+            };
+        });
+    };
 
     // CHAT FUNCTIONS
     // Fn to start chat. Communicating with Nav.js.
@@ -38,7 +61,7 @@ class App extends Component {
 
         this.socket.emit("create", chat.chatroom);
         this.setState({chat});
-    }
+    };
 
     // Fn to end chat. Communicating with Chat.js.
     endChat = (chatStatus) => {
@@ -46,18 +69,24 @@ class App extends Component {
         let chat = {...this.state.chat};
             chat.active = chatStatus;
         this.setState({chat});
-    }
+    };
 
     render() {
 
         return (
             <Router>
                 <>
-                    <Nav loginStatus={this.state.nav.loggedIn} startChat={this.startChat}></Nav>
-                    <Route exact path="/" render={(props) => <Home {...props} />} />
-                    <Route exact path="/journal" render={(props) => <Journal {...props} />} />
-                    <Route exact path="/profile" render={(props) => <Profile {...props} />} />
-                    <Chat endChat={this.endChat} chatStatus={this.state.chat.active} chat={this.state.chat}></Chat>
+                    <Nav user={this.state.user} startChat={this.startChat} setUser={this.setUser}></Nav>
+                    <Switch>
+                        <Route exact path="/" render={(props) => <Home {...props} user={this.state.user} setUser={this.setUser} />} />
+                        {/* {!this.state.user ? <Redirect to="/" /> : null } */}
+                        <Route exact path="/journal" render={(props) => <Journal {...props} user={this.state.user}/>} />
+                        <Route exact path="/profile" render={(props) => <Profile {...props} user={this.state.user}/>} />
+                        <Route exact path="/friend_profile" render={(props) => <FriendProfile {...props} user={this.state.user}/>} />
+                        <Route exact path="/friends" render={(props) => <SearchFriends {...props} user={this.state.user}/>} />
+                        <Route exact path="/top_hikers" render={(props) => <TopHH {...props} user={this.state.user}/>} />
+                    </Switch>
+                    <Chat endChat={this.endChat} chatStatus={this.state.chat.active}></Chat>
                 </>
             </Router>
         );
