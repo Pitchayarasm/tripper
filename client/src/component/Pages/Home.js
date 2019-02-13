@@ -70,7 +70,7 @@ class Home extends React.Component {
   };
 
   render() {
-    if ( this.props.user) {
+    if ( this.props.user.firstName) {
       return < Redirect to="/profile" />
     }
 

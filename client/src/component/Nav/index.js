@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { Navbar, Icon, SideNav, SideNavItem, Button } from "react-materialize";
+import { Navbar, Icon, SideNav, SideNavItem, Button, Modal, Input } from "react-materialize";
 import axios from "axios";
 import "./style.css";
 
@@ -13,6 +13,15 @@ class Nav extends React.Component {
         onlineFriends: [],
         offlineFriends: [],
         title: ""
+    }
+
+    componentDidMount() {
+        if (this.props.user) {
+            console.log(this.props.user)
+            this.setState({
+                user : this.props.user
+            })
+          }
     }
 
     handleInputChange = event => {

@@ -32,12 +32,9 @@ var UserSchema = new Schema({
         type: Boolean,
         default: false
     },
-    profilePics: [
-        {
-          type: Schema.Types.ObjectId,
-          ref: "ProfilePic"
-        }
-    ],
+    file: {
+        type: String
+    },
     journals: [
         {
           type: Schema.Types.ObjectId,
