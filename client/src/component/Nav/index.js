@@ -35,9 +35,9 @@ class Nav extends React.Component {
                 <>
                 <Navbar brand='tripper' right>
                     <NavLink to="" className="tooltipped" data-position="left" data-tooltip="Quick Search"><Icon className="navIcon">search</Icon></NavLink>
-                    <NavLink to="" data-activates="sidenav_3" className="tooltipped" data-position="left" data-tooltip="Chat"><Icon className="navIcon">chat</Icon></NavLink>
+                    {/* <NavLink to="" data-activates="sidenav_0" className="tooltipped" data-position="left" data-tooltip="Chat"><Icon className="navIcon">chat</Icon></NavLink> */}
                     <NavLink to="" className="tooltipped" data-position="left" data-tooltip="Notifications"><Icon className="navIcon">notifications</Icon></NavLink>
-                    <NavLink to="/Profile" className="tooltipped" data-position="left" data-tooltip="View Profile"><Icon className="navIcon">account_circle</Icon></NavLink>
+                    <NavLink to="/profile" className="tooltipped" data-position="left" data-tooltip="View Profile"><Icon className="navIcon">account_circle</Icon></NavLink>
                 </Navbar>
 
                 <Button floating fab="horizontal" icon="navigation" className="red" large style={{bottom: "45px", right: "24px"}}>
@@ -45,24 +45,10 @@ class Nav extends React.Component {
                     <Button floating icon="group" className="yellow darken-3" data-position="top" onClick={this.friendsPage} tooltip="Friends"/>
                     <Button floating icon="power_settings_new" className="red darken-1" onClick={this.handleLogout} data-position="top" tooltip="Logout"/>
                 </Button>
-                </>
-            );
-        }
-         else {
-             navbar = (
-                 <Navbar id="navBarOut" brand='tripper' right></Navbar>
-             );
-         }
-
-        return (
-            <>
-                {navbar}
 
                 <SideNav
-                    trigger={<span style={{display: "none"}}></span>}
-                    options={{ closeOnClick: true, edge: "right" }}
-                    data-sidenav="mySideNav"
-                >
+                    trigger={<Button icon="chat" className="myChatBtn btn-large" data-position="top" tooltip="Chat"></Button>}
+                    options={{ closeOnClick: true, edge: "right" }}>
                     <SideNavItem
                     userView
                     user={{
@@ -82,6 +68,19 @@ class Nav extends React.Component {
                         return <li className="offlineFriend">{item}</li> 
                     })}
                 </SideNav>
+                </>
+            );
+        }
+         else {
+             navbar = (
+                 <Navbar id="navBarOut" brand='tripper' right></Navbar>
+             );
+         }
+
+        return (
+            <>
+                {navbar}
+
             </>
         );
     }

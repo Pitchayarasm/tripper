@@ -15,7 +15,7 @@
     bottom: 90px;
     right: 0;
     margin-right: 15px;
-    width: 250px;
+    /* width: 250px; */
     height: 40px;
     font-weight: bold;
 }
@@ -26,6 +26,7 @@
     background-color: rgb(83, 119, 83);
     color: #ffffff;
     box-shadow: 0 8px 6px -6px #555555;
+    border-radius: 2px;
 }
 
 .chatInactive p:hover {

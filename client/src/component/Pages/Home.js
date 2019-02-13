@@ -44,7 +44,7 @@ class Home extends React.Component {
   };
 
   handleLogin = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     axios.post("/login", {
       email: this.state.loginEmail,
       password: this.state.loginPassword

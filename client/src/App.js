@@ -19,19 +19,24 @@ class App extends Component {
   
     state = {
         chat: {
-            user1: "Anderson Cooper",
+            user1: null,
+            user1_id: null,
             user2: "",
             active: false,
-            user1_Id: "",
-            user2_Id: "",
-            chatroom: ""
+            chatroom: "",
+            messages: []
         },
         user: null
     };
 
     setUser = (data) => {
         if (data) {
+
+            let chat = {...this.state.chat};
+                chat.user1 = data.firstName + " " + data.lastName;
+                chat.user1_id = data._id;
             this.setState({
+                chat,
                 user: data
             });
         }
@@ -53,13 +58,32 @@ class App extends Component {
 
         this.socket = io("localhost:3001");
 
-        console.log(chatStatus, chattingWith);
         let chat = {...this.state.chat};
             chat.active = chatStatus;
             chat.user2 = chattingWith;
             chat.chatroom = chat.user1.split(" ")[1] + chat.user2.split(" ")[1];
 
         this.socket.emit("create", chat.chatroom);
+
+        // Receive success message, upon starting a new chatroom with selected friend
+        this.socket.on("success", (data) => {
+            console.log(data);
+        });
+
+        // Retrieve the connected user's socketID and store in App
+        this.socket.on("id", (data) => {
+            console.log(data);
+        });
+
+        // Listen for received messages and display to DOM
+        this.socket.on("RECEIVE_MESSAGE", (data) => {
+            addMessage(data);
+        });
+
+        const addMessage = (data) => {
+            chat.messages.push(data);
+        }
+        
         this.setState({chat});
     };
 
@@ -86,7 +110,7 @@ class App extends Component {
                         <Route exact path="/friends" render={(props) => <SearchFriends {...props} user={this.state.user}/>} />
                         <Route exact path="/top_hikers" render={(props) => <TopHH {...props} user={this.state.user}/>} />
                     </Switch>
-                    <Chat endChat={this.endChat} chatStatus={this.state.chat.active}></Chat>
+                    <Chat endChat={this.endChat} chatStatus={this.state.chat.active} chat={this.state.chat} user={this.state.user}></Chat>
                 </>
             </Router>
         );

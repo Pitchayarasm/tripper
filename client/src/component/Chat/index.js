@@ -11,27 +11,52 @@ class Chat extends React.Component {
         this.state = {
             chatting: true,
             message: "",
-            messages: [],
+            messages: []
         };
 
+        // Connect socket to communicate with server
         this.socket = io("localhost:3001");
 
+        // Retrieve the connected user's socketID and store in App
         this.socket.on("id", (data) => {
-            this.props.chat.user1_Id = data;
-        });
-
-        this.socket.on("RECEIVE_MESSAGE", (data) => {
-            addMessage(data);
-        });
-
-        const addMessage = (data) => {
             console.log(data);
+        });
 
-            this.setState({messages: [...this.state.messages, data]});
-        }
+        // Receive success message, upon starting a new chatroom with selected friend
+        this.socket.on("success", (data) => {
+            console.log(data);
+        });
 
+        // Listen for received messages and display to DOM
+        this.socket.on("MY_MESSAGE", (data) => {
+            this.addMessage(data);
+        });
+
+        this.socket.on("FRIEND_MESSAGE", (data) => {
+            this.addMessage(data);
+        });
+
+        
         this.scrollToBottom = this.scrollToBottom.bind(this);
     };
+    
+    addMessage = (data) => {
+        this.setState({messages: [...this.state.messages, data]});
+    }
+
+    sendMessage = () => {
+
+        this.socket.emit("SEND_MESSAGE", 
+            {
+                name: this.props.chat.user1,
+                userId: this.props.user._id,
+                roomId: this.props.chat.chatroom,
+                message: this.state.message
+            }
+        );
+
+        this.setState({message: "", messages: this.props.chat.messages});
+    }
 
     handleClick = (status) => {
 
@@ -41,19 +66,6 @@ class Chat extends React.Component {
 
     handleChange = (e) => {
         this.setState({message: e.target.value});
-    }
-
-    sendMessage = () => {
-
-        this.socket.emit("SEND_MESSAGE", 
-            {
-                name: this.props.chat.user1,
-                roomId: this.props.chat.chatroom,
-                message: this.state.message
-            }
-        );
-
-        this.setState({message: ""});
     }
 
     scrollToBottom = () => {
@@ -79,7 +91,7 @@ class Chat extends React.Component {
         if (code === 13) {
           this.sendMessage();
         }
-      }
+    }
 
     render() {
 
@@ -91,9 +103,9 @@ class Chat extends React.Component {
                     <div className="card-stacked">
                     <span className="cardHeader" onClick={() => this.handleClick(true)}>Chat with {this.props.chat.user2}<Icon>arrow_drop_down</Icon></span><span className="endChat" style={{textAlign: "right"}} onClick={() => this.props.endChat(false)}>Close Chat <Icon className="chatEndBtn">cancel</Icon></span>
                         <div ref="chatContainer" className="card-content messages">
-                            {this.state.messages.map((item) => {
+                            {this.props.chat.messages.map((item) => {
 
-                                if (item.name === this.props.chat.user1) {
+                                if (item.userId === this.props.user._id) {
                                     return (
                                         <div className="user1">{item.message}</div>
                                     )
@@ -122,7 +134,7 @@ class Chat extends React.Component {
         else {
             chatWindow = (
                 <div className="card chatInactive" onClick={() => this.handleClick(false)}>
-                    <p>Chat with Chris Cuomo...<Icon>arrow_drop_up</Icon></p>
+                    <p>Chat <Icon>arrow_drop_up</Icon></p>
                 </div>
             );
         }

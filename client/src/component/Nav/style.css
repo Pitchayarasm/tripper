@@ -127,6 +127,13 @@ div.modal-content {
     float: right !important;
 }
 
+.myChatBtn {
+    position: fixed;
+    width: 56px !important;
+    height: 56px !important;
+    bottom: 0;
+}
+
 .FriendProfile {
     margin-top: 10px;
 }
