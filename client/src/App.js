@@ -11,8 +11,8 @@ import SearchFriends from "./component/Pages/Friends.js";
 import TopHH from "./component/Pages/TopHH.js";
 import axios from "axios";
 
-//SASS
-import "./css/style.css";
+//Compiled SASS into the main style.css file
+import "../src/css/style.css";
 
 class App extends Component {
   
@@ -71,7 +71,7 @@ class App extends Component {
                     <Nav loginStatus={this.state.nav.loggedIn} startChat={this.startChat}></Nav>
                     <Switch>
                         <Route exact path="/" render={(props) => <Home {...props} user={this.state.user} setUser={this.setUser} />} />
-                        {!this.state.user ? <Redirect to="/" /> : null }
+                        {/* {!this.state.user ? <Redirect to="/" /> : null } */}
                         <Route exact path="/journal" render={(props) => <Journal {...props} />} />
                         <Route exact path="/profile" render={(props) => <Profile {...props} />} />
                         <Route exact path="/friend_profile" render={(props) => <FriendProfile {...props} />} />
