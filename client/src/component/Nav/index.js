@@ -14,6 +14,10 @@ class Nav extends React.Component {
         offlineFriends: [],
     }
 
+    friendsPage = () => {
+        window.location.href = "/friends"
+    }
+    
     handleLogout = () => {
       axios.get("/logout")
       .then( (res) => {
@@ -38,7 +42,7 @@ class Nav extends React.Component {
 
                 <Button floating fab="horizontal" icon="navigation" className="red" large style={{bottom: "45px", right: "24px"}}>
                     <Button floating icon="add" className="blue darken-4" data-position="top" tooltip="Create Journal"/>
-                    <Button floating icon="group" className="yellow darken-3" data-position="top" tooltip="Friends"/>
+                    <Button floating icon="group" className="yellow darken-3" data-position="top" onClick={this.friendsPage} tooltip="Friends"/>
                     <Button floating icon="power_settings_new" className="red darken-1" onClick={this.handleLogout} data-position="top" tooltip="Logout"/>
                 </Button>
                 </>
