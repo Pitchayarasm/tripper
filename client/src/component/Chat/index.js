@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Icon, Input } from "react-materialize";
+import { Button, Icon, Input, Navbar, SideNav, SideNavItem } from "react-materialize";
 import io from "socket.io-client";
 import "./style.css";
 
@@ -28,14 +28,28 @@ class Chat extends React.Component {
         });
 
         // Listen for received messages and display to DOM
-        this.socket.on("MY_MESSAGE", (data) => {
+        // this.socket.on("MY_MESSAGE", (data) => {
+        //     this.addMessage(data);
+        // });
+
+        // this.socket.on("FRIEND_MESSAGE", (data) => {
+        //     this.addMessage(data);
+        // });
+
+        // Listen for received messages and display to DOM
+        this.socket.on("RECEIVE_MESSAGE", (data) => {
             this.addMessage(data);
         });
 
-        this.socket.on("FRIEND_MESSAGE", (data) => {
-            this.addMessage(data);
+        this.socket.on("leftRoom", (data) => {
+            console.log(data);
         });
 
+        // const addMessage = (data) => {
+        //     chat.messages.push(data);
+        // }
+        
+        // this.setState({chat});
         
         this.scrollToBottom = this.scrollToBottom.bind(this);
     };
@@ -55,7 +69,11 @@ class Chat extends React.Component {
             }
         );
 
-        this.setState({message: "", messages: this.props.chat.messages});
+        this.setState({message: ""});
+    }
+
+    joinRoom = () => {
+        this.socket.emit("create", this.props.chat.chatroom);
     }
 
     handleClick = (status) => {
@@ -82,8 +100,18 @@ class Chat extends React.Component {
     }
       
     componentDidUpdate() {
+        if (this.props.chat.active) {
+            this.joinRoom();
+        }
         this.scrollToBottom();
     }
+
+    // Fn to end chat. Communicating with Chat.js.
+    leaveRoom = () => {
+        this.socket.emit("leave", this.props.chat.chatroom);
+        console.log("Left Room");
+        this.props.endChat(false);
+    };
 
     enterPressed = event => {
         let code = event.keyCode || event.which;
@@ -101,9 +129,9 @@ class Chat extends React.Component {
             chatWindow = (
                 <div className="card horizontal chatActive">
                     <div className="card-stacked">
-                    <span className="cardHeader" onClick={() => this.handleClick(true)}>Chat with {this.props.chat.user2}<Icon>arrow_drop_down</Icon></span><span className="endChat" style={{textAlign: "right"}} onClick={() => this.props.endChat(false)}>Close Chat <Icon className="chatEndBtn">cancel</Icon></span>
+                    <span className="cardHeader" onClick={() => this.handleClick(true)}>Chat with {this.props.chat.user2}<Icon>arrow_drop_down</Icon></span><span className="endChat" style={{textAlign: "right"}} onClick={() => this.leaveRoom()}>Close Chat <Icon className="chatEndBtn">cancel</Icon></span>
                         <div ref="chatContainer" className="card-content messages">
-                            {this.props.chat.messages.map((item) => {
+                            {this.state.messages.map((item) => {
 
                                 if (item.userId === this.props.user._id) {
                                     return (

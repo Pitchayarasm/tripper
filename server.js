@@ -78,13 +78,19 @@ io.on("connection", (socket) => {
     socket.emit("success", "You are now chatting in the " + chatroom + " chatroom");
 
   });
+
+  socket.on("leave", (chatroom) => {
+    socket.leave(chatroom, () => {
+      io.to(socket.id).emit("leftRoom", "You have left the chatroom.");
+    });
+  });
   
   // Receive messages from client and return response to chatroom
   socket.on("SEND_MESSAGE", (data) => {
     console.log(data, socket.id, socket.rooms);
 
     io.in(data.roomId).emit("RECEIVE_MESSAGE", data);
-    io.to(socket.id).emit("MY_MESSAGE", data);
+    // io.to(socket.id).emit("MY_MESSAGE", data);
   });
 
   // disconnect user from the chatroom and clear message history

@@ -23,8 +23,8 @@ class App extends Component {
             user1_id: null,
             user2: "",
             active: false,
-            chatroom: "",
-            messages: []
+            chatroom: ""
+            // messages: []
         },
         user: null
     };
@@ -63,26 +63,26 @@ class App extends Component {
             chat.user2 = chattingWith;
             chat.chatroom = chat.user1.split(" ")[1] + chat.user2.split(" ")[1];
 
-        this.socket.emit("create", chat.chatroom);
+        // this.socket.emit("create", chat.chatroom);
 
-        // Receive success message, upon starting a new chatroom with selected friend
-        this.socket.on("success", (data) => {
-            console.log(data);
-        });
+        // // Receive success message, upon starting a new chatroom with selected friend
+        // this.socket.on("success", (data) => {
+        //     console.log(data);
+        // });
 
-        // Retrieve the connected user's socketID and store in App
-        this.socket.on("id", (data) => {
-            console.log(data);
-        });
+        // // Retrieve the connected user's socketID and store in App
+        // this.socket.on("id", (data) => {
+        //     console.log(data);
+        // });
 
-        // Listen for received messages and display to DOM
-        this.socket.on("RECEIVE_MESSAGE", (data) => {
-            addMessage(data);
-        });
+        // // Listen for received messages and display to DOM
+        // this.socket.on("RECEIVE_MESSAGE", (data) => {
+        //     addMessage(data);
+        // });
 
-        const addMessage = (data) => {
-            chat.messages.push(data);
-        }
+        // const addMessage = (data) => {
+        //     chat.messages.push(data);
+        // }
         
         this.setState({chat});
     };
