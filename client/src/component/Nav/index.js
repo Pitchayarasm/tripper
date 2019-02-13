@@ -12,6 +12,21 @@ class Nav extends React.Component {
         notifications: 0,
         onlineFriends: [],
         offlineFriends: [],
+        title: ""
+    }
+
+    handleInputChange = event => {
+        const value = event.target.value;
+        const name = event.target.id;
+        this.setState({
+            [name]: value
+        });
+    };
+
+    newJournal = () => {
+        axios.post("/journal", { name: this.state.title }).then(res => {
+            this.setState({ title: "" });
+        });
     }
 
     friendsPage = () => {
@@ -41,7 +56,15 @@ class Nav extends React.Component {
                     </Navbar>
 
                     <Button floating fab="horizontal" icon="navigation" className="red" large style={{ bottom: "45px", right: "24px" }}>
-                        <Button floating icon="add" className="blue darken-4" data-position="top" tooltip="Create Journal" />
+                        <Modal
+                            header='Create New Journal'
+                            trigger={<Button floating icon="add" className="blue darken-4" data-position="top" tooltip="Create Journal" />}
+                            actions={<><Button className="cancel modal-action modal-close">Cancel</Button><Button id="loginBtn" className="cancel modal-action modal-close" onClick={this.newJournal}>Create</Button></>}
+                        >
+                            <Row>
+                                <Input id="title" value={this.state.title} label="Title" s={12} onChange={this.handleInputChange} />
+                            </Row>
+                        </Modal>
                         <Button floating icon="group" className="yellow darken-3" data-position="top" onClick={this.friendsPage} tooltip="Friends" />
                         <Button floating icon="power_settings_new" className="red darken-1" onClick={this.handleLogout} data-position="top" tooltip="Logout" />
                     </Button>
