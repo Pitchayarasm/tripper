@@ -62,9 +62,7 @@ const db = require("../models")
   });
 
   passport.deserializeUser(function(id, done) {
-    console.log(id)
     db.User.findById(id, function(err, user) {
-      console.log(user)
       done(err, user);
     });
   });
@@ -77,12 +75,10 @@ const db = require("../models")
   // Logout
   router.get('/logout', (req, res) => {
     req.logout();
-    console.log(req.user)
     res.json(req.user)
   });
 
   router.get("/isLogin" , (req,res) => {
-    console.log(req.user)
     res.json(req.user)
   })
 module.exports = router;
