@@ -56,7 +56,7 @@ div.modal-content {
   float: right !important; }
 
 .FriendProfile {
-  margin-top: 1%; }
+  margin: 6% auto; }
 
 .Friend {
   margin: 0 auto;
@@ -110,6 +110,10 @@ div.modal-content {
 .parallax-container {
   width: 100%; }
 
+.wrapper {
+  display: contents;
+  float: left; }
+
 /* ==============================
  * LAYOUT STYLES
  * ============================== */
@@ -152,7 +156,6 @@ div.modal-content {
   width: 200px;
   height: 200px;
   float: left;
-  border: 1px solid #f1f1f1;
   perspective: 1000px;
   animation: myframes 3s ease-in-out 0s infinite;
   animation-play-state: paused; }
@@ -160,10 +163,15 @@ div.modal-content {
 .trigger {
   width: 200px;
   height: 200px;
+  margin: 1%;
   float: left; }
 
+.trigger .flip-box {
+  transition: box-shadow 0.2s ease-in-out 0s; }
+
 .trigger:hover .flip-box:hover {
-  animation-play-state: running; }
+  animation-play-state: running;
+  box-shadow: #333 0px 0px 40px; }
 
 .flip-box-inner {
   position: relative;

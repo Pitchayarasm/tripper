@@ -1,6 +1,6 @@
 import React from "react";
-import { Row, Col } from "react-materialize";
 import axios from "axios";
+import { Row, Col } from "react-materialize";
 
 class Friends extends React.Component {
     state = {
