@@ -18,24 +18,41 @@ class Friends extends React.Component {
                 journals: [0]
             }
         ],
-        friendsHTML: []
+        friendsHTML: [],
+        friendsRecieved: false
     };
 
-    componentDidMount() {
-        axios.get({ user: this.props.user._id })
+    componentWillReceiveProps(nextProps) {
+        if (this.props.user._id === undefined && nextProps.user._id) {
+            this.axiosCall(nextProps.user._id);
+        }
+    }
+
+    axiosCall = id => {
+        axios.get(`friendList/${id}`)
             .then(res => {
-                this.setState({
-                    friends: res[0].friends.map(item => {
-                        return {
-                            journalCount: item.journals.length,
-                            firstName: item.firstName,
-                            lastName: item.lastName
-                            //profilePic: item.file
-                        };
-                    })
-                },
-                this.loadFriends());
-            }).catch(err => console.log(err));
+                let i = 0;
+                let friendsList = res.data[0].friends.map(item => {
+                    i++;
+                    let src = `/upload/${item.file}`;
+
+                    return {
+                        journalCount: item.journals.length,
+                        firstName: item.firstName,
+                        lastName: item.lastName,
+                        key: i,
+                        profilePic: src
+                    };
+                });
+                this.setState({ friends: friendsList });
+            })
+            .catch(err => console.log(err));
+    }
+
+    componentDidUpdate(prevProps, prevState){
+        if(prevState.friends !== this.state.friends){
+            this.loadFriends();
+        }
     }
 
     loadFriends() {
@@ -61,7 +78,7 @@ class Friends extends React.Component {
         for (let j = 0; j < 3 && i * 3 + j < friendList.length; j++) {
             html.push(<Col s={3} className='grid-example'>
                 <div className="SearchCard">
-                    {/* <img className="Friend" src={friendList[3 * i + j].profilePic} alt="tripper" /> */}
+                    <img style={{width:"100%"}} src={friendList[3 * i + j].profilePic} alt="profile" />
                     <h3>{friendList[3 * i + j].firstName + " " + friendList[3 * i + j].lastName}</h3>
                     <p>Journals: {friendList[3 * i + j].journalCount}</p>
                 </div>
