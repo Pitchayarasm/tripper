@@ -2,7 +2,7 @@ import React from "react";
 import { Row, Col, Icon, Button, Modal, Input } from "react-materialize";
 import axios from "axios"
 
-class Journal extends React.Component {
+class Entry extends React.Component {
     state = {
         entryTitle : "",
         entryText : "",
@@ -73,9 +73,9 @@ class Journal extends React.Component {
                         <Row>
                         <Col s={3} className='grid-example'></Col>
                         <Col s={3} className='grid-example'>
-                            <h2>{entry.title} <span id="editBtn"><Icon>edit</Icon></span></h2>
-                            <hr />
+                            <h2>{entry.title}</h2>
                             <p>{entry.body}</p>
+                            {entry.location? <p><Icon>location_on</Icon>{entry.location}</p> : null}
                         </Col>
                         <Col s={4} className='journal_pics'>
                            { entry.file ?  <img className="fit_img tile" src={`upload/${entry.file}`} alt="tripper" /> : null}
@@ -99,21 +99,21 @@ class Journal extends React.Component {
             );
         }
          else {
+            entry = (<Col s={3} className='grid-example'>
+                    <div className="losEntries">
+                        <h3>You don't have a journal yet</h3>
+                        <p>Tell your story with tripper</p>
+                    </div>
+                    </Col>
+                    )
          }
         return (
             <>
-            <Col s={3} className='grid-example'>
-                        <div className="losEntries">
-                            <h3>You don't have a journal yet</h3>
-                            <p>Tell your story with tripper</p>
-                            {entry}
-                        </div>
-                    </Col>
-            
+            {entry}
             </>
         );
     }
 }
 
 
-export default Journal;
+export default Entry;

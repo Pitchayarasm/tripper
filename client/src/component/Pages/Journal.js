@@ -2,107 +2,119 @@ import React from "react";
 import { Row, Col, Icon, Button, Modal, Input } from "react-materialize";
 import axios from "axios"
 
-class Entry extends React.Component {
+class Journal extends React.Component {
     state = {
-        importTitle : "",
-        importText : "",
-        importLocation : "",
-        entryTitle : "",
-        entryText : "",
-        entryLocation : ""
+        title : "",
+        userdB : "",
+        entries : ""
     };
 
-    handleInputChange = event => {
-        const value = event.target.value;
-        const name = event.target.id;
+    componentWillReceiveProps(nextProps) {
+        if ( this.props.user._id === undefined && nextProps.user.journals) {
+            this.getJournal(nextProps.user._id);
+            this.getEntry(nextProps.user.journals);
+        }
+    }
+
+    getJournal = (userId) => {
+        axios.get(`/journal/${userId}`)
+        .then( res => {
+            console.log(res.data)
+            if ( res ) {
+                this.setState({
+                    userdB : res.data
+                })
+            }
+        })
+        .catch( err => {
+            console.log(err);
+        }) 
+    }
+
+    getEntry = (journalId) => {
+        axios.get(`/entry/${journalId}`)
+        .then( res => {
+            console.log(res.data.entries)
+            if ( res ) {
+                this.setState({
+                    entries : res.data.entries
+                })
+            }
+        })
+        .catch( err => {
+            console.log(err);
+        }) 
+    }
+
+    handleInputChange = (event) => {
         this.setState({
-            [name]: value
+            title: event.target.value
         });
     };
 
-    handleSubmit = () => {
 
-        axios.post(`entry/${this.props.user.journals}`
-        ,{
-            title: this.state.entryTitle,
-            body: this.state.entryText,
-            location: this.state.entryLocation
+    newJournal = () => {
+        axios.post(`/journal/${this.props.user._id}` , { 
+            name: this.state.title 
         })
-        .then( res => {
-            if (res) {
-                let formData = new FormData();
-                let imagefile = document.querySelector('#profileImg');
-                formData.append("image", imagefile.files[0]);
-                axios.post(`/uploadEntry/${res.data}`, formData , {
-                    headers: {
-                        'Content-Type': 'multipart/form-data'
-                    }
-                })
-                .then( (res) => {
-                    console.log(res.data)
-                });
-            }
+        .then(res => {
+            this.props.setUser(res.data);
+            this.setState({ 
+                title: "" 
+            });
         });
     }
 
     render() {
-        let entry;
-
-        if (this.state.importTitle) {
-            entry = (
-                <>
-                 <Row>
-                    <Col s={3} className='grid-example'></Col>
-                    <Col s={3} className='grid-example'>
-                        <h2>{this.state.importTitle} <span id="editBtn"><Icon>edit</Icon></span></h2>
-                        <hr />
-                        <p>{this.state.importText}</p>
-                    </Col>
-                    <Col s={4} className='journal_pics'>
-                        <img className="fit_img tile" src="https://via.placeholder.com/150/666.png/fff" alt="tripper" />
-                        <img className="fit_img tile" src="https://via.placeholder.com/300x150/666.png/fff" alt="tripper" />
-                        <img className="fit_img tile" src="https://via.placeholder.com/150x300/666.png/fff" alt="tripper" />
-                        <img className="fit_img tile" src="https://via.placeholder.com/150/666.png/fff" alt="tripper" />
-                        <img className="fit_img tile" src="https://via.placeholder.com/150/666.png/fff" alt="tripper" />
-                        <img className="fit_img tile" src="https://via.placeholder.com/150/666.png/fff" alt="tripper" />
-                        <img className="fit_img tile" src="https://via.placeholder.com/150/666.png/fff" alt="tripper" />
-                    </Col>
-                    <Col s={2} className='grid-example'></Col>
-                </Row>
+        let journal;
+        if (this.state.userdB) {
+            journal = (
+                <> 
+                { this.state.userdB.map(user => ( 
+                        <Row>
+                        <Col s={3} className='grid-example'></Col>
+                        <Col s={3} className='grid-example'>
+                            <h2>{user.journals.name}</h2>
+                                {this.state.entries.map( entry => (
+                                    <ul>
+                                    <li>
+                                       <h4>- {entry.title}</h4> 
+                                    </li>
+                                    </ul>
+                                ))}
+                        </Col>
+                        <Col s={2} className='grid-example'></Col>
+                        </Row>
+                ))}
                 </>
             );
         }
          else {
-            entry = (
-                <Modal
-                header='Add your Journal!'
-                trigger={<Button className="homeBtn pulse">Add</Button>}
-                actions={<><Button className="cancel modal-action modal-close pulse">Cancel</Button><Button id="signUpSubmit" className="cancel modal-action modal-close pulse" onClick={this.handleSubmit}>Submit</Button></>}
-                > 
-                 <Row id="addNewEntryForm">
-                     <Input type='textarea' id="entryTitle" label="Title" value={this.state.entryTitle} onChange={this.handleInputChange} />
-                     <Input type='textarea' id="entryText" label="Body" value={this.state.entryText} onChange={this.handleInputChange} />
-                     <Input type='textarea' id="entryLocation" label="location" value={this.state.entryLocation} onChange={this.handleInputChange} />
-                     <Input name="profileImg" type="file" id="profileImg" label="Upload" placeholder="no file choosen" s={12} />
-                 </Row>
-             </Modal>
-             );
+            journal = (<Col s={3} className='grid-example'>
+                    <div className="losEntries">
+                        <h3>You don't have a journal yet</h3>
+                        <p>Tell your story with tripper</p>
+                    </div>
+                    </Col>
+                    )
          }
         return (
             <>
-            <Col s={3} className='grid-example'>
-                        <div className="losEntries">
-                            <h3>You don't have a journal yet</h3>
-                            <p>Tell your story with tripper</p>
-                            {entry}
-                        </div>
-                    </Col>
-        
-            
+            {journal}
+                <Modal
+                    header='Create your Journal'
+                    trigger={<Button className="homeBtn pulse addEntry">Add</Button>}
+                    actions={<><Button className="cancel modal-action modal-close">Cancel</Button><Button id="signUpSubmit" className="cancel modal-action modal-close" onClick={this.newJournal}>Create</Button></>}
+                    > 
+                    <Row id="addNewEntryForm">
+                    <Input s={6} id="title" label="Title" value={this.state.title} onChange={this.handleInputChange}></Input>
+                    </Row>
+                </Modal>
             </>
         );
     }
 }
 
 
-export default Entry;
+
+export default Journal;

@@ -10,7 +10,7 @@ import Entry from './component/Pages/Entry';
 import Profile from "./component/Pages/Profile.js";
 import FriendProfile from "./component/Pages/Friend_Profile.js";
 import SearchFriends from "./component/Pages/Friends.js";
-import Journal from "./component/Pages/Journal.js";
+import Journal from "./component/Pages/Journal";
 import TopHH from "./component/Pages/TopHH.js";
 import axios from "axios";
 

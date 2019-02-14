@@ -6,31 +6,11 @@ import axios from "axios";
 class Nav extends React.Component {
 
     state = {
-        title: "",
         user: "",
         image: "",
         notifications: 0,
         onlineFriends: ["Chris Cuomo", "Don Lemon", "Van Jones"],
         offlineFriends: ["Jake Tapper", "Wolf Blitzer"]
-    }
-
-    handleInputChange = (event) => {
-        this.setState({
-            title: event.target.value
-        });
-    };
-
-
-    newJournal = () => {
-        axios.post(`/journal/${this.props.user._id}` , { 
-            name: this.state.title 
-        })
-        .then(res => {
-            this.props.setUser(res.data);
-            this.setState({ 
-                title: "" 
-            });
-        });
     }
 
     friendsPage = () => {
@@ -66,9 +46,9 @@ class Nav extends React.Component {
                     <nav style={{boxShadow: "none"}}>
                         {/* <div class="nav-wrapper"> */}
                         <form>
-                            <div class="input-field" style={{width: "200px"}}>
+                            <div className="input-field" style={{width: "200px"}}>
                             <input id="search" type="search" placeholder="Quick Search" required />
-                            <label class="label-icon" for="search" style={{top: "-10px"}}><i class="material-icons">search</i></label>
+                            <label className="label-icon" for="search" style={{top: "-10px"}}><i className="material-icons">search</i></label>
                             {/* <i class="material-icons">close</i> */}
                             </div>
                         </form>
@@ -78,14 +58,6 @@ class Nav extends React.Component {
                     {/* <NavLink to="#" data-position="left" tooltip="Notifications"><Icon className="navIcon">notifications</Icon></NavLink> */}
                     {/* <NavLink onClick={this.profilePage} to="#" data-position="left" tooltip="View Profile"><Icon className="navIcon">account_circle</Icon></NavLink> */}
                 </Navbar>
-
-                <Modal
-                    header='Title'
-                    trigger={<Button id="newJournal" floating icon="add" className="blue darken-4" data-position="left" tooltip="Create Journal" />}
-                    actions={<><Button className="cancel modal-action modal-close">Cancel</Button><Button id="loginBtn" className="cancel modal-action modal-close" onClick={this.newJournal}>Create</Button></>}
-                    modalOptions={{ dismissible: true }}>
-                    <Input s={6} id="title" label="Title" value={this.state.title} onChange={this.handleInputChange}><Icon>account_circle</Icon></Input>
-                </Modal>
 
                 <Button floating fab="horizontal" icon="navigation" className="red" large style={{bottom: "45px", right: "24px"}}>
                     <Button floating icon="account_circle" className="green darken-3" data-position="top" tooltip="Profile" onClick={this.profilePage} />
