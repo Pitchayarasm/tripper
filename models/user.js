@@ -35,12 +35,10 @@ var UserSchema = new Schema({
     file: {
         type: String
     },
-    journals: [
-        {
+    journals: {
           type: Schema.Types.ObjectId,
           ref: "Journal"
-        }
-    ],
+    },
     friends: [ this ],
     userCreated: {
         type: Date,

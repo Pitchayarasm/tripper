@@ -6,8 +6,10 @@ class Journal extends React.Component {
     state = {
         importTitle : "",
         importText : "",
+        importLocation : "",
         entryTitle : "",
         entryText : "",
+        entryLocation : ""
     };
 
     handleInputChange = event => {
@@ -19,20 +21,21 @@ class Journal extends React.Component {
     };
 
     handleSubmit = () => {
-        let entry = {
+        axios.post(`entry/${this.props.user.journals}`
+        ,{
             title: this.state.entryTitle,
             body: this.state.entryText,
-        }
-        console.log(entry)
-        // axios.post("/entry" + this.props.user._id , entry)
-        // .then( res => {
-        //     if (res) {
-        //         this.setState({
-        //             entryTitle : "",
-        //             entryText : ""
-        //         })
-        //     }
-        // })
+            location: this.state.entryLocation
+        })
+        .then( res => {
+            if (res) {
+                this.setState({
+                    entryTitle : "",
+                    entryText : "",
+                    location : ""
+                })
+            }
+        })
     }
 
     render() {
@@ -72,6 +75,8 @@ class Journal extends React.Component {
                  <Row id="addNewEntryForm">
                      <Input type='title' id="entryTitle" label="Title" value={this.state.entryTitle} onChange={this.handleInputChange} />
                      <Input type='textarea' id="entryText" label="Body" value={this.state.entryText} onChange={this.handleInputChange} />
+                     <Input type='textarea' id="entryLocation" label="location" value={this.state.entryLocation} onChange={this.handleInputChange} />
+                     <Input name="profileImg" type="file" id="profileImg" label="Upload" placeholder="no file choosen" s={12} />
                  </Row>
              </Modal>
              );

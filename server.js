@@ -42,6 +42,8 @@ const img_routes = require("./routes/profilePic_api.js");
 app.use(img_routes);
 const friends_routes = require("./routes/friend_api.js");
 app.use(friends_routes);
+const journal_routes = require("./routes/journal_entry_api");
+app.use(journal_routes);
 
 // Send every other request to the React app
 app.get("*", (req, res) => {

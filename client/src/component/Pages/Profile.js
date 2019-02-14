@@ -43,7 +43,6 @@ class Profile extends React.Component {
                     <Col s={1} className='grid-example'></Col>
                     <Col s={4} className='grid-example'>
                         <img className="Friend" src="https://via.placeholder.com/465x718/666.png/fff" alt="tripper" />
-
                     </Col>
                     <Col s={3} className='grid-example'>
 
