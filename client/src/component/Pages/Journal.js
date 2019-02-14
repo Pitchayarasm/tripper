@@ -81,7 +81,7 @@ class Journal extends React.Component {
                            { entry.file ?  <img className="fit_img tile" src={`upload/${entry.file}`} alt="tripper" /> : null}
                         </Col>
                         <Col s={2} className='grid-example'></Col>
-                    </Row>
+                        </Row>
                 ))}
                 <Modal
                 header='Add your Journal!'

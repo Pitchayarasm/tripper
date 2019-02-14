@@ -47,4 +47,19 @@ router.get('/upload/:id', function(req, res) {
     readstream.pipe(res);
 });
 
+router.post("/aboutme/:userId" , (req,res) => {
+    User.findByIdAndUpdate( req.params.userId, 
+    { about_me: req.body.about_me } 
+    ,{ 
+        new: true 
+    })
+    .then( (dbUser) => {
+        res.send(dbUser)
+    })
+    .catch( err => {
+        res.json(err);
+    });
+})
+
+
 module.exports = router;

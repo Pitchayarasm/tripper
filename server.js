@@ -35,7 +35,7 @@ if (process.env.NODE_ENV === "production") {
 // API routes 
 const user_routes = require("./routes/user_api.js");
 app.use(user_routes);
-const img_routes = require("./routes/profilePic_api.js");
+const img_routes = require("./routes/profile_api.js");
 app.use(img_routes);
 const friends_routes = require("./routes/friend_api.js");
 app.use(friends_routes);
