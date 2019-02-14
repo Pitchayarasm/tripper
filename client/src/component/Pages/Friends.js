@@ -75,6 +75,12 @@ class Friends extends React.Component {
         return (
             <>
                 {this.state.friendsHTML}
+                <Col s={12} className='grid-example'>
+                        <div className="SearchCard losFriends">
+                            <h3>Looks like you don't have any friends, you need to log in first</h3>
+                            <p>Adventure is out there!</p>
+                        </div>
+                    </Col>
                 {/* <Row className="FriendProfile">
                     <Col s={1} className='grid-example'></Col>
                     <Col s={3} className='grid-example'>

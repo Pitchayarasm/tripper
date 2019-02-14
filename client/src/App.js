@@ -5,7 +5,7 @@ import Nav from "./component/Nav";
 import Footer from "./component/Footer/Footer.js";
 import Chat from "./component/Chat";
 import Home from "./component/Pages/Home.js";
-import Journal from './component/Pages/Journal.js';
+import Entry from './component/Pages/Entry.js';
 import Profile from "./component/Pages/Profile.js";
 import FriendProfile from "./component/Pages/Friend_Profile.js";
 import SearchFriends from "./component/Pages/Friends.js";
@@ -72,7 +72,7 @@ class App extends Component {
                     <Switch>
                         <Route exact path="/" render={(props) => <Home {...props} user={this.state.user} setUser={this.setUser} />} />
                         {/* {!this.state.user.firstName ? <Redirect to="/" /> : null } */}
-                        <Route exact path="/journal" render={(props) => <Journal {...props} user={this.state.user} setUser={this.setUser}/>} />
+                        <Route exact path="/entry" render={(props) => <Entry {...props} user={this.state.user} setUser={this.setUser}/>} />
                         <Route exact path="/profile" render={(props) => <Profile {...props} user={this.state.user} setUser={this.setUser}/>} />
                         <Route exact path="/friend_profile" render={(props) => <FriendProfile {...props} user={this.state.user}/>} />
                         <Route exact path="/friends" render={(props) => <SearchFriends {...props} user={this.state.user}/>} />

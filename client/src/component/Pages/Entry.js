@@ -2,7 +2,7 @@ import React from "react";
 import { Row, Col, Icon, Button, Modal, Input } from "react-materialize";
 import axios from "axios"
 
-class Journal extends React.Component {
+class Entry extends React.Component {
     state = {
         importTitle : "",
         importText : "",
@@ -76,8 +76,8 @@ class Journal extends React.Component {
             entry = (
                 <Modal
                 header='Add your Journal!'
-                trigger={<Button className="homeBtn pulse addEntry">Add</Button>}
-                actions={<><Button className="cancel modal-action modal-close">Cancel</Button><Button id="signUpSubmit" className="cancel modal-action modal-close" onClick={this.handleSubmit}>Submit</Button></>}
+                trigger={<Button className="homeBtn pulse">Add</Button>}
+                actions={<><Button className="cancel modal-action modal-close pulse">Cancel</Button><Button id="signUpSubmit" className="cancel modal-action modal-close pulse" onClick={this.handleSubmit}>Submit</Button></>}
                 > 
                  <Row id="addNewEntryForm">
                      <Input type='textarea' id="entryTitle" label="Title" value={this.state.entryTitle} onChange={this.handleInputChange} />
@@ -94,13 +94,15 @@ class Journal extends React.Component {
                         <div className="losEntries">
                             <h3>You don't have a journal yet</h3>
                             <p>Tell your story with tripper</p>
+                            {entry}
                         </div>
                     </Col>
-            {entry}
+        
+            
             </>
         );
     }
 }
 
 
-export default Journal;
+export default Entry;
