@@ -2,7 +2,6 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { Navbar, Icon, SideNav, SideNavItem, Button, Modal, Input } from "react-materialize";
 import axios from "axios";
-import BlueButton from "../BlueButton/index"
 
 class Nav extends React.Component {
 
