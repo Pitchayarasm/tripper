@@ -22,8 +22,20 @@ class Friends extends React.Component {
     };
 
     componentDidMount() {
-        /*axios.get({ user: this.props.user._id }).friends; */
-        this.loadFriends();
+        axios.get({ user: this.props.user._id })
+            .then(res => {
+                this.setState({
+                    friends: res[0].friends.map(item => {
+                        return {
+                            journalCount: item.journals.length,
+                            firstName: item.firstName,
+                            lastName: item.lastName
+                            //profilePic: item.file
+                        };
+                    })
+                },
+                this.loadFriends());
+            }).catch(err => console.log(err));
     }
 
     loadFriends() {
@@ -49,9 +61,9 @@ class Friends extends React.Component {
         for (let j = 0; j < 3 && i * 3 + j < friendList.length; j++) {
             html.push(<Col s={3} className='grid-example'>
                 <div className="SearchCard">
-                    <img className="Friend" src={friendList[3 * i + j].profilePics[0]} alt="tripper" />
+                    {/* <img className="Friend" src={friendList[3 * i + j].profilePic} alt="tripper" /> */}
                     <h3>{friendList[3 * i + j].firstName + " " + friendList[3 * i + j].lastName}</h3>
-                    <p>Journals {friendList[3 * i + j].journals.length}</p>
+                    <p>Journals: {friendList[3 * i + j].journalCount}</p>
                 </div>
             </Col>);
         }
