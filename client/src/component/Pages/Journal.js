@@ -29,10 +29,9 @@ class Journal extends React.Component {
         })
         .then( res => {
             if (res) {
+                console.log(res.data)
                 this.setState({
-                    entryTitle : "",
-                    entryText : "",
-                    location : ""
+                    // front-end grab data here
                 })
             }
         })
