@@ -1,0 +1,10 @@
+#search:focus {
+    background-color: transparent;
+    border: none;
+    color: #ffffff;
+}
+
+#search::placeholder {
+    color: #ffffff;
+    opacity: .5;
+}

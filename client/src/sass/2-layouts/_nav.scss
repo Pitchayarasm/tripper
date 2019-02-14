@@ -1,9 +1,5 @@
 nav {
-<<<<<<< HEAD:client/src/sass/2-layouts/_nav.scss
     background-color: $primary-color;
-=======
-    background-color: rgb(83, 119, 83) !important;
->>>>>>> masterMod:client/src/component/Nav/style.css
 }
 
 .brand-logo {
@@ -155,8 +151,6 @@ input[type=text]:focus:not([readonly])+label, input[type=password]:not(.browser-
     padding: 0 5px 0 5px !important;
     float: right !important;
 }
-<<<<<<< HEAD:client/src/sass/2-layouts/_nav.scss
-=======
 
 .myChatBtn {
     position: fixed;
@@ -191,4 +185,7 @@ input[type=text]:focus:not([readonly])+label, input[type=password]:not(.browser-
 #addProfilePic {
     width: inherit !important;
 }
->>>>>>> masterMod:client/src/component/Nav/style.css
+
+#search:focus {
+    background-color: #26a69a;
+}

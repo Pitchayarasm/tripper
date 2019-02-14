@@ -1,7 +1,8 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+// import { NavLink } from "react-router-dom";
 import { Navbar, Icon, SideNav, SideNavItem, Button, Modal, Input } from "react-materialize";
 import axios from "axios";
+import "./style.css";
 
 class Nav extends React.Component {
 
@@ -37,8 +38,12 @@ class Nav extends React.Component {
         window.location.href = "/friends"
     }
     
-    journalPage = () => {
-        window.location.href = "/journal"
+    entryPage = () => {
+        window.location.href = "/entry"
+    }
+
+    entriesPage = () => {
+        window.location.href = "/entries"
     }
 
     profilePage = () => {
@@ -59,9 +64,20 @@ class Nav extends React.Component {
             navbar = (
                 <>
                 <Navbar brand='tripper' right>
-                    <NavLink to="#" data-position="left" tooltip="Quick Search"><Icon className="navIcon">search</Icon></NavLink>
+                    <nav style={{boxShadow: "none"}}>
+                        {/* <div class="nav-wrapper"> */}
+                        <form>
+                            <div class="input-field" style={{width: "200px"}}>
+                            <input id="search" type="search" placeholder="Quick Search" required />
+                            <label class="label-icon" for="search" style={{top: "-10px"}}><i class="material-icons">search</i></label>
+                            {/* <i class="material-icons">close</i> */}
+                            </div>
+                        </form>
+                        {/* </div> */}
+                    </nav>
+                    {/* <NavLink to="#" data-position="left" tooltip="Quick Search"><Icon className="navIcon">search</Icon></NavLink> */}
                     {/* <NavLink to="#" data-position="left" tooltip="Notifications"><Icon className="navIcon">notifications</Icon></NavLink> */}
-                    <NavLink onClick={this.profilePage} to="#" data-position="left" tooltip="View Profile"><Icon className="navIcon">account_circle</Icon></NavLink>
+                    {/* <NavLink onClick={this.profilePage} to="#" data-position="left" tooltip="View Profile"><Icon className="navIcon">account_circle</Icon></NavLink> */}
                 </Navbar>
 
                 <Modal
@@ -73,8 +89,10 @@ class Nav extends React.Component {
                 </Modal>
 
                 <Button floating fab="horizontal" icon="navigation" className="red" large style={{bottom: "45px", right: "24px"}}>
-                    <Button floating icon="local_library" className="blue darken-4" data-position="top" tooltip="My Journal" onClick={this.journalPage} />
-                    <Button floating icon="group" className="yellow darken-3" data-position="top" onClick={this.friendsPage} tooltip="Friends"/>
+                    <Button floating icon="account_circle" className="green darken-3" data-position="top" tooltip="Profile" onClick={this.profilePage} />
+                    <Button floating icon="local_library" className="blue darken-4" data-position="top" tooltip="Journal" onClick={this.entryPage} />
+                    <Button floating icon="card_travel" className="yellow darken-3" data-position="top" tooltip="Entries" onClick={this.entriesPage} />
+                    <Button floating icon="group" className="purple darken-2" data-position="top" tooltip="Friends" onClick={this.friendsPage}/>
                     <Button floating icon="power_settings_new" className="red darken-1" onClick={this.handleLogout} data-position="top" tooltip="Logout"/>
                 </Button>
 
