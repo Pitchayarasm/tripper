@@ -106,7 +106,7 @@ class Profile extends React.Component {
                         actions={<><Button className="cancel modal-action modal-close">Cancel</Button><Button id="signUpSubmit" className="cancel modal-action modal-close" onClick={this.handleselectedFile}>Submit</Button></>}
                         >
                         <Row id="signUpForm">
-                            <Input name="profileImg" type="file" id="profileImg" label="Upload" placeholder="no file choosen" s={12} />
+                            <Input name="profileImg" type="file" id="profileImg" label="Upload" placeholder="no file choosen" s={12} readOnly/>
                         </Row>
                         </Modal>
                         {entry}
