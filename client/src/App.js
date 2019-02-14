@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import io from "socket.io-client";
+// import io from "socket.io-client";
 import {Redirect,Switch} from "react-router-dom";
 import Nav from "./component/Nav";
 import Footer from "./component/Footer/Footer.js";
@@ -57,7 +57,7 @@ class App extends Component {
     // Fn to start chat. Communicating with Nav.js.
     startChat = (chatStatus, chattingWith) => {
 
-        this.socket = io("localhost:3001");
+        // this.socket = io("localhost:3001");
 
         let chat = {...this.state.chat};
             chat.active = chatStatus;

@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Icon, Input, Navbar, SideNav, SideNavItem } from "react-materialize";
+import { Button, Icon, Input } from "react-materialize";
 import io from "socket.io-client";
 import "./style.css";
 
@@ -78,7 +78,7 @@ class Chat extends React.Component {
     }
 
     joinRoom = () => {
-        this.socket.emit("create", this.props.chat.chatroom, "5c64976a11bf4c1a0cf2a6f0"); // Will need to replace string with FRIEND _id property.
+        this.socket.emit("create", this.props.chat.chatroom, "5c6518820e0fd32f446dd123"); // Will need to replace string with FRIEND _id property.
     }
 
     handleClick = (status) => {
@@ -102,6 +102,7 @@ class Chat extends React.Component {
       
     componentDidMount() {
         this.scrollToBottom();
+        console.log("hi");
     }
       
     componentDidUpdate() {
@@ -139,11 +140,27 @@ class Chat extends React.Component {
         }
     }
 
+    setTime = () => {
+
+        let time = new Date;
+        let hours = time.getHours();
+        let minutes = time.getMinutes();
+        
+        if (hours < 10) {
+            hours = "0" + hours;
+        }
+
+        if (minutes < 10) {
+            minutes = "0" + minutes;
+        }
+        
+        return hours + ":" + minutes;
+    }
+
     render() {
 
         let chatWindow;
-        let timestamp = new Date;
-            timestamp = timestamp.getHours() + ":" + timestamp.getMinutes();
+        let timestamp = this.setTime();
 
         if (this.state.chatting) {
             chatWindow = (
@@ -156,7 +173,7 @@ class Chat extends React.Component {
                                 if (item.userId === this.props.user._id) {
                                     return (
                                         <>
-                                        <span className="user1Time">{timestamp}&nbsp;&nbsp;-&nbsp;&nbsp;You said:</span>
+                                        <span className="user1Time">{timestamp}</span>
                                         <div className="user1">{item.message}</div>
                                         </>
                                     )
@@ -164,7 +181,7 @@ class Chat extends React.Component {
                                 else {
                                     return (
                                         <>
-                                        <span className="user2Time">{timestamp}&nbsp;&nbsp;-&nbsp;&nbsp;{this.props.chat.user2.split(" ")[0]} said:</span>
+                                        <span className="user2Time">{timestamp}</span>
                                         <div className="user2">{item.message}</div>
                                         </>
                                     )

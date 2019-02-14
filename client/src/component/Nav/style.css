@@ -1,5 +1,5 @@
 nav {
-    background-color: #5AAC5A;
+    background-color: rgb(83, 119, 83) !important;
 }
 
 .brand-logo {
@@ -132,7 +132,15 @@ input:not([type]):focus:not([readonly]), input[type=text]:focus:not([readonly]),
     box-shadow: 0 1px 0 0 rgb(83, 119, 83) !important;
 }
 
-input[type=text]:focus:not([readonly])+label {
+input:not([type]):focus:not([readonly])+label, input[type=text]:not(.browser-default):focus:not([readonly])+label, input[type=password]:not(.browser-default):focus:not([readonly])+label, input[type=email]:not(.browser-default):focus:not([readonly])+label, input[type=url]:not(.browser-default):focus:not([readonly])+label, input[type=time]:not(.browser-default):focus:not([readonly])+label, input[type=date]:not(.browser-default):focus:not([readonly])+label, input[type=datetime]:not(.browser-default):focus:not([readonly])+label, input[type=datetime-local]:not(.browser-default):focus:not([readonly])+label, input[type=tel]:not(.browser-default):focus:not([readonly])+label, input[type=number]:not(.browser-default):focus:not([readonly])+label, input[type=search]:not(.browser-default):focus:not([readonly])+label, textarea.materialize-textarea:focus:not([readonly])+label {
+    color: 0 1px 0 0 rgb(83, 119, 83) !important;
+}
+
+input:not([type]):focus:not([readonly])+label, input[type=text]:not(.browser-default):focus:not([readonly])+label, input[type=password]:not(.browser-default):focus:not([readonly])+label, input[type=email]:not(.browser-default):focus:not([readonly])+label, input[type=url]:not(.browser-default):focus:not([readonly])+label, input[type=time]:not(.browser-default):focus:not([readonly])+label, input[type=date]:not(.browser-default):focus:not([readonly])+label, input[type=datetime]:not(.browser-default):focus:not([readonly])+label, input[type=datetime-local]:not(.browser-default):focus:not([readonly])+label, input[type=tel]:not(.browser-default):focus:not([readonly])+label, input[type=number]:not(.browser-default):focus:not([readonly])+label, input[type=search]:not(.browser-default):focus:not([readonly])+label, textarea.materialize-textarea:focus:not([readonly])+label {
+    color: 0 1px 0 0 rgb(83, 119, 83) !important;
+}
+
+input[type=text]:focus:not([readonly])+label, input[type=password]:not(.browser-default):focus:not([readonly])+label {
     color: rgb(83, 119, 83) !important;
 }
 
@@ -148,9 +156,32 @@ input[type=text]:focus:not([readonly])+label {
     position: fixed;
     width: 56px !important;
     height: 56px !important;
-    bottom: 0;
+    bottom: 23px;
+    left: 23px;
 }
 
 .FriendProfile {
     margin-top: 10px;
+}
+
+.footer-copyright {
+    background-color: rgb(83, 119, 83) !important;
+}
+
+.thefooter {
+    background-color: rgb(112, 156, 112) !important;
+}
+
+#signUpModal, #loginModal {
+    display: inline-block;
+}
+
+#newJournal {
+    position: absolute;
+    right: 0;
+    margin: 32px;
+}
+
+#addProfilePic {
+    width: inherit !important;
 }

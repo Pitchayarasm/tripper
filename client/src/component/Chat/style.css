@@ -1,6 +1,6 @@
 .chatActive {
     display: block;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     right: 0;
     margin-right: 15px;
@@ -76,7 +76,7 @@
 }
 
 .card {
-    border: 1px solid #dee2e6;
+    /* border: 1px solid #dee2e6; */
 }
 
 .input-field {

@@ -87,34 +87,37 @@ class Home extends React.Component {
                     <h2 className="header">tripper</h2>
                     <p className="grey-text text-darken-3 lighten-3">Tripper is a social network for adventorous travelers. Sign up and start telling your story!</p>
                     <br />
+
+                    <Modal
+                      id="signUpModal"
+                      header='tripper Account Sign Up'
+                      trigger={<Button className="homeBtn">Sign Up</Button>}
+                      actions={<><Button className="cancel modal-action modal-close">Cancel</Button><Button id="signUpSubmit" className="cancel modal-action modal-close" onClick={this.handleSignUp}>Submit</Button></>}
+                      >
+                      <Row id="signUpForm">
+                        <Input id="firstName" value={this.state.firstName} s={5} label="First Name" onChange={this.handleInputChange} />
+                        <Input id="lastName" value={this.state.lastName} s={6} label="Last Name" onChange={this.handleInputChange} />
+                        <Input id="email" value={this.state.email} type="email" label="Email" s={12} onChange={this.handleInputChange} />
+                        <Input id="password1" value={this.state.password1} type="password" label="password" s={12} onChange={this.handleInputChange} />
+                        <Input id="password2" value={this.state.password2} type="password" label="confirm password" s={12} onChange={this.handleInputChange} />
+                      </Row>
+                    </Modal>
+
+                    <Modal
+                      id="loginModal"
+                      header='tripper Login'
+                      trigger={<Button className="homeBtn">Login</Button>}
+                      actions={<><Button className="cancel modal-action modal-close">Cancel</Button><Button id="loginBtn" className="cancel modal-action modal-close" onClick={this.handleLogin}>Login</Button></>}
+                      >
+                      <Row id="loginForm">
+                        <Input id="loginEmail" value={this.state.loginEmail} type="email" label="Email" s={12} onChange={this.handleInputChange} />
+                        <Input id="loginPassword" value={this.state.loginPassword} type="password" label="password" s={12} onChange={this.handleInputChange} />
+                        {/* {this.state.err ? <Toast >{this.state.err}</Toast> : null} */}
+                      </Row>
+                    </Modal>
+
                   </div>
                 </div>
-
-                <Modal
-                  header='tripper Account Sign Up'
-                  trigger={<Button className="homeBtn">Sign Up</Button>}
-                  actions={<><Button className="cancel modal-action modal-close">Cancel</Button><Button id="signUpSubmit" className="cancel modal-action modal-close" onClick={this.handleSignUp}>Submit</Button></>}
-                  >
-                  <Row id="signUpForm">
-                    <Input id="firstName" value={this.state.firstName} s={5} label="First Name" onChange={this.handleInputChange} />
-                    <Input id="lastName" value={this.state.lastName} s={6} label="Last Name" onChange={this.handleInputChange} />
-                    <Input id="email" value={this.state.email} type="email" label="Email" s={12} onChange={this.handleInputChange} />
-                    <Input id="password1" value={this.state.password1} type="password" label="password" s={12} onChange={this.handleInputChange} />
-                    <Input id="password2" value={this.state.password2} type="password" label="confirm password" s={12} onChange={this.handleInputChange} />
-                  </Row>
-                </Modal>
-
-                <Modal
-                  header='tripper Login'
-                  trigger={<Button className="homeBtn">Login</Button>}
-                  actions={<><Button className="cancel modal-action modal-close">Cancel</Button><Button id="loginBtn" className="cancel modal-action modal-close" onClick={this.handleLogin}>Login</Button></>}
-                  >
-                  <Row id="loginForm">
-                    <Input id="loginEmail" value={this.state.loginEmail} type="email" label="Email" s={12} onChange={this.handleInputChange} />
-                    <Input id="loginPassword" value={this.state.loginPassword} type="password" label="password" s={12} onChange={this.handleInputChange} />
-                    {/* {this.state.err ? <Toast >{this.state.err}</Toast> : null} */}
-                  </Row>
-                </Modal>
               </div>
             </Col>
           </Row>

@@ -42,6 +42,10 @@ class Nav extends React.Component {
         window.location.href = "/journal"
     }
 
+    profilePage = () => {
+        window.location.href = "/profile"
+    }
+
     handleLogout = () => {
         axios.get("/logout")
             .then((res) => {
@@ -56,14 +60,14 @@ class Nav extends React.Component {
             navbar = (
                 <>
                 <Navbar brand='tripper' right>
-                    <NavLink to="" className="tooltipped" data-position="left" data-tooltip="Quick Search"><Icon className="navIcon">search</Icon></NavLink>
-                    <NavLink to="" className="tooltipped" data-position="left" data-tooltip="Notifications"><Icon className="navIcon">notifications</Icon></NavLink>
-                    <NavLink to="/profile" className="tooltipped" data-position="left" data-tooltip="View Profile"><Icon className="navIcon">account_circle</Icon></NavLink>
+                    <NavLink to="#" data-position="left" tooltip="Quick Search"><Icon className="navIcon">search</Icon></NavLink>
+                    {/* <NavLink to="#" data-position="left" tooltip="Notifications"><Icon className="navIcon">notifications</Icon></NavLink> */}
+                    <NavLink onClick={this.profilePage} to="#" data-position="left" tooltip="View Profile"><Icon className="navIcon">account_circle</Icon></NavLink>
                 </Navbar>
 
                 <Modal
                     header='Title'
-                    trigger={<Button floating icon="add" className="blue darken-4" data-position="top" tooltip="Create Journal" />}
+                    trigger={<Button id="newJournal" floating icon="add" className="blue darken-4" data-position="left" tooltip="Create Journal" />}
                     actions={<><Button className="cancel modal-action modal-close">Cancel</Button><Button id="loginBtn" className="cancel modal-action modal-close" onClick={this.newJournal}>Create</Button></>}
                     modalOptions={{ dismissible: true }}>
                     <Input s={6} id="title" label="Title" value={this.state.title} onChange={this.handleInputChange}><Icon>account_circle</Icon></Input>
