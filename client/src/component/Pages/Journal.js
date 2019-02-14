@@ -4,13 +4,32 @@ import axios from "axios"
 
 class Journal extends React.Component {
     state = {
-        importTitle : "",
-        importText : "",
-        importLocation : "",
         entryTitle : "",
         entryText : "",
-        entryLocation : ""
+        entryLocation : "",
+        entries : []
     };
+
+    componentWillReceiveProps(nextProps) {
+        if ( this.props.user._id === undefined && nextProps.user.journals) {
+            this.getEntry(nextProps.user.journals);
+        }
+    }
+
+    getEntry = (journalId) => {
+        axios.get(`/entry/${journalId}`)
+        .then( res => {
+            console.log(res.data.entries)
+            if ( res ) {
+                this.setState({
+                    entries : res.data.entries
+                })
+            }
+        })
+        .catch( err => {
+            console.log(err);
+        }) 
+    }
 
     handleInputChange = event => {
         const value = event.target.value;
@@ -21,7 +40,6 @@ class Journal extends React.Component {
     };
 
     handleSubmit = () => {
-
         axios.post(`entry/${this.props.user.journals}`
         ,{
             title: this.state.entryTitle,
@@ -48,32 +66,23 @@ class Journal extends React.Component {
     render() {
         let entry;
 
-        if (this.state.importTitle) {
+        if (this.state.entries) {
             entry = (
-                <>
-                 <Row>
-                    <Col s={3} className='grid-example'></Col>
-                    <Col s={3} className='grid-example'>
-                        <h2>{this.state.importTitle} <span id="editBtn"><Icon>edit</Icon></span></h2>
-                        <hr />
-                        <p>{this.state.importText}</p>
-                    </Col>
-                    <Col s={4} className='journal_pics'>
-                        <img className="fit_img tile" src="https://via.placeholder.com/150/666.png/fff" alt="tripper" />
-                        <img className="fit_img tile" src="https://via.placeholder.com/300x150/666.png/fff" alt="tripper" />
-                        <img className="fit_img tile" src="https://via.placeholder.com/150x300/666.png/fff" alt="tripper" />
-                        <img className="fit_img tile" src="https://via.placeholder.com/150/666.png/fff" alt="tripper" />
-                        <img className="fit_img tile" src="https://via.placeholder.com/150/666.png/fff" alt="tripper" />
-                        <img className="fit_img tile" src="https://via.placeholder.com/150/666.png/fff" alt="tripper" />
-                        <img className="fit_img tile" src="https://via.placeholder.com/150/666.png/fff" alt="tripper" />
-                    </Col>
-                    <Col s={2} className='grid-example'></Col>
-                </Row>
-                </>
-            );
-        }
-         else {
-            entry = (
+                <> 
+                { this.state.entries.map(entry => ( 
+                        <Row>
+                        <Col s={3} className='grid-example'></Col>
+                        <Col s={3} className='grid-example'>
+                            <h2>{entry.title} <span id="editBtn"><Icon>edit</Icon></span></h2>
+                            <hr />
+                            <p>{entry.body}</p>
+                        </Col>
+                        <Col s={4} className='journal_pics'>
+                           { entry.file ?  <img className="fit_img tile" src={`upload/${entry.file}`} alt="tripper" /> : null}
+                        </Col>
+                        <Col s={2} className='grid-example'></Col>
+                    </Row>
+                ))}
                 <Modal
                 header='Add your Entry!'
                 trigger={<Button className="homeBtn">Add Entry</Button>}
@@ -83,10 +92,13 @@ class Journal extends React.Component {
                      <Input type='title' id="entryTitle" label="Title" value={this.state.entryTitle} onChange={this.handleInputChange} />
                      <Input type='textarea' id="entryText" label="Body" value={this.state.entryText} onChange={this.handleInputChange} />
                      <Input type='textarea' id="entryLocation" label="location" value={this.state.entryLocation} onChange={this.handleInputChange} />
-                     <Input name="profileImg" type="file" id="profileImg" label="Upload" placeholder="no file choosen" s={12} />
+                     <Input name="profileImg" type="file" id="profileImg" label="Upload" placeholder="no file choosen" s={12} readOnly/>
                  </Row>
-             </Modal>
-             );
+                </Modal>
+                </>
+            );
+        }
+         else {
          }
         return (
             <>

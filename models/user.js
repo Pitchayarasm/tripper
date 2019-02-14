@@ -35,6 +35,9 @@ var UserSchema = new Schema({
     file: {
         type: String
     },
+    about_me : {
+        type : String
+    },
     journals: {
           type: Schema.Types.ObjectId,
           ref: "Journal"

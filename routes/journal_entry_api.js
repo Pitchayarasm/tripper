@@ -36,17 +36,6 @@ router.post("/uploadEntry/:entryId", multiparty, function(req, res){
    });
 });
 
-// get entry pic
-router.get('/uploadEntry/:entryId', function(req, res) {
-    let db = mongoose.connection.db;
-    let mongoDriver = mongoose.mongo;
-    let gfs = new Gridfs(db, mongoDriver);
-    let readstream = gfs.createReadStream({
-        _id: req.params.id
-    });
-    readstream.pipe(res);
-});
-
 // add entry
 router.post("/entry/:journalId", (req, res) => {
     db.Entry.create(req.body)
@@ -63,6 +52,18 @@ router.post("/entry/:journalId", (req, res) => {
                 .catch( err => {
                     res.json(err);
                 });
+    });
+});    
+
+// get entry
+router.get("/entry/:journalId", (req, res) => {
+    db.Journal.findById( req.params.journalId )
+    .populate("entries")
+    .then( (journalDb) => {
+    res.json(journalDb);
+    })
+    .catch( (err) => {
+    res.json(err);
     });
 });    
 
