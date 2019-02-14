@@ -33,35 +33,32 @@ class Profile extends React.Component {
 
         if (this.props.user.file) {
             let src = `/upload/${this.props.user.file}`
-           profile =  <img src={src} alt="profile" />
+           profile =  <img style={{width:"100%"}} src={src} alt="profile" />
 
         }
 
         return (
             <div>
                 <Row className="FriendProfile">
-                    <Col s={1} className='grid-example'></Col>
+                    <Col s={2} className='grid-example'></Col>
                     <Col s={4} className='grid-example'>
-                        <img className="Friend" src="https://via.placeholder.com/465x718/666.png/fff" alt="tripper" />
-
-                    </Col>
-                    <Col s={3} className='grid-example'>
-
-                        <div className="textBox">
+                    {profile}
+                    <div className="textBox">
                         <h2>The moon is great!</h2>
                         <p>Quis occaecat consequat quis pariatur reprehenderit. Laboris nulla non irure sint et irure do commodo. Enim proident ex ut non do adipisicing reprehenderit laboris veniam exercitation ad eu deserunt et.</p>
                         </div>
                     </Col>
-                    {profile}
+                   
+                    
                     <Col s={3} className='grid-example'>
                     <div className="textBox">
                         <h2>{this.props.user.firstName}</h2>
                         <p>Quis occaecat consequat quis pariatur reprehenderit. Laboris nulla non irure sint et irure do commodo. Enim proident ex ut non do adipisicing reprehenderit laboris veniam exercitation ad eu deserunt et.</p>
-                        <img className="Friend" src="https://via.placeholder.com/346/666.png/fff" alt="tripper" />
                         </div>
+                        <img className="Friend" src="https://via.placeholder.com/346/666.png/fff" alt="tripper" />
 
                     </Col>
-                    <Col s={1} className="grid-example"></Col>
+                    <Col s={3} className="grid-example"></Col>
                 </Row>
 
 

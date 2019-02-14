@@ -1,5 +1,5 @@
 .journal-button .btn {
-    background-color: rgba($color: #000000, $alpha: 0) !important;
+    background-color: $primary-darken!important;
     box-shadow: none;
     margin: 0px !important;
     width: 13% !important;
@@ -19,16 +19,17 @@
     padding: 5px !important;
     height: inherit !important;
     line-height: inherit !important;
+    background-color: $primary-darken!important;
+
 }
 
 #editBtn i {
-    color: #000000;
+    background-color:$primary-color;
 }
 
 #editBtn i:hover {
-    color: rgb(83, 119, 83);
     transition: .3s;
-    transition-property: color;
+    transition-property:$primary-darken;
     cursor: pointer;
 }
 
@@ -38,3 +39,30 @@
     padding: 0 5px 0 5px !important;
 }
 
+.homeBtn {
+    background-color: $primary-color!important;
+    margin: inherit !important;
+    padding: 0 5px 0 5px !important;
+    float: none !important;
+    width: 80px;
+}
+
+.btnContainer > div {
+    display: inline-block !important;
+    margin-right: 10px;
+}
+
+.btn {
+    padding: 0;
+    float: right;
+    color: #ffffff !important;
+    margin-right: 0;
+    display: inline-block;
+    margin-top: 15px;
+    background-color: #f44336
+}
+
+.btn:hover {
+    background-color: #0DBB78 !important;
+    transition: background-color .3s;
+}

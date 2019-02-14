@@ -24,7 +24,7 @@ class Foot extends React.Component {
                 }
                 className='thefooter'
             >
-                <h5 className="white-text">Tripper</h5>
+                <h5 className="white-text">tripper</h5>
                 <p className="grey-text text-lighten-4">Adventure is out there!</p>
             </Footer>
         );

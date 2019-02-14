@@ -3,7 +3,6 @@ import { NavLink } from "react-router-dom";
 import { Navbar, Icon, SideNav, SideNavItem, Button, Modal, Input } from "react-materialize";
 import axios from "axios";
 import BlueButton from "../BlueButton/index"
-import "./style.css";
 
 class Nav extends React.Component {
 
@@ -65,10 +64,10 @@ class Nav extends React.Component {
                         <NavLink to="/Profile" className="tooltipped" data-position="left" data-tooltip="View Profile"><Icon className="navIcon">account_circle</Icon></NavLink>
                     </Navbar>
 
-                    <Button floating fab="horizontal" icon="navigation" className="red" large style={{ bottom: "45px", right: "24px" }}>
+                    <Button waves='light' floating fab="horizontal" icon="navigation" className="red" large style={{ bottom: "45px", right: "24px" }}>
                         <BlueButton/>
-                        <Button floating icon="group" className="yellow darken-3" data-position="top" onClick={this.friendsPage} tooltip="Friends" />
-                        <Button floating icon="power_settings_new" className="red darken-1" onClick={this.handleLogout} data-position="top" tooltip="Logout" />
+                        <Button waves='light' floating icon="group" className="yellow darken-3" data-position="top" onClick={this.friendsPage} tooltip="Friends" />
+                        <Button waves='light' floating icon="power_settings_new" className="red darken-1" onClick={this.handleLogout} data-position="top" tooltip="Logout" />
                     </Button>
                 </>
             );
