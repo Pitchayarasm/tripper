@@ -5,7 +5,6 @@ const User = require('../models/user');
 const fs = require('fs');
 const mongoose = require('mongoose');
 const Gridfs = require('gridfs-stream');
-const Blob = require('blob');
 
 // upload pics
 router.post('/upload/:id', multiparty, function(req, res){

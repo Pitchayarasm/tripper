@@ -18,6 +18,7 @@ router.post("/submit/:userId/:friendId", function(req, res) {
     ;
 })
 
+// populate friends
 router.get("/friendList/:userId", function(req, res) {
     db.User.find({
         _id : req.params.userId
