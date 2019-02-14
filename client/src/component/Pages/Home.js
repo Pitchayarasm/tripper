@@ -104,7 +104,7 @@ class Home extends React.Component {
               trigger={<Button className="homeBtn">Login</Button>}
               actions={<><Button className="cancel modal-action modal-close">Cancel</Button><Button id="loginBtn" className="cancel modal-action modal-close" onClick={this.handleLogin}>Login</Button></>}
             >
-              <Row>
+              <Row id="loginForm">
                 <Input id="loginEmail" value={this.state.loginEmail} type="email" label="Email" s={12} onChange={this.handleInputChange} />
                 <Input id="loginPassword" value={this.state.loginPassword} type="password" label="password" s={12} onChange={this.handleInputChange} />
                 {/* {this.state.err ? <Toast >{this.state.err}</Toast> : null} */}

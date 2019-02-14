@@ -11,6 +11,7 @@ class Chat extends React.Component {
         this.state = {
             chatting: true,
             message: "",
+            isTyping: "",
             socket_id: "",
             messages: []
         };
@@ -29,15 +30,27 @@ class Chat extends React.Component {
             console.log(data);
         });
 
+        // Listen for chat typing.
+        this.socket.on("isTyping", (data) => {
+            console.log(data);
+            this.setState({isTyping: data});
+        });
+
+        this.socket.on("noTyping", () => {
+            this.setState({isTyping: ""});
+        });
+
         // Listen for received messages and display to DOM
         this.socket.on("RECEIVE_MESSAGE", (data) => {
             this.addMessage(data);
         });
 
+        // Listen for new messages to update chat button.
         this.socket.on("notification", () => {
             this.props.newMessage();
         });
 
+        // Listener to leave chatroom.
         this.socket.on("leftRoom", (data) => {
             console.log(data);
         });
@@ -46,7 +59,7 @@ class Chat extends React.Component {
     };
     
     addMessage = (data) => {
-        this.setState({messages: [...this.state.messages, data]});
+        this.setState({messages: [...this.state.messages, data], isTyping: ""});
     }
 
     sendMessage = () => {
@@ -99,7 +112,16 @@ class Chat extends React.Component {
         if (this.props.user) {
             this.socket.emit("logon", this.props.user._id);
         }
+
         this.scrollToBottom();
+
+        // Is typing message...
+        if (this.state.message === "" || this.state.message === "\n") {
+            this.socket.emit("noTyping", this.props.chat.chatroom);
+        }
+        else {
+            this.socket.emit("typing", this.props.chat.user1.split(" ")[0] + " is typing a message...", this.props.chat.chatroom);
+        }
     }
 
     // Fn to end chat. Communicating with Chat.js.
@@ -157,6 +179,7 @@ class Chat extends React.Component {
                                 <div className="col s2">
                                     <Button className="btn" onClick={this.sendMessage}><Icon className="chatSendBtn">reply</Icon></Button>
                                 </div>
+                                <div className="col s12 isTyping">{this.state.isTyping}</div>
                             </div>
                         </div>
                     </div>

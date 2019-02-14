@@ -208,3 +208,11 @@ textarea.materialize-textarea:focus:not([readonly]) {
     font-size: 12px;
     clear: both;
 }
+
+.isTyping {
+    position: absolute !important;
+    bottom: 5px !important;
+    left: 15px !important;
+    color: #999999 !important;
+    display: inline-block !important;
+}

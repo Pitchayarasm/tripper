@@ -96,6 +96,14 @@ io.on("connection", (socket) => {
     socket.to(data.roomId).emit("notification");
   });
 
+  socket.on("typing", (data, room) => {
+    socket.to(room).emit("isTyping", data);
+  });
+
+  socket.on("noTyping", (room) => {
+    socket.to(room).emit("noTyping");
+  });
+
   // disconnect user from the chatroom and clear message history
   socket.on("disconnect", () => {
     console.log("User, at" + socket.id + ", disconnected.");
