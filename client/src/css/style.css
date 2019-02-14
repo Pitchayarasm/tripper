@@ -196,6 +196,27 @@ div.modal-content {
   background-color: #0DBB78 !important;
   transition: background-color .3s; }
 
+.thefooter {
+  padding-top: 20px;
+  position: absolute;
+  width: 100%;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  clear: both;
+  background-color: #F95759; }
+
+footer.page-footer {
+  padding-top: 20px;
+  position: absolute;
+  width: 100%;
+  right: 0;
+  position: initial;
+  bottom: 0;
+  left: 0;
+  clear: both;
+  background-color: #F95759; }
+
 .flip-box {
   background-color: transparent;
   width: 200px;
@@ -242,27 +263,6 @@ div.modal-content {
 
 .flip-box-back {
   transform: rotateY(180deg); }
-
-.thefooter {
-  padding-top: 20px;
-  position: absolute;
-  width: 100%;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  clear: both;
-  background-color: #F95759; }
-
-footer.page-footer {
-  padding-top: 20px;
-  position: absolute;
-  width: 100%;
-  right: 0;
-  position: initial;
-  bottom: 0;
-  left: 0;
-  clear: both;
-  background-color: #F95759; }
 
 .section {
   display: contents;
