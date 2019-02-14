@@ -15,7 +15,7 @@
     bottom: 90px;
     right: 0;
     margin-right: 15px;
-    width: 250px;
+    /* width: 250px; */
     height: 40px;
     font-weight: bold;
 }
@@ -26,6 +26,7 @@
     background-color: rgb(83, 119, 83);
     color: #ffffff;
     box-shadow: 0 8px 6px -6px #555555;
+    border-radius: 2px;
 }
 
 .chatInactive p:hover {
@@ -98,12 +99,10 @@
     margin: 0 !important;
 }
 
-.card-content {
+.messages {
     border-top: 1px solid #dee2e6;
-}
-
-.card-content strong {
-    color: darkblue;
+    padding: 12px 24px 12px 24px !important;
+    overflow-y: scroll;
 }
 
 .input-field.col label {
@@ -140,4 +139,80 @@ textarea.materialize-textarea:focus:not([readonly]) {
 .endChat:hover {
     font-weight: bold;
     cursor: pointer;
+}
+
+.user1 {
+    color: #ffffff !important;
+	position: relative;
+	background: darkblue;
+    border-radius: .4em;
+    float: right;
+    padding: 5px 10px 5px 10px;
+    margin-bottom: 5px !important;
+    box-shadow: 0 2px 5px #888888;
+    clear: both;
+}
+
+.user1:after {
+	content: '';
+	position: absolute;
+	right: 0;
+	top: 50%;
+	width: 0;
+	height: 0;
+	border: 0.5em solid transparent;
+	border-left-color: darkblue;
+	border-right: 0;
+	border-bottom: 0;
+	margin-top: -0.25em;
+	margin-right: -0.5em;
+}
+
+.user2 {
+    color: #ffffff !important;
+	position: relative;
+	background: #888888;
+    border-radius: .4em;
+    float: left;
+    padding: 5px 10px 5px 10px;
+    margin-bottom: 5px !important;
+    box-shadow: 0 2px 5px #444444;
+    clear: both;
+}
+
+.user2:after {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 50%;
+	width: 0;
+	height: 0;
+	border: 0.5em solid transparent;
+	border-right-color: #888888;
+	border-left: 0;
+	border-bottom: 0;
+	margin-top: -0.25em;
+	margin-left: -0.5em;
+}
+
+.user1Time {
+    float: right;
+    color: #999999;
+    font-size: 12px;
+    clear: both;
+}
+
+.user2Time {
+    float: left;
+    color: #999999;
+    font-size: 12px;
+    clear: both;
+}
+
+.isTyping {
+    position: absolute !important;
+    bottom: 5px !important;
+    left: 15px !important;
+    color: #999999 !important;
+    display: inline-block !important;
 }

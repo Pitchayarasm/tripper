@@ -44,7 +44,7 @@ class Home extends React.Component {
   };
 
   handleLogin = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     axios.post("/login", {
       email: this.state.loginEmail,
       password: this.state.loginPassword
@@ -70,27 +70,31 @@ class Home extends React.Component {
   };
 
   render() {
-    if ( this.props.user.firstName) {
+    if ( this.props.user.firstName ) {
       return < Redirect to="/profile" />
     }
 
-    return (
-      <>
-      <Row>
-        <Col s={12} className='grid-example'>
-          <div>
-            <Parallax imageSrc="http://materializecss.com/images/parallax1.jpg" />
-            <div className="section white">
-              <div className="row container btnContainer">
-                <h2 className="header">tripper</h2>
-                <p className="grey-text text-darken-3 lighten-3">Tripper is a social network for adventorous travelers. Sign up and start telling your story!</p>
-                <br />
+    else {
+      return (
+        <>
+          <Row>
+            <Col s={12} className='grid-example'>
+
+              <div>
+                <Parallax imageSrc="http://materializecss.com/images/parallax1.jpg" />
+                <div className="section white">
+                  <div className="row container btnContainer">
+                    <h2 className="header">tripper</h2>
+                    <p className="grey-text text-darken-3 lighten-3">Tripper is a social network for adventorous travelers. Sign up and start telling your story!</p>
+                    <br />
+                  </div>
+                </div>
 
                 <Modal
                   header='tripper Account Sign Up'
                   trigger={<Button className="homeBtn">Sign Up</Button>}
                   actions={<><Button className="cancel modal-action modal-close">Cancel</Button><Button id="signUpSubmit" className="cancel modal-action modal-close" onClick={this.handleSignUp}>Submit</Button></>}
-                >
+                  >
                   <Row id="signUpForm">
                     <Input id="firstName" value={this.state.firstName} s={5} label="First Name" onChange={this.handleInputChange} />
                     <Input id="lastName" value={this.state.lastName} s={6} label="Last Name" onChange={this.handleInputChange} />
@@ -104,21 +108,20 @@ class Home extends React.Component {
                   header='tripper Login'
                   trigger={<Button className="homeBtn">Login</Button>}
                   actions={<><Button className="cancel modal-action modal-close">Cancel</Button><Button id="loginBtn" className="cancel modal-action modal-close" onClick={this.handleLogin}>Login</Button></>}
-                >
-                  <Row>
+                  >
+                  <Row id="loginForm">
                     <Input id="loginEmail" value={this.state.loginEmail} type="email" label="Email" s={12} onChange={this.handleInputChange} />
                     <Input id="loginPassword" value={this.state.loginPassword} type="password" label="password" s={12} onChange={this.handleInputChange} />
                     {/* {this.state.err ? <Toast >{this.state.err}</Toast> : null} */}
                   </Row>
                 </Modal>
               </div>
-            </div>
-          </div>
-        </Col>
-      </Row>
-      <div className="section white"></div>
-      </>
-    );
+            </Col>
+          </Row>
+        <div className="section white"></div>
+        </>
+      );
+    }
   }
 }
 
