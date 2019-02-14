@@ -77,9 +77,7 @@ class Journal extends React.Component {
                             <h2>{user.journals.name}</h2>
                                 {this.state.entries.map( entry => (
                                     <ul>
-                                    <li>
-                                       <h4>- {entry.title}</h4> 
-                                    </li>
+                                    <li><h4>- {entry.title}</h4></li>
                                     </ul>
                                 ))}
                         </Col>

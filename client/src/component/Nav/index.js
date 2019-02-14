@@ -17,12 +17,12 @@ class Nav extends React.Component {
         window.location.href = "/friends"
     }
     
-    entryPage = () => {
-        window.location.href = "/entry"
+    journalPage = () => {
+        window.location.href = "/journal"
     }
 
-    entriesPage = () => {
-        window.location.href = "/entries"
+    entryPage = () => {
+        window.location.href = "/entry"
     }
 
     profilePage = () => {
@@ -61,8 +61,8 @@ class Nav extends React.Component {
 
                 <Button floating fab="horizontal" icon="navigation" className="red" large style={{bottom: "45px", right: "24px"}}>
                     <Button floating icon="account_circle" className="green darken-3" data-position="top" tooltip="Profile" onClick={this.profilePage} />
-                    <Button floating icon="local_library" className="blue darken-4" data-position="top" tooltip="Journal" onClick={this.entryPage} />
-                    <Button floating icon="card_travel" className="yellow darken-3" data-position="top" tooltip="Entries" onClick={this.entriesPage} />
+                    <Button floating icon="local_library" className="blue darken-4" data-position="top" tooltip="Journal" onClick={this.journalPage} />
+                    <Button floating icon="card_travel" className="yellow darken-3" data-position="top" tooltip="Entries" onClick={this.entryPage} />
                     <Button floating icon="group" className="purple darken-2" data-position="top" tooltip="Friends" onClick={this.friendsPage}/>
                     <Button floating icon="power_settings_new" className="red darken-1" onClick={this.handleLogout} data-position="top" tooltip="Logout"/>
                 </Button>
