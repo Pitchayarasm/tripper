@@ -46,15 +46,16 @@ class Nav extends React.Component {
             navbar = (
                 <>
                     <Navbar brand='tripper' right>
-                        <NavLink to="" className="tooltipped" data-position="left" data-tooltip="Quick Search"><Icon className="navIcon">search</Icon></NavLink>
+                    
+                        <NavLink to="/myStuff" className="tooltipped" data-position="left" data-tooltip="Add"><Icon className="navIcon">+</Icon></NavLink>
+                        <NavLink to="/Friends" className="tooltipped" data-position="left" data-tooltip="Quick Search"><Icon className="navIcon">search</Icon></NavLink>
                         <NavLink to="" data-activates="sidenav_3" className="tooltipped" data-position="left" data-tooltip="Chat"><Icon className="navIcon">chat</Icon></NavLink>
                         <NavLink to="" className="tooltipped" data-position="left" data-tooltip="Notifications"><Icon className="navIcon">notifications</Icon></NavLink>
                         <NavLink to="/Profile" className="tooltipped" data-position="left" data-tooltip="View Profile"><Icon className="navIcon">account_circle</Icon></NavLink>
                     </Navbar>
-
                     <Modal
                         header='Title'
-                        trigger={<Button floating icon="add" className="blue darken-4" data-position="top" tooltip="Create Journal" />}
+                        trigger={<Button floating icon="add" data-position="top" tooltip="Create Journal" />}
                         actions={<><Button className="cancel modal-action modal-close">Cancel</Button><Button id="loginBtn" className="cancel modal-action modal-close" onClick={this.newJournal}>Create</Button></>}>
                         <Input s={6} id="title" label="Title" value={this.state.title} onChange={this.handleInputChange} validate><Icon>account_circle</Icon></Input>
                     </Modal>

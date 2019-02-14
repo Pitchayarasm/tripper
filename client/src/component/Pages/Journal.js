@@ -76,11 +76,11 @@ class Journal extends React.Component {
             entry = (
                 <Modal
                 header='Add your Entry!'
-                trigger={<Button className="homeBtn">Add Entry</Button>}
+                trigger={<Button className="homeBtn pulse">Add Entry</Button>}
                 actions={<><Button className="cancel modal-action modal-close">Cancel</Button><Button id="signUpSubmit" className="cancel modal-action modal-close" onClick={this.handleSubmit}>Submit</Button></>}
                 > 
                  <Row id="addNewEntryForm">
-                     <Input type='title' id="entryTitle" label="Title" value={this.state.entryTitle} onChange={this.handleInputChange} />
+                     <Input type='textarea' id="entryTitle" label="Title" value={this.state.entryTitle} onChange={this.handleInputChange} />
                      <Input type='textarea' id="entryText" label="Body" value={this.state.entryText} onChange={this.handleInputChange} />
                      <Input type='textarea' id="entryLocation" label="location" value={this.state.entryLocation} onChange={this.handleInputChange} />
                      <Input name="profileImg" type="file" id="profileImg" label="Upload" placeholder="no file choosen" s={12} />
