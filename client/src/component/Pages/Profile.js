@@ -22,18 +22,20 @@ class Profile extends React.Component {
     }
 
     render() {
-        let profile = <Modal
-            trigger={<Button className="homeBtn">Add Profile</Button>}
-            actions={<><Button className="cancel modal-action modal-close">Cancel</Button><Button id="signUpSubmit" className="cancel modal-action modal-close" onClick={this.handleselectedFile}>Submit</Button></>}
-        >
-            <Row id="signUpForm">
-                <Input name="profileImg" type="file" id="profileImg" label="Upload" placeholder="no file choosen" s={12} />
-            </Row>
-        </Modal>;
+        let profile = (
+                <Modal
+                    trigger={<Button id="addProfilePic" className="homeBtn">Add Image</Button>}
+                    actions={<><Button className="cancel modal-action modal-close">Cancel</Button><Button id="signUpSubmit" className="cancel modal-action modal-close" onClick={this.handleselectedFile}>Submit</Button></>}
+                    >
+                    <Row id="signUpForm">
+                        <Input name="profileImg" type="file" id="profileImg" label="Profile Image" placeholder="Choose File" s={12} />
+                    </Row>
+                </Modal>
+            );
 
         if (this.props.user.file) {
             let src = `/upload/${this.props.user.file}`
-            profile = <img style={{ width: "100%" }} src={src} alt="profile" />
+           profile =  <img src={src} alt="profile" style={{width: "346px", height: "346px", objectFit: "cover"}} />
 
         }
 
