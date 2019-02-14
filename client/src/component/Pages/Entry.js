@@ -2,7 +2,7 @@ import React from "react";
 import { Row, Col, Icon, Button, Modal, Input } from "react-materialize";
 import axios from "axios"
 
-class Journal extends React.Component {
+class Entry extends React.Component {
     state = {
         entryTitle : "",
         entryText : "",
@@ -31,35 +31,22 @@ class Journal extends React.Component {
         }) 
     }
 
-    handleInputChange = event => {
-        const value = event.target.value;
-        const name = event.target.id;
+    handleInputChange = (event) => {
         this.setState({
-            [name]: value
+            title: event.target.value
         });
     };
 
-    handleSubmit = () => {
-        axios.post(`entry/${this.props.user.journals}`
-        ,{
-            title: this.state.entryTitle,
-            body: this.state.entryText,
-            location: this.state.entryLocation
+
+    newJournal = () => {
+        axios.post(`/journal/${this.props.user._id}` , { 
+            name: this.state.title 
         })
-        .then( res => {
-            if (res) {
-                let formData = new FormData();
-                let imagefile = document.querySelector('#profileImg');
-                formData.append("image", imagefile.files[0]);
-                axios.post(`/uploadEntry/${res.data}`, formData , {
-                    headers: {
-                        'Content-Type': 'multipart/form-data'
-                    }
-                })
-                .then( (res) => {
-                    console.log(res.data)
-                });
-            }
+        .then(res => {
+            this.props.setUser(res.data);
+            this.setState({ 
+                title: "" 
+            });
         });
     }
 
@@ -106,7 +93,13 @@ class Journal extends React.Component {
                         <div className="losEntries">
                             <h3>You don't have a journal yet</h3>
                             <p>Tell your story with tripper</p>
-                            {entry}
+                            <Modal
+                                header='Title'
+                                trigger={<Button id="newJournal" floating icon="add" className="blue darken-4" data-position="left" tooltip="Create Journal" />}
+                                actions={<><Button className="cancel modal-action modal-close">Cancel</Button><Button id="loginBtn" className="cancel modal-action modal-close" onClick={this.newJournal}>Create</Button></>}
+                                modalOptions={{ dismissible: true }}>
+                                <Input s={6} id="title" label="Title" value={this.state.title} onChange={this.handleInputChange}><Icon>account_circle</Icon></Input>
+                            </Modal>
                         </div>
                     </Col>
             
@@ -116,4 +109,5 @@ class Journal extends React.Component {
 }
 
 
-export default Journal;
+
+export default Entry;
