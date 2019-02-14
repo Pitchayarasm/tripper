@@ -35,7 +35,6 @@ class Nav extends React.Component {
                 <>
                 <Navbar brand='tripper' right>
                     <NavLink to="" className="tooltipped" data-position="left" data-tooltip="Quick Search"><Icon className="navIcon">search</Icon></NavLink>
-                    {/* <NavLink to="" data-activates="sidenav_0" className="tooltipped" data-position="left" data-tooltip="Chat"><Icon className="navIcon">chat</Icon></NavLink> */}
                     <NavLink to="" className="tooltipped" data-position="left" data-tooltip="Notifications"><Icon className="navIcon">notifications</Icon></NavLink>
                     <NavLink to="/profile" className="tooltipped" data-position="left" data-tooltip="View Profile"><Icon className="navIcon">account_circle</Icon></NavLink>
                 </Navbar>
@@ -47,7 +46,7 @@ class Nav extends React.Component {
                 </Button>
 
                 <SideNav
-                    trigger={<Button icon="chat" className="myChatBtn btn-large" data-position="top" tooltip="Chat"></Button>}
+                    trigger={<Button icon="chat" className={this.props.chat.notification ? "myChatBtn btn-large red darken-1" : "myChatBtn btn-large"} data-position="top" tooltip="Chat"></Button>}
                     options={{ closeOnClick: true, edge: "right" }}>
                     <SideNavItem
                     userView

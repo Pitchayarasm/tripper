@@ -23,8 +23,8 @@ class App extends Component {
             user1_id: null,
             user2: "",
             active: false,
-            chatroom: ""
-            // messages: []
+            chatroom: "",
+            notification: false
         },
         user: null
     };
@@ -62,27 +62,21 @@ class App extends Component {
             chat.active = chatStatus;
             chat.user2 = chattingWith;
             chat.chatroom = chat.user1.split(" ")[1] + chat.user2.split(" ")[1];
+            chat.notification = false;
+        
+        this.setState({chat});
+    };
 
-        // this.socket.emit("create", chat.chatroom);
+    newMessage = () => {
+        let chat = {...this.state.chat};
+            chat.notification = true;
 
-        // // Receive success message, upon starting a new chatroom with selected friend
-        // this.socket.on("success", (data) => {
-        //     console.log(data);
-        // });
+        this.setState({chat});
+    };
 
-        // // Retrieve the connected user's socketID and store in App
-        // this.socket.on("id", (data) => {
-        //     console.log(data);
-        // });
-
-        // // Listen for received messages and display to DOM
-        // this.socket.on("RECEIVE_MESSAGE", (data) => {
-        //     addMessage(data);
-        // });
-
-        // const addMessage = (data) => {
-        //     chat.messages.push(data);
-        // }
+    messageRead = () => {
+        let chat = {...this.state.chat};
+            chat.notification = false;
         
         this.setState({chat});
     };
@@ -92,6 +86,7 @@ class App extends Component {
         console.log(chatStatus);
         let chat = {...this.state.chat};
             chat.active = chatStatus;
+            chat.notification = false;
         this.setState({chat});
     };
 
@@ -100,7 +95,7 @@ class App extends Component {
         return (
             <Router>
                 <>
-                    <Nav user={this.state.user} startChat={this.startChat} setUser={this.setUser}></Nav>
+                    <Nav user={this.state.user} startChat={this.startChat} setUser={this.setUser} chat={this.state.chat}></Nav>
                     <Switch>
                         <Route exact path="/" render={(props) => <Home {...props} user={this.state.user} setUser={this.setUser} />} />
                         {/* {!this.state.user ? <Redirect to="/" /> : null } */}
@@ -110,7 +105,7 @@ class App extends Component {
                         <Route exact path="/friends" render={(props) => <SearchFriends {...props} user={this.state.user}/>} />
                         <Route exact path="/top_hikers" render={(props) => <TopHH {...props} user={this.state.user}/>} />
                     </Switch>
-                    <Chat endChat={this.endChat} chatStatus={this.state.chat.active} chat={this.state.chat} user={this.state.user}></Chat>
+                    <Chat endChat={this.endChat} chatStatus={this.state.chat.active} chat={this.state.chat} user={this.state.user} newMessage={this.newMessage} messageRead={this.messageRead}></Chat>
                 </>
             </Router>
         );

@@ -101,7 +101,7 @@
 
 .messages {
     border-top: 1px solid #dee2e6;
-    padding-bottom: 12px !important;
+    padding: 12px 24px 12px 24px !important;
     overflow-y: scroll;
 }
 
@@ -148,7 +148,7 @@ textarea.materialize-textarea:focus:not([readonly]) {
     border-radius: .4em;
     float: right;
     padding: 5px 10px 5px 10px;
-    margin-top: 10px !important;
+    margin-bottom: 5px !important;
     box-shadow: 0 2px 5px #888888;
     clear: both;
 }
@@ -175,7 +175,7 @@ textarea.materialize-textarea:focus:not([readonly]) {
     border-radius: .4em;
     float: left;
     padding: 5px 10px 5px 10px;
-    margin-top: 10px !important;
+    margin-bottom: 5px !important;
     box-shadow: 0 2px 5px #444444;
     clear: both;
 }
@@ -193,4 +193,18 @@ textarea.materialize-textarea:focus:not([readonly]) {
 	border-bottom: 0;
 	margin-top: -0.25em;
 	margin-left: -0.5em;
+}
+
+.user1Time {
+    float: right;
+    color: #999999;
+    font-size: 12px;
+    clear: both;
+}
+
+.user2Time {
+    float: left;
+    color: #999999;
+    font-size: 12px;
+    clear: both;
 }

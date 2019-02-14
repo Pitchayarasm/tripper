@@ -63,20 +63,25 @@ io.on("connection", (socket) => {
   console.log("User connected.");
   io.to(socket.id).emit("id", socket.id);
 
-  // Create private chatroom, when user selects friend to chat with
-  socket.on("create", (chatroom) => {
+  // Link userID to socket.id
+  socket.on("logon", (userID) => {
+    onlineUsers[userID] = socket.id;
+    console.log(onlineUsers);
+  });
 
-      // Delivery the unique socket ID to the connected socket
-      io.to(socket.id).emit("id", socket.id);
+  // Create private chatroom, when user selects friend to chat with
+  socket.on("create", (chatroom, id) => {
+
+    // Connect to selected socket
+    if (id in onlineUsers) {
+      io.sockets.connected[onlineUsers[id]].join(chatroom, () =>{
+        console.log(id + " has joined the " + chatroom + " chatroom.");
+      });
+    }
   
-    socket.join(chatroom, (chatroom) => {
-      io.to(socket.id).emit("id", socket.id);
-      console.log(io.sockets.clients(chatroom).adapter.rooms);
-    });
+    socket.join(chatroom);
 
     console.log(socket.id + " has joined the " + chatroom + " chatroom.");
-    socket.emit("success", "You are now chatting in the " + chatroom + " chatroom");
-
   });
 
   socket.on("leave", (chatroom) => {
@@ -87,10 +92,8 @@ io.on("connection", (socket) => {
   
   // Receive messages from client and return response to chatroom
   socket.on("SEND_MESSAGE", (data) => {
-    console.log(data, socket.id, socket.rooms);
-
     io.in(data.roomId).emit("RECEIVE_MESSAGE", data);
-    // io.to(socket.id).emit("MY_MESSAGE", data);
+    socket.to(data.roomId).emit("notification");
   });
 
   // disconnect user from the chatroom and clear message history

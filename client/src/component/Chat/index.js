@@ -11,6 +11,7 @@ class Chat extends React.Component {
         this.state = {
             chatting: true,
             message: "",
+            socket_id: "",
             messages: []
         };
 
@@ -20,6 +21,7 @@ class Chat extends React.Component {
         // Retrieve the connected user's socketID and store in App
         this.socket.on("id", (data) => {
             console.log(data);
+            this.setState({socket_id: data});
         });
 
         // Receive success message, upon starting a new chatroom with selected friend
@@ -28,28 +30,17 @@ class Chat extends React.Component {
         });
 
         // Listen for received messages and display to DOM
-        // this.socket.on("MY_MESSAGE", (data) => {
-        //     this.addMessage(data);
-        // });
-
-        // this.socket.on("FRIEND_MESSAGE", (data) => {
-        //     this.addMessage(data);
-        // });
-
-        // Listen for received messages and display to DOM
         this.socket.on("RECEIVE_MESSAGE", (data) => {
             this.addMessage(data);
+        });
+
+        this.socket.on("notification", () => {
+            this.props.newMessage();
         });
 
         this.socket.on("leftRoom", (data) => {
             console.log(data);
         });
-
-        // const addMessage = (data) => {
-        //     chat.messages.push(data);
-        // }
-        
-        // this.setState({chat});
         
         this.scrollToBottom = this.scrollToBottom.bind(this);
     };
@@ -70,10 +61,11 @@ class Chat extends React.Component {
         );
 
         this.setState({message: ""});
+        this.props.messageRead();
     }
 
     joinRoom = () => {
-        this.socket.emit("create", this.props.chat.chatroom);
+        this.socket.emit("create", this.props.chat.chatroom, "5c64976a11bf4c1a0cf2a6f0"); // Will need to replace string with FRIEND _id property.
     }
 
     handleClick = (status) => {
@@ -103,6 +95,10 @@ class Chat extends React.Component {
         if (this.props.chat.active) {
             this.joinRoom();
         }
+
+        if (this.props.user) {
+            this.socket.emit("logon", this.props.user._id);
+        }
         this.scrollToBottom();
     }
 
@@ -124,6 +120,8 @@ class Chat extends React.Component {
     render() {
 
         let chatWindow;
+        let timestamp = new Date;
+            timestamp = timestamp.getHours() + ":" + timestamp.getMinutes();
 
         if (this.state.chatting) {
             chatWindow = (
@@ -135,12 +133,18 @@ class Chat extends React.Component {
 
                                 if (item.userId === this.props.user._id) {
                                     return (
+                                        <>
+                                        <span className="user1Time">{timestamp}&nbsp;&nbsp;-&nbsp;&nbsp;You said:</span>
                                         <div className="user1">{item.message}</div>
+                                        </>
                                     )
                                 }
                                 else {
                                     return (
+                                        <>
+                                        <span className="user2Time">{timestamp}&nbsp;&nbsp;-&nbsp;&nbsp;{this.props.chat.user2.split(" ")[0]} said:</span>
                                         <div className="user2">{item.message}</div>
+                                        </>
                                     )
                                 }
                             })}
