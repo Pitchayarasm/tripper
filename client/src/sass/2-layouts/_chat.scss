@@ -1,0 +1,218 @@
+.chatActive {
+    display: block;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin-right: 15px;
+    width: 350px;
+    height: 425px;
+    z-index: 999;
+}
+
+.chatInactive {
+    display: inline-block;
+    position: fixed;
+    bottom: 90px;
+    right: 0;
+    margin-right: 15px;
+    /* width: 250px; */
+    height: 40px;
+    font-weight: bold;
+}
+
+.chatInactive p {
+    margin: 0;
+    padding: 10px;
+    background-color: rgb(83, 119, 83);
+    color: #ffffff;
+    box-shadow: 0 8px 6px -6px #555555;
+    border-radius: 2px;
+}
+
+.chatInactive p:hover {
+    cursor: pointer;
+    background-color: rgb(55, 80, 55) !important;
+    transition: background-color .3s;
+}
+
+.chatInactive i {
+    float: right;
+}
+
+.cardHeader {
+    margin: 2px;
+    padding: 12px;
+    background-color: rgb(83, 119, 83);
+    color: #ffffff;
+    font-weight: bold;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+}
+
+.cardHeader i {
+    float: right;
+}
+
+.cardHeader:hover {
+    cursor: pointer;
+    background-color: rgb(55, 80, 55) !important;
+    transition: background-color .3s;
+}
+
+.btn {
+    width: 40px;
+    padding: 0;
+    float: right;
+    background-color: rgb(83, 119, 83) !important;
+    color: #ffffff !important;
+    margin-right: 0;
+    display: inline-block;
+    margin-top: 15px;
+}
+
+.btn:hover {
+    background-color: rgb(55, 80, 55) !important;
+    transition: background-color .3s;
+}
+
+.card {
+    /* border: 1px solid #dee2e6; */
+}
+
+.input-field {
+    display: inline-block;
+    width: 100%;
+    padding: 0 !important;
+}
+
+.s10 {
+    padding-left: 0 !important;
+}
+
+.s2 {
+    padding-right: 0 !important;
+}
+
+.materialize-textarea {
+    padding: 0 !important;
+    height: 22px !important;
+    margin: 0 !important;
+}
+
+.messages {
+    border-top: 1px solid #dee2e6;
+    padding: 12px 24px 12px 24px !important;
+    overflow-y: scroll;
+}
+
+.input-field.col label {
+    left: 0 !important;
+    top: 0.25rem !important;
+}
+
+textarea.materialize-textarea:focus:not([readonly])+label {
+    font-weight: bold;
+    color: rgb(83, 119, 83);
+}
+
+textarea.materialize-textarea:focus:not([readonly]) {
+    border-bottom: 1px solid rgb(83, 119, 83);
+    box-shadow: 0 1px 0 0 rgb(83, 119, 83);
+}
+
+.chatEndBtn {
+    margin-right: 10px;
+    text-align: right;
+    font-size: 20px;
+    vertical-align: text-bottom;
+}
+
+.endChatBtn, .endChat {
+    color: #dee2e6;
+}
+
+.endChatBtn:hover, .endChat:hover {
+    color: #000000;
+    transition: color .3s;
+}
+
+.endChat:hover {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.user1 {
+    color: #ffffff !important;
+	position: relative;
+	background: darkblue;
+    border-radius: .4em;
+    float: right;
+    padding: 5px 10px 5px 10px;
+    margin-bottom: 5px !important;
+    box-shadow: 0 2px 5px #888888;
+    clear: both;
+}
+
+.user1:after {
+	content: '';
+	position: absolute;
+	right: 0;
+	top: 50%;
+	width: 0;
+	height: 0;
+	border: 0.5em solid transparent;
+	border-left-color: darkblue;
+	border-right: 0;
+	border-bottom: 0;
+	margin-top: -0.25em;
+	margin-right: -0.5em;
+}
+
+.user2 {
+    color: #ffffff !important;
+	position: relative;
+	background: #888888;
+    border-radius: .4em;
+    float: left;
+    padding: 5px 10px 5px 10px;
+    margin-bottom: 5px !important;
+    box-shadow: 0 2px 5px #444444;
+    clear: both;
+}
+
+.user2:after {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 50%;
+	width: 0;
+	height: 0;
+	border: 0.5em solid transparent;
+	border-right-color: #888888;
+	border-left: 0;
+	border-bottom: 0;
+	margin-top: -0.25em;
+	margin-left: -0.5em;
+}
+
+.user1Time {
+    float: right;
+    color: #999999;
+    font-size: 12px;
+    clear: both;
+}
+
+.user2Time {
+    float: left;
+    color: #999999;
+    font-size: 12px;
+    clear: both;
+}
+
+.isTyping {
+    position: absolute !important;
+    bottom: 5px !important;
+    left: 15px !important;
+    color: #999999 !important;
+    display: inline-block !important;
+}
