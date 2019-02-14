@@ -21,6 +21,7 @@ class Journal extends React.Component {
     };
 
     handleSubmit = () => {
+
         axios.post(`entry/${this.props.user.journals}`
         ,{
             title: this.state.entryTitle,
@@ -29,12 +30,19 @@ class Journal extends React.Component {
         })
         .then( res => {
             if (res) {
-                console.log(res.data)
-                this.setState({
-                    // front-end grab data here
+                let formData = new FormData();
+                let imagefile = document.querySelector('#profileImg');
+                formData.append("image", imagefile.files[0]);
+                axios.post(`/uploadEntry/${res.data}`, formData , {
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    }
                 })
+                .then( (res) => {
+                    console.log(res.data)
+                });
             }
-        })
+        });
     }
 
     render() {

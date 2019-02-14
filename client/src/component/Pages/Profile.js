@@ -7,8 +7,8 @@ class Profile extends React.Component {
     };
 
     handleselectedFile = () => {
-        var formData = new FormData();
-        var imagefile = document.querySelector('#profileImg');
+        let formData = new FormData();
+        let imagefile = document.querySelector('#profileImg');
         formData.append("image", imagefile.files[0]);
         console.log(formData)
         axios.post('/upload/' + this.props.user._id, formData , {
@@ -18,7 +18,7 @@ class Profile extends React.Component {
         })
         .then( (res) => {
             this.props.setUser(res.data)
-        })
+        });
     }
 
     render() {
