@@ -3,7 +3,6 @@ const path = require("path");
 const mongoose = require("mongoose");
 const passport = require("passport");
 const session = require("express-session");
-const flash = require("connect-flash");
 const PORT = process.env.PORT || 3001;
 const app = express();
 const logger = require("morgan")
@@ -27,8 +26,6 @@ app.use(passport.session());
 
 app.use(logger("dev"));
 
-// Connect flash
-app.use(flash());
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
