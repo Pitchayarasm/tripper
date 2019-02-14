@@ -1,12 +1,43 @@
+@import url("https://fonts.googleapis.com/css?family=Rokkitt:400,500,700,900");
 /* ==============================
  * PLUGINS & THIRD PARTY STYLES
  * ============================== */
+.pulse {
+  overflow: visible;
+  position: relative; }
+  .pulse::before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: inherit;
+    border-radius: inherit;
+    transition: opacity .3s, transform .3s;
+    animation: pulse-animation 1s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+    z-index: -1; }
+
+@keyframes pulse-animation {
+  0% {
+    opacity: 1;
+    transform: scale(1); }
+  50% {
+    opacity: 0;
+    transform: scale(1.5); }
+  100% {
+    opacity: 0;
+    transform: scale(1.5); } }
 /* ==============================
    BASE STYLES
    ============================== */
 /* ==============================
    BASE STYLES
    ============================== */
+* {
+  font-family: "Rokkitt", serif; }
+
 hr {
   float: left;
   width: 95%; }
@@ -23,16 +54,6 @@ hr {
 .topImg {
   overflow-y: inherit;
   overflow-x: inherit; }
-
-.homeBtn {
-  margin: inherit !important;
-  padding: 0 5px 0 5px !important;
-  float: none !important;
-  width: 80px; }
-
-.btnContainer > div {
-  display: inline-block !important;
-  margin-right: 10px; }
 
 #signUpSubmit {
   margin: 1% !important;
@@ -118,7 +139,7 @@ div.modal-content {
  * LAYOUT STYLES
  * ============================== */
 .journal-button .btn {
-  background-color: rgba(0, 0, 0, 0) !important;
+  background-color: #C54E59 !important;
   box-shadow: none;
   margin: 0px !important;
   width: 13% !important;
@@ -135,21 +156,45 @@ div.modal-content {
   width: auto !important;
   padding: 5px !important;
   height: inherit !important;
-  line-height: inherit !important; }
+  line-height: inherit !important;
+  background-color: #C54E59 !important; }
 
 #editBtn i {
-  color: #000000; }
+  background-color: #F95759; }
 
 #editBtn i:hover {
-  color: #537753;
   transition: .3s;
-  transition-property: color;
+  transition-property: #C54E59;
   cursor: pointer; }
 
 #loginBtn {
   margin: 1% !important;
   width: auto !important;
   padding: 0 5px 0 5px !important; }
+
+.homeBtn {
+  background-color: #F95759 !important;
+  margin: inherit !important;
+  padding: 0 5px 0 5px !important;
+  float: none !important;
+  width: 80px; }
+
+.btnContainer > div {
+  display: inline-block !important;
+  margin-right: 10px; }
+
+.btn {
+  padding: 0;
+  float: right;
+  color: #ffffff !important;
+  margin-right: 0;
+  display: inline-block;
+  margin-top: 15px;
+  background-color: #f44336; }
+
+.btn:hover {
+  background-color: #0DBB78 !important;
+  transition: background-color .3s; }
 
 .flip-box {
   background-color: transparent;
@@ -206,7 +251,7 @@ div.modal-content {
   bottom: 0;
   left: 0;
   clear: both;
-  background-color: #5aac5a; }
+  background-color: #F95759; }
 
 footer.page-footer {
   padding-top: 20px;
@@ -217,7 +262,7 @@ footer.page-footer {
   bottom: 0;
   left: 0;
   clear: both;
-  background-color: #5aac5a; }
+  background-color: #F95759; }
 
 .section {
   display: contents;
@@ -227,6 +272,206 @@ footer.page-footer {
 
 .section .white {
   float: left; }
+
+.chatActive {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin-right: 15px;
+  width: 350px;
+  height: 425px;
+  z-index: 999; }
+
+.chatInactive {
+  display: inline-block;
+  position: fixed;
+  bottom: 90px;
+  right: 0;
+  margin-right: 15px;
+  width: 250px;
+  height: 40px;
+  font-weight: bold; }
+
+.chatInactive p {
+  margin: 0;
+  padding: 10px;
+  background-color: #537753;
+  color: #ffffff;
+  box-shadow: 0 8px 6px -6px #555555; }
+
+.chatInactive p:hover {
+  cursor: pointer;
+  background-color: #375037 !important;
+  transition: background-color .3s; }
+
+.chatInactive i {
+  float: right; }
+
+.cardHeader {
+  margin: 2px;
+  padding: 12px;
+  background-color: #537753;
+  color: #ffffff;
+  font-weight: bold;
+  border: 1px solid #dee2e6;
+  border-radius: 4px; }
+
+.cardHeader i {
+  float: right; }
+
+.cardHeader:hover {
+  cursor: pointer;
+  background-color: #375037 !important;
+  transition: background-color .3s; }
+
+.card {
+  border: 1px solid #dee2e6; }
+
+.input-field {
+  display: inline-block;
+  width: 100%;
+  padding: 0 !important; }
+
+.s10 {
+  padding-left: 0 !important; }
+
+.s2 {
+  padding-right: 0 !important; }
+
+.materialize-textarea {
+  padding: 0 !important;
+  height: 22px !important;
+  margin: 0 !important; }
+
+.card-content {
+  border-top: 1px solid #dee2e6; }
+
+.card-content strong {
+  color: darkblue; }
+
+.input-field.col label {
+  left: 0 !important;
+  top: 0.25rem !important; }
+
+textarea.materialize-textarea:focus:not([readonly]) + label {
+  font-weight: bold;
+  color: #537753; }
+
+textarea.materialize-textarea:focus:not([readonly]) {
+  border-bottom: 1px solid #537753;
+  box-shadow: 0 1px 0 0 #537753; }
+
+.chatEndBtn {
+  margin-right: 10px;
+  text-align: right;
+  font-size: 20px;
+  vertical-align: text-bottom; }
+
+.endChatBtn, .endChat {
+  color: #dee2e6; }
+
+.endChatBtn:hover, .endChat:hover {
+  color: #000000;
+  transition: color .3s; }
+
+.endChat:hover {
+  font-weight: bold;
+  cursor: pointer; }
+
+nav {
+  background-color: #F95759; }
+
+.brand-logo {
+  margin-left: 15px; }
+
+nav ul a {
+  display: inline-block; }
+
+.side-nav {
+  top: inherit;
+  margin-top: 1px; }
+
+#sidenav-overlay {
+  top: inherit;
+  display: none; }
+
+.userView {
+  background: url("https://www.toptal.com/designers/subtlepatterns/patterns/bright_squares.png");
+  border-bottom: 1px solid #2b2b2c; }
+
+.circle {
+  object-fit: cover; }
+
+.name, .email {
+  color: #333333 !important; }
+
+.onlineHeader a {
+  font-weight: bold !important;
+  font-size: 16px !important; }
+
+.onlineFriend i {
+  float: none !important;
+  margin-left: 8px !important; }
+
+.icon-online {
+  color: #5aac5a !important; }
+
+.icon-friend-online {
+  color: #5aac5a !important;
+  font-size: 10px; }
+
+.navBtn {
+  margin: inherit !important;
+  width: inherit !important;
+  padding: 0 5px 0 5px !important;
+  float: none !important; }
+
+#signUp {
+  margin-right: 20px !important; }
+
+#navBarOut {
+  padding-right: 20px; }
+
+#navBarOut a {
+  float: left;
+  margin-bottom: 10px; }
+
+#navBarOut ul div {
+  display: inline-block !important; }
+
+#signUpSubmit {
+  margin: 1% !important;
+  width: auto !important;
+  padding: 0 5px 0 5px !important; }
+
+#loginBtn {
+  margin: 1% !important;
+  width: auto !important;
+  padding: 0 5px 0 5px !important; }
+
+.file-field .btn {
+  margin: 1% !important;
+  width: auto !important;
+  padding: 5px !important;
+  height: inherit !important;
+  line-height: inherit !important; }
+
+div.modal-content {
+  padding-bottom: 0 !important; }
+
+#signUpForm > .s6 {
+  float: right; }
+
+#signUpForm > .file-field {
+  padding-right: 0 !important; }
+
+.cancel {
+  display: inline-block !important;
+  margin: 1% !important;
+  width: auto !important;
+  padding: 0 5px 0 5px !important;
+  float: right !important; }
 
 /* ==============================
  * MODULE STYLES

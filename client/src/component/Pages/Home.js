@@ -83,13 +83,13 @@ class Home extends React.Component {
             <div className="section white">
               <div className="row container btnContainer">
                 <h2 className="header">tripper</h2>
-                <p className="grey-text text-darken-3 lighten-3">Tripper is a social network for adventorous travelers. Sign up and start telling your story!</p>
+                <p className="grey-text text-darken-3 lighten-3">Are you tripping?<br></br> <strong>Sign up and start telling your story</strong></p>
                 <br />
 
                 <Modal
                   header='tripper Account Sign Up'
-                  trigger={<Button className="homeBtn">Sign Up</Button>}
-                  actions={<><Button className="cancel modal-action modal-close">Cancel</Button><Button id="signUpSubmit" className="cancel modal-action modal-close" onClick={this.handleSignUp}>Submit</Button></>}
+                  trigger={<Button waves='light' className="homeBtn pulse">Sign Up</Button>}
+                  actions={<><Button waves='light' className="cancel modal-action modal-close">Cancel</Button><Button waves='light' id="signUpSubmit" className="cancel modal-action modal-close" onClick={this.handleSignUp}>Submit</Button></>}
                 >
                   <Row id="signUpForm">
                     <Input id="firstName" value={this.state.firstName} s={5} label="First Name" onChange={this.handleInputChange} />
@@ -102,8 +102,8 @@ class Home extends React.Component {
 
                 <Modal
                   header='tripper Login'
-                  trigger={<Button className="homeBtn">Login</Button>}
-                  actions={<><Button className="cancel modal-action modal-close">Cancel</Button><Button id="loginBtn" className="cancel modal-action modal-close" onClick={this.handleLogin}>Login</Button></>}
+                  trigger={<Button waves='light' className="homeBtn pulse">Login</Button>}
+                  actions={<><Button waves='light' className="cancel modal-action modal-close">Cancel</Button><Button id="loginBtn" waves='light' className="cancel modal-action modal-close" onClick={this.handleLogin}>Login</Button></>}
                 >
                   <Row>
                     <Input id="loginEmail" value={this.state.loginEmail} type="email" label="Email" s={12} onChange={this.handleInputChange} />

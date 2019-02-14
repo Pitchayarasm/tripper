@@ -1,5 +1,5 @@
 nav {
-    background-color: #5AAC5A;
+    background-color: $primary-color;
 }
 
 .brand-logo {
@@ -22,7 +22,7 @@ nav ul a {
 
 .userView {
     background: url("https://www.toptal.com/designers/subtlepatterns/patterns/bright_squares.png");
-    border-bottom: 1px solid #dee2e6;
+    border-bottom: 1px solid #2b2b2c;
 }
 
 .circle {
@@ -114,8 +114,4 @@ div.modal-content {
     width: auto !important;
     padding: 0 5px 0 5px !important;
     float: right !important;
-}
-
-.FriendProfile {
-    margin-top: 10px;
 }
