@@ -84,7 +84,7 @@ class Entry extends React.Component {
                         </Row>
                 ))}
                 <Modal
-                header='Add your Journal!'
+                header='Add your Entry'
                 trigger={<Button className="homeBtn pulse addEntry">Add</Button>}
                 actions={<><Button className="cancel modal-action modal-close">Cancel</Button><Button id="signUpSubmit" className="cancel modal-action modal-close" onClick={this.handleSubmit}>Submit</Button></>}
                 > 
@@ -109,7 +109,14 @@ class Entry extends React.Component {
          }
         return (
             <>
-            {entry}
+            <Col s={3} className='grid-example'>
+                    <div className="losEntries">
+                        <h3>You don't have a journal yet</h3>
+                        <p>Tell your story with tripper</p>
+                        {entry}
+                    </div>
+                    </Col>
+            
             </>
         );
     }
