@@ -67,14 +67,6 @@ class Nav extends React.Component {
                     {/* <NavLink onClick={this.profilePage} to="#" data-position="left" tooltip="View Profile"><Icon className="navIcon">account_circle</Icon></NavLink> */}
                 </Navbar>
 
-                <Modal
-                    header='Title'
-                    trigger={<Button id="newJournal" floating icon="add" className="blue darken-4 pulse" data-position="left" tooltip="Create Journal" />}
-                    actions={<><Button className="cancel modal-action modal-close">Cancel</Button><Button id="loginBtn" className="cancel modal-action modal-close" onClick={this.newJournal}>Create</Button></>}
-                    modalOptions={{ dismissible: true }}>
-                    <Input s={6} id="title" label="Title" value={this.state.title} onChange={this.handleInputChange}><Icon>account_circle</Icon></Input>
-                </Modal>
-
                 <Button floating fab="horizontal" icon="navigation" className="blue darken-4 pulse" large style={{bottom: "45px", right: "24px"}}>
                     <Button floating icon="account_circle" className="green darken-3" data-position="top" tooltip="Profile" onClick={this.profilePage} />
                     <Button floating icon="local_library" className="blue darken-2" data-position="top" tooltip="Journal" onClick={this.entryPage} />
