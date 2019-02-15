@@ -117,33 +117,36 @@ class App extends Component {
 
     getFriends = (userId) => {
 
-        axios.get("/friendList/" + userId)
-        .then((res) => {
+        if (this.state.user) {
 
-            let online = [];
-            let offline = [];
-            let nav = {...this.state.nav};
+            axios.get("/friendList/" + userId)
+            .then((res) => {
 
-            res.data[0].friends.forEach(item => {
+                let online = [];
+                let offline = [];
+                let nav = {...this.state.nav};
 
-                if (item.active) {
+                res.data[0].friends.forEach(item => {
 
-                    let friend = {name: item.firstName + " " + item.lastName, id: item._id};
-                    online.push(friend);
-                }
+                    if (item.active) {
 
-                else {
+                        let friend = {name: item.firstName + " " + item.lastName, id: item._id};
+                        online.push(friend);
+                    }
 
-                    let friend = {name: item.firstName + " " + item.lastName, id: item._id};
-                    offline.push(friend);
-                }
+                    else {
+
+                        let friend = {name: item.firstName + " " + item.lastName, id: item._id};
+                        offline.push(friend);
+                    }
+                });
+
+                nav.onlineFriends = online;
+                nav.offlineFriends = offline;
+
+                this.setState({nav});
             });
-
-            nav.onlineFriends = online;
-            nav.offlineFriends = offline;
-
-            this.setState({nav});
-        });
+        }
     }
 
     render() {
@@ -154,7 +157,6 @@ class App extends Component {
                     <Nav user={this.state.user} startChat={this.startChat} setUser={this.setUser} chat={this.state.chat} getFriends={this.getFriends} nav={this.state.nav}></Nav>
                     <Switch>
                         <Route exact path="/" render={(props) => <Home {...props} user={this.state.user} setUser={this.setUser} />} />
-                        {/* {!this.state.user.firstName ? <Redirect to="/" /> : null } */}
                         <Route exact path="/entry" render={(props) => <Entry {...props} user={this.state.user} setUser={this.setUser}/>} />
                         <Route exact path="/journal" render={(props) => <Journal {...props} user={this.state.user} setUser={this.setUser}/>} />
                         <Route exact path="/profile" render={(props) => <Profile {...props} user={this.state.user} setUser={this.setUser}/>} />
