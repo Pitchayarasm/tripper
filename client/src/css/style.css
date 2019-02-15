@@ -635,6 +635,11 @@ input[type=text]:focus:not([readonly]) + label, input[type=password]:not(.browse
 #addProfilePic {
   width: inherit !important; }
 
+#search {
+  position: relative;
+  bottom: 3px;
+  padding-top: 3px; }
+
 #search:focus {
   background-color: transparent;
   border: none;

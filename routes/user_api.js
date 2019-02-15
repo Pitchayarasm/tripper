@@ -41,7 +41,7 @@ const db = require("../models")
     })
     .then( user => {
       if (!user) {
-        return done(null, false, { message: 'That email is not registered' });
+        return done(null, false, { message: 'That email is not registered.' });
       } else {
         // Match password
         bcrypt.compare( password, user.password, (err, isMatch) => {
@@ -49,24 +49,22 @@ const db = require("../models")
           if (isMatch) {
             return done(null, user)
           } else {
-            return done(null, false, { message: 'Password incorrect' });
+            return done(null, false, { message: 'Password incorrect.' });
           }
         });
       }
     });
-  }));
+  }))
 
-    passport.serializeUser(function(user, done) {
-      console.log("hitserialize")
+  passport.serializeUser(function(user, done) {
     done(null, user.id);
   });
 
-    passport.deserializeUser(function(id, done) {
-      console.log("hitderialize")
-      db.User.findById(id, function(err, user) {
-        done(err, user);
-      });
+  passport.deserializeUser(function(id, done) {
+    db.User.findById(id, function(err, user) {
+      done(err, user);
     });
+  });
 
   // Login
   router.post('/login', passport.authenticate("local"), (req, res, next) => {
@@ -80,7 +78,25 @@ const db = require("../models")
     res.json(user)
   });
 
-  router.get("/isLogin" , (req,res) => {
+  // Logout
+  router.get('/logout', (req, res) => {
+    db.User.findByIdAndUpdate( req.params.userId, 
+      { active: false} 
+      ,{ 
+          new: true 
+      })
+      .then( (dbUser) => {
+          res.send(dbUser)
+      })
+      .catch( err => {
+          res.json(err);
+      });
+    res.json(req.user)
+    req.logout();
     res.json(req.user)
   });
+
+  router.get("/isLogin" , (req,res) => {
+    res.json(req.user)
+  })
 module.exports = router;
