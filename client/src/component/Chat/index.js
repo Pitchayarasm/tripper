@@ -20,7 +20,6 @@ class Chat extends React.Component {
 
         // Retrieve the connected user's socketID and store in App
         this.socket.on("id", (data) => {
-            console.log(data);
             this.setState({socket_id: data});
         });
 
@@ -31,7 +30,6 @@ class Chat extends React.Component {
 
         // Listen for chat typing.
         this.socket.on("isTyping", (data) => {
-            console.log(data);
             this.setState({isTyping: data});
         });
 
@@ -77,7 +75,7 @@ class Chat extends React.Component {
     }
 
     joinRoom = () => {
-        this.socket.emit("create", this.props.chat.chatroom, "5c6518820e0fd32f446dd123"); // Will need to replace string with FRIEND _id property.
+        this.socket.emit("create", this.props.chat.chatroom, this.props.chat.user2_id);
     }
 
     handleClick = (status) => {
@@ -101,7 +99,7 @@ class Chat extends React.Component {
       
     componentDidMount() {
         this.scrollToBottom();
-        console.log("hi");
+        
     }
       
     componentDidUpdate() {

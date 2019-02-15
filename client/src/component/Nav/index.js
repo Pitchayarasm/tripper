@@ -46,6 +46,16 @@ class Nav extends React.Component {
     }
 
     render() {
+
+        let profileImg;
+
+        if (this.props.user.file !== undefined) {
+            profileImg = `/upload/${this.props.user.file}`;
+        }
+        else {
+            profileImg = "https://cdn-images-1.medium.com/max/1200/1*MccriYX-ciBniUzRKAUsAw.png";
+        }
+
         let navbar;
         if (this.props.user._id) {
             navbar = (
@@ -76,21 +86,21 @@ class Nav extends React.Component {
                 </Button>
 
                 <SideNav
-                    trigger={<Button icon="chat" onClick={() => this.props.getFriends(this.props.user._id)} className={this.props.chat.notification ? "myChatBtn btn-large yellow darken-3" : "myChatBtn btn-large blue darken-4"} data-position="top" tooltip="Chat"></Button>}
+                    trigger={<Button icon="chat" className={this.props.chat.notification ? "myChatBtn btn-large yellow darken-3" : "myChatBtn btn-large blue darken-4"} data-position="top" tooltip="Chat"></Button>}
                     options={{ closeOnClick: true, edge: "right" }}
                     >
                     <SideNavItem
                         userView
                         user={{
                             background: "",
-                            image: `/upload/${this.props.user.file}`,
+                            image: profileImg,
                             name: `${this.props.user.firstName} ${this.props.user.lastName}`,
                             email: `${this.props.user.email}`
                         }}
                     />
                     <SideNavItem className="onlineHeader"><Icon className="icon-online">rss_feed</Icon>Online Friends</SideNavItem>
                     {this.props.nav.onlineFriends.map((item) => {
-                        return <SideNavItem className="onlineFriend" waves onClick={() => this.props.startChat(true, item.id)}>{item.name} <Icon className="icon-friend-online">lens</Icon></SideNavItem>
+                        return <SideNavItem className="onlineFriend" waves onClick={() => this.props.startChat(true, item.name, item.id)}>{item.name} <Icon className="icon-friend-online">lens</Icon></SideNavItem>
                     })}
                     <SideNavItem divider />
                     <SideNavItem subheader>Offline Friends</SideNavItem>

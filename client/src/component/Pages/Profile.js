@@ -63,7 +63,7 @@ class Profile extends React.Component {
 
     render() {
         let profile;
-        if (this.props.user.file) {
+        if (this.props.user.file !== undefined) {
             let src = `/upload/${this.props.user.file}`
            profile =  <img src={src} alt="profile" style={{width: "346px", height: "346px", objectFit: "cover"}} />
         }

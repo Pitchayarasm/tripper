@@ -25,6 +25,7 @@ class App extends Component {
             user1: null,
             user1_id: null,
             user2: "",
+            user2_id: "",
             active: false,
             chatroom: "",
             notification: false
@@ -48,6 +49,8 @@ class App extends Component {
                 user: data
             });
 
+            console.log(data);
+
             this.getFriends(data._id);
         }
     };
@@ -58,6 +61,8 @@ class App extends Component {
 
                 console.log(res.data);
 
+                this.getFriends(res.data._id);
+
                 this.setState({
                     user : res.data,
                 });
@@ -67,14 +72,17 @@ class App extends Component {
 
     // CHAT FUNCTIONS
     // Fn to start chat. Communicating with Nav.js.
-    startChat = (chatStatus, chattingWith) => {
+    startChat = (chatStatus, chattingWith, partnerId) => {
 
         // this.socket = io("localhost:3001");
+
+        console.log(chatStatus, chattingWith)
 
         let chat = {...this.state.chat};
             chat.active = chatStatus;
             chat.user2 = chattingWith;
-            chat.chatroom = chat.user1.split(" ")[1] + chat.user2.split(" ")[1];
+            chat.user2_id = partnerId;
+            chat.chatroom = chat.user1_id + chat.user2_id;
             chat.notification = false;
         
         this.setState({chat});

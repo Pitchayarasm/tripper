@@ -356,9 +356,6 @@ footer.page-footer {
   background-color: #be5659;
   transition: background-color .3s; }
 
-.card {
-  /* border: 1px solid #dee2e6; */ }
-
 .input-field {
   display: inline-block;
   width: 100%;
@@ -409,7 +406,6 @@ textarea.materialize-textarea:focus:not([readonly]) {
   font-weight: bold;
   cursor: pointer; }
 
-<<<<<<< HEAD
 .user1 {
   color: #ffffff !important;
   position: relative;
@@ -481,11 +477,10 @@ textarea.materialize-textarea:focus:not([readonly]) {
 
 .chatSendBtn {
   width: 40px; }
-=======
+
 .error {
   height: 400px;
   margin: 8%; }
->>>>>>> master
 
 nav {
   background-color: #F95759; }
