@@ -10,6 +10,7 @@ import Profile from "./component/Pages/Profile.js";
 import FriendProfile from "./component/Pages/Friend_Profile.js";
 import SearchFriends from "./component/Pages/Friends.js";
 import TopHH from "./component/Pages/TopHH.js";
+import Error from "./component/Pages/404.js";
 import axios from "axios";
 
 //Compiled SASS into the main style.css file
@@ -77,6 +78,7 @@ class App extends Component {
                         <Route exact path="/friend_profile" render={(props) => <FriendProfile {...props} user={this.state.user}/>} />
                         <Route exact path="/friends" render={(props) => <SearchFriends {...props} user={this.state.user}/>} />
                         <Route exact path="/top_hikers" render={(props) => <TopHH {...props} user={this.state.user}/>} />
+                        <Route component={Error}></Route>
                     </Switch>
                     <Chat endChat={this.endChat} chatStatus={this.state.chat.active}></Chat>
                     <Footer></Footer>
