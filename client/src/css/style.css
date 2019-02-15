@@ -63,7 +63,8 @@ hr {
   width: 25%; }
 
 .fit_img {
-  float: left; }
+  float: left;
+  width: 346px; }
 
 .journal_pics {
   margin-top: 3%; }
@@ -94,7 +95,14 @@ div.modal-content {
   float: right !important; }
 
 .FriendProfile {
-  margin: 6% auto; }
+  margin: 6% auto;
+  text-align: justify; }
+
+.FriendProfile h2 {
+  font-size: 2.56rem; }
+
+.FriendProfile h5 {
+  font-size: 1.8rem; }
 
 .Friend {
   margin: 0 auto;
@@ -160,7 +168,7 @@ div.modal-content {
   width: 100%;
   height: 300px;
   text-align: center;
-  margin: 20% auto; }
+  margin: 11% auto; }
 
 img.SearchCard {
   width: 15%; }
@@ -293,6 +301,9 @@ footer.page-footer {
 
 .flip-box-back {
   transform: rotateY(180deg); }
+
+.elEntry {
+  word-break: normal; }
 
 .section {
   display: contents;
@@ -622,7 +633,9 @@ input[type=text]:focus:not([readonly]) + label, input[type=password]:not(.browse
   left: 23px; }
 
 .FriendProfile {
-  margin-top: 10px; }
+  margin-top: 6%;
+  margin-bottom: 16%;
+  height: 300px; }
 
 #signUpModal, #loginModal {
   display: inline-block; }

@@ -169,7 +169,9 @@ input[type=text]:focus:not([readonly])+label, input[type=password]:not(.browser-
 }
 
 .FriendProfile {
-    margin-top: 10px;
+    margin-top: 6%;
+    margin-bottom: 16%;
+    height: 300px;
 }
 
 #signUpModal, #loginModal {
