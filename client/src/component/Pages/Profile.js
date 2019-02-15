@@ -76,15 +76,15 @@ class Profile extends React.Component {
         let entry;
         if (this.state.entry) {
             entry = <Row>
-                    <Col s={3} className='grid-example'></Col>
-                    <Col s={3} className='grid-example'>
+                    <Col s={2} className='grid-example'></Col>
+                    <Col s={4} className='grid-example'>
                         <h2>{this.state.entry.title}</h2>
                         <hr />
                         <h5>{this.state.entry.body}</h5>
                         <p><Icon>location_on</Icon>{this.state.entry.location}</p>
                     </Col>
+                    <Col s={1} className='grid-example'></Col>
                     
-                    <Col s={2} className='grid-example'></Col>
                     </Row>
         }
         let entry_pic;
@@ -92,14 +92,14 @@ class Profile extends React.Component {
             entry_pic = <Col s={4} className='journal_pics'>
                         <img className="fit_img tile" src={`upload/${this.state.entry.file}`} alt="tripper" />
                         </Col>
+                        
         }
-
 
         return (
             <div>
                 <Row className="FriendProfile">
                     <Col s={2} className='grid-example'></Col>
-                    <Col s={4} className='grid-example'>
+                    <Col s={5} className='grid-example'>
                         {profile}
                         <Modal
                         trigger={<Button className="homeBtn">Add Profile</Button>}

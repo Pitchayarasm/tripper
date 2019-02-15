@@ -92,14 +92,7 @@ class Journal extends React.Component {
                     <div className="losEntries">
                         <h3>You don't have a journal yet</h3>
                         <p>Tell your story with tripper</p>
-                    </div>
-                    </Col>
-                    )
-         }
-        return (
-            <>
-            {journal}
-                <Modal
+                        <Modal
                     header='Create your Journal'
                     trigger={<Button className="homeBtn pulse addEntry">Add</Button>}
                     actions={<><Button className="cancel modal-action modal-close">Cancel</Button><Button id="signUpSubmit" className="cancel modal-action modal-close" onClick={this.newJournal}>Create</Button></>}
@@ -108,6 +101,15 @@ class Journal extends React.Component {
                     <Input s={6} id="title" label="Title" value={this.state.title} onChange={this.handleInputChange}></Input>
                     </Row>
                 </Modal>
+                    </div>
+                    </Col>
+                    )
+         }
+        return (
+            <>
+            <div className="journale">
+            {journal}
+            </div>
             </>
         );
     }

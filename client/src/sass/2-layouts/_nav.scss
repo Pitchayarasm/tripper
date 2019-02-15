@@ -161,15 +161,9 @@ input[type=text]:focus:not([readonly])+label, input[type=password]:not(.browser-
 }
 
 .FriendProfile {
-    margin-top: 10px;
-}
-
-.footer-copyright {
-    background-color: rgb(83, 119, 83) !important;
-}
-
-.thefooter {
-    background-color: rgb(112, 156, 112) !important;
+    margin-top: 6%;
+    margin-bottom: 16%;
+    height: 300px;
 }
 
 #signUpModal, #loginModal {

@@ -63,7 +63,8 @@ hr {
   width: 25%; }
 
 .fit_img {
-  float: left; }
+  float: left;
+  width: 346px; }
 
 .journal_pics {
   margin-top: 3%; }
@@ -94,7 +95,14 @@ div.modal-content {
   float: right !important; }
 
 .FriendProfile {
-  margin: 6% auto; }
+  margin: 6% auto;
+  text-align: justify; }
+
+.FriendProfile h2 {
+  font-size: 2.56rem; }
+
+.FriendProfile h5 {
+  font-size: 1.8rem; }
 
 .Friend {
   margin: 0 auto;
@@ -160,7 +168,7 @@ div.modal-content {
   width: 100%;
   height: 300px;
   text-align: center;
-  margin: 20% auto; }
+  margin: 11% auto; }
 
 img.SearchCard {
   width: 15%; }
@@ -294,6 +302,9 @@ footer.page-footer {
 .flip-box-back {
   transform: rotateY(180deg); }
 
+.elEntry {
+  word-break: normal; }
+
 .section {
   display: contents;
   float: left;
@@ -305,7 +316,7 @@ footer.page-footer {
 
 .chatActive {
   display: block;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   right: 0;
   margin-right: 15px;
@@ -319,7 +330,7 @@ footer.page-footer {
   bottom: 90px;
   right: 0;
   margin-right: 15px;
-  width: 250px;
+  /* width: 250px; */
   height: 40px;
   font-weight: bold; }
 
@@ -328,7 +339,8 @@ footer.page-footer {
   padding: 10px;
   background-color: #537753;
   color: #ffffff;
-  box-shadow: 0 8px 6px -6px #555555; }
+  box-shadow: 0 8px 6px -6px #555555;
+  border-radius: 2px; }
 
 .chatInactive p:hover {
   cursor: pointer;
@@ -356,7 +368,7 @@ footer.page-footer {
   transition: background-color .3s; }
 
 .card {
-  border: 1px solid #dee2e6; }
+  /* border: 1px solid #dee2e6; */ }
 
 .input-field {
   display: inline-block;
@@ -374,11 +386,10 @@ footer.page-footer {
   height: 22px !important;
   margin: 0 !important; }
 
-.card-content {
-  border-top: 1px solid #dee2e6; }
-
-.card-content strong {
-  color: darkblue; }
+.messages {
+  border-top: 1px solid #dee2e6;
+  padding: 12px 24px 12px 24px !important;
+  overflow-y: scroll; }
 
 .input-field.col label {
   left: 0 !important;
@@ -408,6 +419,75 @@ textarea.materialize-textarea:focus:not([readonly]) {
 .endChat:hover {
   font-weight: bold;
   cursor: pointer; }
+
+.user1 {
+  color: #ffffff !important;
+  position: relative;
+  background: darkblue;
+  border-radius: .4em;
+  float: right;
+  padding: 5px 10px 5px 10px;
+  margin-bottom: 5px !important;
+  box-shadow: 0 2px 5px #888888;
+  clear: both; }
+
+.user1:after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 0;
+  height: 0;
+  border: 0.5em solid transparent;
+  border-left-color: darkblue;
+  border-right: 0;
+  border-bottom: 0;
+  margin-top: -0.25em;
+  margin-right: -0.5em; }
+
+.user2 {
+  color: #ffffff !important;
+  position: relative;
+  background: #888888;
+  border-radius: .4em;
+  float: left;
+  padding: 5px 10px 5px 10px;
+  margin-bottom: 5px !important;
+  box-shadow: 0 2px 5px #444444;
+  clear: both; }
+
+.user2:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 0;
+  height: 0;
+  border: 0.5em solid transparent;
+  border-right-color: #888888;
+  border-left: 0;
+  border-bottom: 0;
+  margin-top: -0.25em;
+  margin-left: -0.5em; }
+
+.user1Time {
+  float: right;
+  color: #999999;
+  font-size: 12px;
+  clear: both; }
+
+.user2Time {
+  float: left;
+  color: #999999;
+  font-size: 12px;
+  clear: both; }
+
+.isTyping {
+  position: absolute !important;
+  bottom: 5px !important;
+  left: 15px !important;
+  color: #999999 !important;
+  display: inline-block !important; }
 
 .error {
   height: 400px;
@@ -447,6 +527,16 @@ nav ul a {
 .onlineFriend i {
   float: none !important;
   margin-left: 8px !important; }
+
+.offlineFriend {
+  color: #dee2e6;
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  height: 48px;
+  line-height: 48px;
+  padding: 0 32px;
+  font-style: italic; }
 
 .icon-online {
   color: #5aac5a !important; }
@@ -500,12 +590,63 @@ div.modal-content {
 #signUpForm > .file-field {
   padding-right: 0 !important; }
 
+#signUpForm label.active {
+  color: #537753; }
+
+#loginForm label.active {
+  color: #537753; }
+
+input:not([type]):focus:not([readonly]), input[type=text]:focus:not([readonly]), input[type=password]:focus:not([readonly]), input[type=email]:focus:not([readonly]), input[type=url]:focus:not([readonly]), input[type=time]:focus:not([readonly]), input[type=date]:focus:not([readonly]), input[type=datetime]:focus:not([readonly]), input[type=datetime-local]:focus:not([readonly]), input[type=tel]:focus:not([readonly]), input[type=number]:focus:not([readonly]), input[type=search]:focus:not([readonly]), textarea.materialize-textarea:focus:not([readonly]) {
+  border-bottom: 1px solid #537753 !important;
+  box-shadow: 0 1px 0 0 #537753 !important; }
+
+input:not([type]):focus:not([readonly]) + label, input[type=text]:not(.browser-default):focus:not([readonly]) + label, input[type=password]:not(.browser-default):focus:not([readonly]) + label, input[type=email]:not(.browser-default):focus:not([readonly]) + label, input[type=url]:not(.browser-default):focus:not([readonly]) + label, input[type=time]:not(.browser-default):focus:not([readonly]) + label, input[type=date]:not(.browser-default):focus:not([readonly]) + label, input[type=datetime]:not(.browser-default):focus:not([readonly]) + label, input[type=datetime-local]:not(.browser-default):focus:not([readonly]) + label, input[type=tel]:not(.browser-default):focus:not([readonly]) + label, input[type=number]:not(.browser-default):focus:not([readonly]) + label, input[type=search]:not(.browser-default):focus:not([readonly]) + label, textarea.materialize-textarea:focus:not([readonly]) + label {
+  color: 0 1px 0 0 #537753 !important; }
+
+input:not([type]):focus:not([readonly]) + label, input[type=text]:not(.browser-default):focus:not([readonly]) + label, input[type=password]:not(.browser-default):focus:not([readonly]) + label, input[type=email]:not(.browser-default):focus:not([readonly]) + label, input[type=url]:not(.browser-default):focus:not([readonly]) + label, input[type=time]:not(.browser-default):focus:not([readonly]) + label, input[type=date]:not(.browser-default):focus:not([readonly]) + label, input[type=datetime]:not(.browser-default):focus:not([readonly]) + label, input[type=datetime-local]:not(.browser-default):focus:not([readonly]) + label, input[type=tel]:not(.browser-default):focus:not([readonly]) + label, input[type=number]:not(.browser-default):focus:not([readonly]) + label, input[type=search]:not(.browser-default):focus:not([readonly]) + label, textarea.materialize-textarea:focus:not([readonly]) + label {
+  color: 0 1px 0 0 #537753 !important; }
+
+input[type=text]:focus:not([readonly]) + label, input[type=password]:not(.browser-default):focus:not([readonly]) + label {
+  color: #537753 !important; }
+
 .cancel {
   display: inline-block !important;
   margin: 1% !important;
   width: auto !important;
   padding: 0 5px 0 5px !important;
   float: right !important; }
+
+.myChatBtn {
+  position: fixed;
+  width: 56px !important;
+  height: 56px !important;
+  bottom: 23px;
+  left: 23px; }
+
+.FriendProfile {
+  margin-top: 6%;
+  margin-bottom: 16%;
+  height: 300px; }
+
+#signUpModal, #loginModal {
+  display: inline-block; }
+
+#newJournal {
+  position: absolute;
+  right: 0;
+  margin: 32px; }
+
+#addProfilePic {
+  width: inherit !important; }
+
+#search:focus {
+  background-color: transparent;
+  border: none;
+  color: #ffffff; }
+
+#search::placeholder {
+  color: #ffffff;
+  opacity: .5; }
 
 /* ==============================
  * MODULE STYLES

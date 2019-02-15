@@ -17,6 +17,7 @@ hr {
 
 .fit_img {
     float: left;
+    width: 346px;
 }
 
 .journal_pics {
@@ -58,6 +59,16 @@ div.modal-content {
 
 .FriendProfile {
     margin: 6% auto;
+    
+    text-align: justify;
+}
+
+.FriendProfile h2 {
+    font-size: 2.56rem;
+}
+
+.FriendProfile h5{
+    font-size: 1.8rem;
 }
 
 .Friend {
@@ -138,7 +149,7 @@ div.modal-content {
     width: 100%;
     height: 300px;
     text-align: center;
-    margin: 20% auto;
+    margin: 11% auto;
 }
 
 img.SearchCard{
