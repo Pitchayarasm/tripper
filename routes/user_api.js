@@ -83,19 +83,18 @@ const db = require("../models")
   });
 
   // Logout
-  router.get('/logout', (req, res) => {
+  router.get('/logout/:userId', (req, res) => {
     db.User.findByIdAndUpdate( req.params.userId, 
       { active: false} 
       ,{ 
           new: true 
       })
       .then( (dbUser) => {
-          res.send(dbUser)
+          console.log(dbUser)
       })
       .catch( err => {
-          res.json(err);
+          console.log(err)
       });
-    res.json(req.user)
     req.logout();
     res.json(req.user)
   });
