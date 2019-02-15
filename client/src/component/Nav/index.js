@@ -10,8 +10,8 @@ class Nav extends React.Component {
         user: "",
         image: "",
         notifications: 0,
-        onlineFriends: ["Chris Cuomo", "Don Lemon", "Van Jones"],
-        offlineFriends: ["Jake Tapper", "Wolf Blitzer"]
+        onlineFriends: [],
+        offlineFriends: []
     }
 
     handleInputChange = (event) => {
@@ -26,6 +26,7 @@ class Nav extends React.Component {
             name: this.state.title 
         })
         .then(res => {
+            this.props.getFriends(this.props.user._id)
             this.props.setUser(res.data);
             this.setState({ 
                 title: "" 
@@ -34,18 +35,22 @@ class Nav extends React.Component {
     }
 
     friendsPage = () => {
+        this.props.getFriends(this.props.user._id)
         window.location.href = "/friends"
     }
     
     entryPage = () => {
+        this.props.getFriends(this.props.user._id)
         window.location.href = "/entry"
     }
 
     entriesPage = () => {
+        this.props.getFriends(this.props.user._id)
         window.location.href = "/entries"
     }
 
     profilePage = () => {
+        this.props.getFriends(this.props.user._id)
         window.location.href = "/profile"
     }
 
@@ -64,12 +69,12 @@ class Nav extends React.Component {
                 <>
                 <Navbar brand='tripper' right>
                     <nav style={{boxShadow: "none"}}>
-                        {/* <div class="nav-wrapper"> */}
+                        {/* <div className="nav-wrapper"> */}
                         <form>
-                            <div class="input-field" style={{width: "200px"}}>
+                            <div className="input-field" style={{width: "200px"}}>
                             <input id="search" type="search" placeholder="Quick Search" required />
-                            <label class="label-icon" for="search" style={{top: "-10px"}}><i class="material-icons">search</i></label>
-                            {/* <i class="material-icons">close</i> */}
+                            <label className="label-icon" htmlFor="search" style={{top: "-10px"}}><i className="material-icons">search</i></label>
+                            {/* <i className="material-icons">close</i> */}
                             </div>
                         </form>
                         {/* </div> */}
@@ -96,25 +101,26 @@ class Nav extends React.Component {
                 </Button>
 
                 <SideNav
-                    trigger={<Button icon="chat" className={this.props.chat.notification ? "myChatBtn btn-large yellow darken-3" : "myChatBtn btn-large blue darken-4"} data-position="top" tooltip="Chat"></Button>}
-                    options={{ closeOnClick: true, edge: "right" }}>
+                    trigger={<Button icon="chat" onClick={() => this.props.getFriends(this.props.user._id)} className={this.props.chat.notification ? "myChatBtn btn-large yellow darken-3" : "myChatBtn btn-large blue darken-4"} data-position="top" tooltip="Chat"></Button>}
+                    options={{ closeOnClick: true, edge: "right" }}
+                    >
                     <SideNavItem
                         userView
                         user={{
                             background: "",
-                            image: "https://www.thefamouspeople.com/profiles/images/anderson-cooper-5.jpg",
-                            name: "Anderson Cooper",
-                            email: "andersoncooper@cnn.com"
+                            image: `/upload/${this.props.user.file}`,
+                            name: `${this.props.user.firstName} ${this.props.user.lastName}`,
+                            email: `${this.props.user.email}`
                         }}
                     />
                     <SideNavItem className="onlineHeader"><Icon className="icon-online">rss_feed</Icon>Online Friends</SideNavItem>
-                    {this.state.onlineFriends.map((item) => {
-                        return <SideNavItem className="onlineFriend" waves="light" onClick={() => this.props.startChat(true, item)}>{item} <Icon className="icon-friend-online">lens</Icon></SideNavItem>
+                    {this.props.nav.onlineFriends.map((item) => {
+                        return <SideNavItem className="onlineFriend" waves onClick={() => this.props.startChat(true, item.id)}>{item.name} <Icon className="icon-friend-online">lens</Icon></SideNavItem>
                     })}
                     <SideNavItem divider />
                     <SideNavItem subheader>Offline Friends</SideNavItem>
-                    {this.state.offlineFriends.map((item) => {
-                        return <li className="offlineFriend">{item}</li> 
+                    {this.props.nav.offlineFriends.map((item) => {
+                        return <li className="offlineFriend">{item.name}</li> 
                     })}
                 </SideNav>
                 </>

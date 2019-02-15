@@ -141,7 +141,7 @@ class Chat extends React.Component {
 
     setTime = () => {
 
-        let time = new Date;
+        let time = new Date();
         let hours = time.getHours();
         let minutes = time.getMinutes();
         

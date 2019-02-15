@@ -27,6 +27,10 @@ class App extends Component {
             chatroom: "",
             notification: false
         },
+        nav: {
+            onlineFriends: [],
+            offlineFriends: []
+        },
         user: {}
     };
 
@@ -36,19 +40,25 @@ class App extends Component {
             let chat = {...this.state.chat};
                 chat.user1 = data.firstName + " " + data.lastName;
                 chat.user1_id = data._id;
+
             this.setState({
                 chat,
                 user: data
             });
+
+            this.getFriends(data._id);
         }
     };
 
     componentDidMount() {
         axios.get("/isLogin").then(res => {
             if (res.data) {
+
+                console.log(res.data);
+
                 this.setState({
-                    user : res.data
-                }); 
+                    user : res.data,
+                });
             };
         });
     };
@@ -91,12 +101,43 @@ class App extends Component {
         this.setState({chat});
     };
 
+    getFriends = (userId) => {
+
+        axios.get("/friendList/" + userId)
+        .then((res) => {
+
+            let online = [];
+            let offline = [];
+            let nav = {...this.state.nav};
+
+            res.data[0].friends.forEach(item => {
+
+                if (item.active) {
+
+                    let friend = {name: item.firstName + " " + item.lastName, id: item._id};
+                    online.push(friend);
+                }
+
+                else {
+
+                    let friend = {name: item.firstName + " " + item.lastName, id: item._id};
+                    offline.push(friend);
+                }
+            });
+
+            nav.onlineFriends = online;
+            nav.offlineFriends = offline;
+
+            this.setState({nav});
+        });
+    }
+
     render() {
 
         return (
             <Router>
                 <>
-                    <Nav user={this.state.user} startChat={this.startChat} setUser={this.setUser} chat={this.state.chat}></Nav>
+                    <Nav user={this.state.user} startChat={this.startChat} setUser={this.setUser} chat={this.state.chat} getFriends={this.getFriends} nav={this.state.nav}></Nav>
                     <Switch>
                         <Route exact path="/" render={(props) => <Home {...props} user={this.state.user} setUser={this.setUser} />} />
                         {/* {!this.state.user.firstName ? <Redirect to="/" /> : null } */}
