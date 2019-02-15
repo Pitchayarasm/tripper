@@ -160,7 +160,10 @@ div.modal-content {
   width: 100%;
   height: 300px;
   text-align: center;
-  margin: 10% auto; }
+  margin: 20% auto; }
+
+img.SearchCard {
+  width: 15%; }
 
 /* ==============================
  * LAYOUT STYLES
@@ -405,6 +408,10 @@ textarea.materialize-textarea:focus:not([readonly]) {
 .endChat:hover {
   font-weight: bold;
   cursor: pointer; }
+
+.error {
+  height: 400px;
+  margin: 8%; }
 
 nav {
   background-color: #F95759; }
