@@ -6,7 +6,6 @@ import axios from "axios";
 class Nav extends React.Component {
 
     state = {
-        user: "",
         image: "",
         notifications: 0,
         onlineFriends: ["Chris Cuomo", "Don Lemon", "Van Jones"],
@@ -30,7 +29,7 @@ class Nav extends React.Component {
     }
 
     handleLogout = () => {
-        axios.get("/logout")
+        axios.get(`/logout/${this.props.user._id}`)
             .then((res) => {
                 this.props.setUser(res.data);
                 window.location.href = "/"

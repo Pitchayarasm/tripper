@@ -20,8 +20,7 @@ const db = require("../models")
                   firstName,
                   lastName,
                   email,
-                  password: hash,
-                  active: true
+                  password: hash
               })
               .then((dbUser) => {
                   res.json(dbUser);
@@ -68,12 +67,35 @@ const db = require("../models")
   });
 
   // Login
-  router.post('/login', passport.authenticate("local"), (req, res, next) => {
+  router.post('/login/:userId', passport.authenticate("local"), (req, res, next) => {
+      db.User.findByIdAndUpdate( req.params.userId, 
+      { active: true} 
+      ,{ 
+          new: true 
+      })
+      .then( (dbUser) => {
+          res.send(dbUser)
+      })
+      .catch( err => {
+          res.json(err);
+      });
     res.json(req.user)
   });
 
   // Logout
   router.get('/logout', (req, res) => {
+    db.User.findByIdAndUpdate( req.params.userId, 
+      { active: false} 
+      ,{ 
+          new: true 
+      })
+      .then( (dbUser) => {
+          res.send(dbUser)
+      })
+      .catch( err => {
+          res.json(err);
+      });
+    res.json(req.user)
     req.logout();
     res.json(req.user)
   });
