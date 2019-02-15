@@ -33,7 +33,6 @@
     "path": "^0.12.7",
     "react-materialize": "^2.6.0",
     "socket.io": "^2.2.0",
-    "socket.io-client": "^2.2.0",
     "yarn": "^1.13.0"
   }
 }
