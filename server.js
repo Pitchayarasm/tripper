@@ -99,7 +99,7 @@ io.on("connection", (socket) => {
   // Receive messages from client and return response to chatroom
   socket.on("SEND_MESSAGE", (data) => {
     io.in(data.roomId).emit("RECEIVE_MESSAGE", data);
-    socket.to(data.roomId).emit("notification");
+    socket.to(data.roomId).emit("notification", data);
   });
 
   socket.on("typing", (data, room) => {

@@ -478,6 +478,9 @@ textarea.materialize-textarea:focus:not([readonly]) {
 .chatSendBtn {
   width: 40px; }
 
+.newMsg {
+  background-color: lemonchiffon; }
+
 .error {
   height: 400px;
   margin: 8%; }

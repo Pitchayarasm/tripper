@@ -86,9 +86,15 @@ class App extends Component {
         this.setState({chat});
     };
 
-    newMessage = () => {
+    newMessage = (name, id) => {
         let chat = {...this.state.chat};
             chat.notification = true;
+
+            if (!this.state.chat.user2) {
+                chat.active = true;
+                chat.user2 = name;
+                chat.user2_id = id;
+            }
 
         this.setState({chat});
     };
@@ -157,7 +163,7 @@ class App extends Component {
                         <Route exact path="/top_hikers" render={(props) => <TopHH {...props} user={this.state.user}/>} />
                         <Route component={Error}></Route>
                     </Switch>
-                    <Chat endChat={this.endChat} chatStatus={this.state.chat.active} chat={this.state.chat} user={this.state.user} newMessage={this.newMessage} messageRead={this.messageRead}></Chat>
+                    <Chat endChat={this.endChat} chatStatus={this.state.chat.active} chat={this.state.chat} user={this.state.user} newMessage={this.newMessage} messageRead={this.messageRead} ></Chat>
                     <Footer></Footer>
                 </>
             </Router>

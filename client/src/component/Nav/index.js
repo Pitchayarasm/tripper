@@ -62,19 +62,14 @@ class Nav extends React.Component {
                 <>
                 <Navbar brand='tripper' right>
                     <nav style={{boxShadow: "none"}}>
-                        {/* <div className="nav-wrapper"> */}
                         <form>
                             <div className="input-field" style={{width: "200px"}}>
                             <input id="search" type="search" placeholder="Quick Search" required />
                             <label className="label-icon" htmlFor="search" style={{top: "-10px"}}><i className="material-icons">search</i></label>
-                            {/* <i className="material-icons">close</i> */}
                             </div>
                         </form>
-                        {/* </div> */}
                     </nav>
-                    {/* <NavLink to="#" data-position="left" tooltip="Quick Search"><Icon className="navIcon">search</Icon></NavLink> */}
-                    {/* <NavLink to="#" data-position="left" tooltip="Notifications"><Icon className="navIcon">notifications</Icon></NavLink> */}
-                    {/* <NavLink onClick={this.profilePage} to="#" data-position="left" tooltip="View Profile"><Icon className="navIcon">account_circle</Icon></NavLink> */}
+                    
                 </Navbar>
 
                 <Button floating fab="horizontal" icon="navigation" className="blue darken-4 pulse" large style={{bottom: "45px", right: "24px"}}>
@@ -100,7 +95,7 @@ class Nav extends React.Component {
                     />
                     <SideNavItem className="onlineHeader"><Icon className="icon-online">rss_feed</Icon>Online Friends</SideNavItem>
                     {this.props.nav.onlineFriends.map((item) => {
-                        return <SideNavItem className="onlineFriend" waves onClick={() => this.props.startChat(true, item.name, item.id)}>{item.name} <Icon className="icon-friend-online">lens</Icon></SideNavItem>
+                        return <SideNavItem className={(this.props.chat.notification) && (this.props.chat.user2 === item.name) ? "onlineFriend newMsg" : "onlineFriend"} waves onClick={() => this.props.startChat(true, item.name, item.id)}>{item.name} <Icon className="icon-friend-online">lens</Icon></SideNavItem>
                     })}
                     <SideNavItem divider />
                     <SideNavItem subheader>Offline Friends</SideNavItem>

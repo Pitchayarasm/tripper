@@ -43,8 +43,8 @@ class Chat extends React.Component {
         });
 
         // Listen for new messages to update chat button.
-        this.socket.on("notification", () => {
-            this.props.newMessage();
+        this.socket.on("notification", (data) => {
+            this.props.newMessage(data.name, data._id);
         });
 
         // Listener to leave chatroom.
