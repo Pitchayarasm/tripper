@@ -23,7 +23,7 @@
 .chatInactive p {
     margin: 0;
     padding: 10px;
-    background-color: rgb(83, 119, 83);
+    background-color: $primary-color;
     color: #ffffff;
     box-shadow: 0 8px 6px -6px #555555;
     border-radius: 2px;
@@ -31,7 +31,7 @@
 
 .chatInactive p:hover {
     cursor: pointer;
-    background-color: rgb(55, 80, 55) !important;
+    background-color: #be5659;
     transition: background-color .3s;
 }
 
@@ -42,7 +42,7 @@
 .cardHeader {
     margin: 2px;
     padding: 12px;
-    background-color: rgb(83, 119, 83);
+    background-color: $primary-color;
     color: #ffffff;
     font-weight: bold;
     border: 1px solid #dee2e6;
@@ -55,13 +55,8 @@
 
 .cardHeader:hover {
     cursor: pointer;
-    background-color: rgb(55, 80, 55) !important;
+    background-color: #be5659;
     transition: background-color .3s;
-}
-
-
-.card {
-    /* border: 1px solid #dee2e6; */
 }
 
 .input-field {
@@ -97,12 +92,12 @@
 
 textarea.materialize-textarea:focus:not([readonly])+label {
     font-weight: bold;
-    color: rgb(83, 119, 83);
+    color: $primary-color;
 }
 
 textarea.materialize-textarea:focus:not([readonly]) {
-    border-bottom: 1px solid rgb(83, 119, 83);
-    box-shadow: 0 1px 0 0 rgb(83, 119, 83);
+    border-bottom: 1px solid $primary-color;
+    box-shadow: 0 1px 0 0 $primary-color;
 }
 
 .chatEndBtn {
@@ -200,4 +195,12 @@ textarea.materialize-textarea:focus:not([readonly]) {
     left: 15px !important;
     color: #999999 !important;
     display: inline-block !important;
+}
+
+.chatSendBtn {
+    width: 40px;
+}
+
+.newMsg {
+    background-color: lemonchiffon;
 }

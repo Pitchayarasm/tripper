@@ -120,28 +120,36 @@ div.modal-content {
 }
 
 #signUpForm label.active {
-    color: rgb(83, 119, 83);
+    color: $primary-color;
 }
 
 #loginForm label.active {
-    color: rgb(83, 119, 83);
+    color: $primary-color;
+}
+
+#loginEmail label.active {
+    color: $primary-color;
+}
+
+input[type=email]:not(.browser-default):focus:not([readonly])+label {
+    color: $primary-color;
 }
 
 input:not([type]):focus:not([readonly]), input[type=text]:focus:not([readonly]), input[type=password]:focus:not([readonly]), input[type=email]:focus:not([readonly]), input[type=url]:focus:not([readonly]), input[type=time]:focus:not([readonly]), input[type=date]:focus:not([readonly]), input[type=datetime]:focus:not([readonly]), input[type=datetime-local]:focus:not([readonly]), input[type=tel]:focus:not([readonly]), input[type=number]:focus:not([readonly]), input[type=search]:focus:not([readonly]), textarea.materialize-textarea:focus:not([readonly]) {
-    border-bottom: 1px solid rgb(83, 119, 83) !important;
-    box-shadow: 0 1px 0 0 rgb(83, 119, 83) !important;
+    border-bottom: 1px solid $primary-color !important;
+    box-shadow: 0 1px 0 0 $primary-color !important;
 }
 
 input:not([type]):focus:not([readonly])+label, input[type=text]:not(.browser-default):focus:not([readonly])+label, input[type=password]:not(.browser-default):focus:not([readonly])+label, input[type=email]:not(.browser-default):focus:not([readonly])+label, input[type=url]:not(.browser-default):focus:not([readonly])+label, input[type=time]:not(.browser-default):focus:not([readonly])+label, input[type=date]:not(.browser-default):focus:not([readonly])+label, input[type=datetime]:not(.browser-default):focus:not([readonly])+label, input[type=datetime-local]:not(.browser-default):focus:not([readonly])+label, input[type=tel]:not(.browser-default):focus:not([readonly])+label, input[type=number]:not(.browser-default):focus:not([readonly])+label, input[type=search]:not(.browser-default):focus:not([readonly])+label, textarea.materialize-textarea:focus:not([readonly])+label {
-    color: 0 1px 0 0 rgb(83, 119, 83) !important;
+    color: 0 1px 0 0 $primary-color !important;
 }
 
 input:not([type]):focus:not([readonly])+label, input[type=text]:not(.browser-default):focus:not([readonly])+label, input[type=password]:not(.browser-default):focus:not([readonly])+label, input[type=email]:not(.browser-default):focus:not([readonly])+label, input[type=url]:not(.browser-default):focus:not([readonly])+label, input[type=time]:not(.browser-default):focus:not([readonly])+label, input[type=date]:not(.browser-default):focus:not([readonly])+label, input[type=datetime]:not(.browser-default):focus:not([readonly])+label, input[type=datetime-local]:not(.browser-default):focus:not([readonly])+label, input[type=tel]:not(.browser-default):focus:not([readonly])+label, input[type=number]:not(.browser-default):focus:not([readonly])+label, input[type=search]:not(.browser-default):focus:not([readonly])+label, textarea.materialize-textarea:focus:not([readonly])+label {
-    color: 0 1px 0 0 rgb(83, 119, 83) !important;
+    color: 0 1px 0 0 $primary-color !important;
 }
 
 input[type=text]:focus:not([readonly])+label, input[type=password]:not(.browser-default):focus:not([readonly])+label {
-    color: rgb(83, 119, 83) !important;
+    color: $primary-color !important;
 }
 
 .cancel {
@@ -162,14 +170,6 @@ input[type=text]:focus:not([readonly])+label, input[type=password]:not(.browser-
 
 .FriendProfile {
     margin-top: 10px;
-}
-
-.footer-copyright {
-    background-color: rgb(83, 119, 83) !important;
-}
-
-.thefooter {
-    background-color: rgb(112, 156, 112) !important;
 }
 
 #signUpModal, #loginModal {
