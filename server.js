@@ -65,6 +65,7 @@ var io = socket(server);
 // Initial socket connection with client
 io.on("connection", (socket) => {
   console.log("User connected.");
+  socket.join(socket.id);
   io.to(socket.id).emit("id", socket.id);
 
   // Link userID to socket.id
@@ -78,6 +79,7 @@ io.on("connection", (socket) => {
 
     // Connect to selected socket
     if (id in onlineUsers) {
+      
       io.sockets.connected[onlineUsers[id]].join(chatroom, () =>{
         console.log(id + " has joined the " + chatroom + " chatroom.");
       });

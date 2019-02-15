@@ -74,9 +74,7 @@ class App extends Component {
     // Fn to start chat. Communicating with Nav.js.
     startChat = (chatStatus, chattingWith, partnerId) => {
 
-        // this.socket = io("localhost:3001");
-
-        console.log(chatStatus, chattingWith)
+        console.log(chatStatus, chattingWith, partnerId);
 
         let chat = {...this.state.chat};
             chat.active = chatStatus;
