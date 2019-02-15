@@ -20,7 +20,8 @@ const db = require("../models")
                   firstName,
                   lastName,
                   email,
-                  password: hash
+                  password: hash,
+                  active: true
               })
               .then((dbUser) => {
                   res.json(dbUser);

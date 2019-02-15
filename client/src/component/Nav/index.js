@@ -6,6 +6,7 @@ import axios from "axios";
 class Nav extends React.Component {
 
     state = {
+        user: "",
         image: "",
         notifications: 0,
         onlineFriends: [],
