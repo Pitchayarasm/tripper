@@ -50,9 +50,6 @@ class Home extends React.Component {
       password: this.state.loginPassword
     }).then(res => {
       if (res.statusText === "OK") {
-        this.setState({
-          login: true
-        })
         this.props.setUser(res.data);
         this.props.history.push("/profile")
       }

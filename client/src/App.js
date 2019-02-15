@@ -61,7 +61,7 @@ class App extends Component {
 
                 console.log(res.data);
 
-                this.getFriends(res.data._id);
+                // this.getFriends(res.data._id);
 
                 this.setState({
                     user : res.data,
