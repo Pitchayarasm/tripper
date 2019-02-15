@@ -619,7 +619,6 @@ input[type=text]:focus:not([readonly]) + label, input[type=password]:not(.browse
   color: #F95759 !important; }
 
 .cancel {
-  display: inline-block !important;
   margin: 1% !important;
   width: auto !important;
   padding: 0 5px 0 5px !important;
