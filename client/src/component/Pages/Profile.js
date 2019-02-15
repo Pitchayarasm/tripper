@@ -67,7 +67,7 @@ class Profile extends React.Component {
             let src = `/upload/${this.props.user.file}`
            profile =  <img src={src} alt="profile" style={{width: "346px", height: "346px", objectFit: "cover"}} />
         }
-
+        
         let about_me;
         if (this.props.user.about_me) {
             about_me = <p>{this.props.user.about_me}</p>
@@ -106,7 +106,7 @@ class Profile extends React.Component {
                         actions={<><Button className="cancel modal-action modal-close">Cancel</Button><Button id="signUpSubmit" className="cancel modal-action modal-close" onClick={this.handleselectedFile}>Submit</Button></>}
                         >
                         <Row id="signUpForm">
-                            <Input name="profileImg" type="file" id="profileImg" label="Upload" placeholder="Choose File" s={12} />
+                            <Input name="profileImg" type="file" id="profileImg" label="Upload" placeholder="Choose File" s={12} readOnly />
                         </Row>
                         </Modal>
                         {entry}

@@ -4,16 +4,31 @@ import axios from "axios"
 
 class Journal extends React.Component {
     state = {
-        entryTitle : "",
-        entryText : "",
-        entryLocation : "",
-        entries : []
+        title : "",
+        userdB : "",
+        entries : ""
     };
 
     componentWillReceiveProps(nextProps) {
         if ( this.props.user._id === undefined && nextProps.user.journals) {
+            this.getJournal(nextProps.user._id);
             this.getEntry(nextProps.user.journals);
         }
+    }
+
+    getJournal = (userId) => {
+        axios.get(`/journal/${userId}`)
+        .then( res => {
+            console.log(res.data)
+            if ( res ) {
+                this.setState({
+                    userdB : res.data
+                })
+            }
+        })
+        .catch( err => {
+            console.log(err);
+        }) 
     }
 
     getEntry = (journalId) => {
@@ -31,89 +46,73 @@ class Journal extends React.Component {
         }) 
     }
 
-    handleInputChange = event => {
-        const value = event.target.value;
-        const name = event.target.id;
+    handleInputChange = (event) => {
         this.setState({
-            [name]: value
+            title: event.target.value
         });
     };
 
-    handleSubmit = () => {
-        axios.post(`entry/${this.props.user.journals}`
-        ,{
-            title: this.state.entryTitle,
-            body: this.state.entryText,
-            location: this.state.entryLocation
+
+    newJournal = () => {
+        axios.post(`/journal/${this.props.user._id}` , { 
+            name: this.state.title 
         })
-        .then( res => {
-            if (res) {
-                let formData = new FormData();
-                let imagefile = document.querySelector('#profileImg');
-                formData.append("image", imagefile.files[0]);
-                axios.post(`/uploadEntry/${res.data}`, formData , {
-                    headers: {
-                        'Content-Type': 'multipart/form-data'
-                    }
-                })
-                .then( (res) => {
-                    console.log(res.data)
-                });
-            }
+        .then(res => {
+            this.props.setUser(res.data);
+            this.setState({ 
+                title: "" 
+            });
         });
     }
 
     render() {
-        let entry;
-
-        if (this.state.entries) {
-            entry = (
+        let journal;
+        if (this.state.userdB) {
+            journal = (
                 <> 
-                { this.state.entries.map(entry => ( 
+                { this.state.userdB.map(user => ( 
                         <Row>
                         <Col s={3} className='grid-example'></Col>
                         <Col s={3} className='grid-example'>
-                            <h2>{entry.title} <span id="editBtn"><Icon>edit</Icon></span></h2>
-                            <hr />
-                            <p>{entry.body}</p>
-                        </Col>
-                        <Col s={4} className='journal_pics'>
-                           { entry.file ?  <img className="fit_img tile" src={`upload/${entry.file}`} alt="tripper" /> : null}
+                            <h2>{user.journals.name}</h2>
+                                {this.state.entries.map( entry => (
+                                    <ul>
+                                    <li><h4>- {entry.title}</h4></li>
+                                    </ul>
+                                ))}
                         </Col>
                         <Col s={2} className='grid-example'></Col>
                         </Row>
                 ))}
-                <Modal
-                header='Add your Journal!'
-                trigger={<Button className="homeBtn pulse addEntry">Add</Button>}
-                actions={<><Button className="cancel modal-action modal-close">Cancel</Button><Button id="signUpSubmit" className="cancel modal-action modal-close" onClick={this.handleSubmit}>Submit</Button></>}
-                > 
-                 <Row id="addNewEntryForm">
-                     <Input type='textarea' id="entryTitle" label="Title" value={this.state.entryTitle} onChange={this.handleInputChange} />
-                     <Input type='textarea' id="entryText" label="Body" value={this.state.entryText} onChange={this.handleInputChange} />
-                     <Input type='textarea' id="entryLocation" label="location" value={this.state.entryLocation} onChange={this.handleInputChange} />
-                     <Input name="profileImg" type="file" id="profileImg" label="Upload" placeholder="no file choosen" s={12} readOnly/>
-                 </Row>
-                </Modal>
                 </>
             );
         }
          else {
+            journal = (<Col s={3} className='grid-example'>
+                    <div className="losEntries">
+                        <h3>You don't have a journal yet</h3>
+                        <p>Tell your story with tripper</p>
+                    </div>
+                    </Col>
+                    )
          }
         return (
             <>
-            <Col s={3} className='grid-example'>
-                        <div className="losEntries">
-                            <h3>You don't have a journal yet</h3>
-                            <p>Tell your story with tripper</p>
-                            {entry}
-                        </div>
-                    </Col>
-            
+            {journal}
+                <Modal
+                    header='Create your Journal'
+                    trigger={<Button className="homeBtn pulse addEntry">Add</Button>}
+                    actions={<><Button className="cancel modal-action modal-close">Cancel</Button><Button id="signUpSubmit" className="cancel modal-action modal-close" onClick={this.newJournal}>Create</Button></>}
+                    > 
+                    <Row id="addNewEntryForm">
+                    <Input s={6} id="title" label="Title" value={this.state.title} onChange={this.handleInputChange}></Input>
+                    </Row>
+                </Modal>
             </>
         );
     }
 }
+
 
 
 export default Journal;

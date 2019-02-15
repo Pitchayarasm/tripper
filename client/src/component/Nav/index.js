@@ -6,56 +6,39 @@ import axios from "axios";
 class Nav extends React.Component {
 
     state = {
-        title: "",
-        user: "",
         image: "",
         notifications: 0,
         onlineFriends: [],
         offlineFriends: []
     }
 
-    handleInputChange = (event) => {
-        this.setState({
-            title: event.target.value
-        });
-    };
-
-
-    newJournal = () => {
-        axios.post(`/journal/${this.props.user._id}` , { 
-            name: this.state.title 
-        })
-        .then(res => {
-            this.props.getFriends(this.props.user._id)
-            this.props.setUser(res.data);
-            this.setState({ 
-                title: "" 
-            });
-        });
-    }
-
     friendsPage = () => {
-        this.props.getFriends(this.props.user._id)
-        window.location.href = "/friends"
+        this.props.getFriends(this.props.user._id);
+        window.location.href = "/friends";
     }
     
     entryPage = () => {
-        this.props.getFriends(this.props.user._id)
-        window.location.href = "/entry"
+        this.props.getFriends(this.props.user._id);
+        window.location.href = "/entry";
     }
 
     entriesPage = () => {
-        this.props.getFriends(this.props.user._id)
-        window.location.href = "/entries"
+        this.props.getFriends(this.props.user._id);
+        window.location.href = "/entries";
+    }
+
+    journalPage = () => {
+        this.props.getFriends(this.props.user._id);
+        window.location.href = "/journal";
     }
 
     profilePage = () => {
-        this.props.getFriends(this.props.user._id)
-        window.location.href = "/profile"
+        this.props.getFriends(this.props.user._id);
+        window.location.href = "/profile";
     }
 
     handleLogout = () => {
-        axios.get("/logout")
+        axios.get(`/logout/${this.props.user._id}`)
             .then((res) => {
                 this.props.setUser(res.data);
                 window.location.href = "/"
