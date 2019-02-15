@@ -78,6 +78,12 @@ const db = require("../models")
     res.json(req.user)
   });
 
+  // Logout
+  router.get('/logout', (req, res) => {
+    req.logout();
+    res.json(req.user)
+  });
+
   router.get("/isLogin" , (req,res) => {
     res.json(req.user)
   })
