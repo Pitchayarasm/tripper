@@ -12,7 +12,6 @@ class Home extends React.Component {
     email: "",
     loginEmail: "",
     loginPassword: "",
-    user_id : ""
   };
 
   handleSignUp = () => {
@@ -29,8 +28,7 @@ class Home extends React.Component {
             lastName: "",
             password1: "",
             password2: "",
-            email: "",
-            user_id: res.data._id
+            email: ""
           });
           this.props.history.push("/")
         }).catch((err) => {
@@ -46,14 +44,11 @@ class Home extends React.Component {
 
   handleLogin = (e) => {
     // e.preventDefault();
-    axios.post(`/login/${this.stateuser_id}`, {
+    axios.post("/login", {
       email: this.state.loginEmail,
       password: this.state.loginPassword
     }).then(res => {
       if (res.statusText === "OK") {
-        this.setState({
-          login: true
-        })
         this.props.setUser(res.data);
         this.props.history.push("/profile")
       }
@@ -74,9 +69,7 @@ class Home extends React.Component {
     if ( this.props.user.firstName ) {
       return < Redirect to="/profile" />
     }
-
     else {
-
       return (
         <>
           <Row>

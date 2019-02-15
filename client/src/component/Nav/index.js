@@ -38,7 +38,7 @@ class Nav extends React.Component {
     }
 
     handleLogout = () => {
-        axios.get(`/logout/${this.props.user._id}`)
+        axios.get("/logout")
             .then((res) => {
                 this.props.setUser(res.data);
                 window.location.href = "/"
