@@ -73,9 +73,12 @@ class Friends extends React.Component {
 
 
     render() {
+        if(this.state.friendsHTML.length > 0){
+            return <>{this.state.friendsHTML}</>;
+        }
+        
         return (
-            <>
-                {this.state.friendsHTML}
+            <>            
                 <Col s={12} className='grid-example'>
                     <div className="SearchCard losFriends">
                         <h3>Looks like you don't have any friends, you need to add friends first</h3>
