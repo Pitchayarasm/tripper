@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Input, Modal, Button, Parallax, Col, Toast } from "react-materialize";
+import { Row, Input, Modal, Button, Parallax, Col/*, Toast*/ } from "react-materialize";
 import { Redirect } from "react-router-dom"
 import axios from "axios";
 
@@ -70,8 +70,8 @@ class Home extends React.Component {
   };
 
   render() {
-    if ( this.props.user.firstName) {
-      return < Redirect to="/profile" />
+    if (this.props.user.firstName) {
+      return < Redirect to="/profile"/>
     }
 
     return (

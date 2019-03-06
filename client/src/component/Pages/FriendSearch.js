@@ -1,10 +1,8 @@
 import React from "react";
-import { Row, Col } from "react-materialize";
+import { Row, Input, Button, Col } from "react-materialize";
 import axios from "axios";
 
 class FriendSearch extends React.Component {
-    //search by first name, last name, full name, email
-    //needs: search bar, search by dropdown, search button, friends population
     state = {
         recommendations: [],
         searchBy: "fullName",
@@ -18,6 +16,10 @@ class FriendSearch extends React.Component {
             [name]: value
         });
     };
+
+    addFriend() {
+
+    }
 
     loadFriends(recommendations) {
         let html = [];
@@ -41,7 +43,7 @@ class FriendSearch extends React.Component {
                 <div className="SearchCard">
                     <img style={{ width: "100%" }} src={recommendations[3 * i + j].profilePic} alt="profile" />
                     <h3>{recommendations[3 * i + j].firstName + " " + recommendations[3 * i + j].lastName}</h3>
-                    <p>Journals: {friendList[3 * i + j].journalCount}</p>
+                    <p>Journals: {recommendations[3 * i + j].journalCount}</p>
                 </div>
             </Col>);
         }
@@ -50,7 +52,8 @@ class FriendSearch extends React.Component {
 
     handleSearch = () => {
         //make axios call, this.setState recommendations
-        axios.get(`nonfriends/${this.state.searchBy}/${this.state.searchText}`)
+        var trimmedText = this.state.searchText.trim();
+        axios.get(`nonfriends/${this.state.searchBy}/${trimmedText}`)
             .then(res => {
                 let i = 0;
                 let recommendations = res.data[0].friends.map(item => {
@@ -61,12 +64,13 @@ class FriendSearch extends React.Component {
                         journalCount: item.journals.length,
                         firstName: item.firstName,
                         lastName: item.lastName,
+                        id: item._id,
                         key: i,
                         profilePic: src
                     };
                 });
 
-                loadFriends(recommendations);
+                this.loadFriends(recommendations);
             })
             .catch(err => console.log(err));
     }
@@ -74,11 +78,26 @@ class FriendSearch extends React.Component {
     render() {
         return (
             <>
-                <Searchbar />
-                <Dropdown />
-                <Button className="searchBtn" onClick={handleSearch}>Search</Button>
-                <Input id="searchText" value={this.state.searchText} s={12} onChange={this.handleInputChange} />
-                {this.state.recommendations}
+                <Row className="section white">
+                    <Col s={12} className='grid-example'>
+                        <div className="row container">
+                            <Row>
+                                <h2 className="header">Search for Friends</h2>
+                            </Row>
+                            <Col s={6}>
+                                <Input id="searchText" type='textarea' label="Search For..." value={this.state.searchText} onChange={this.handleInputChange} />
+                            </Col>
+                            <Col s={4}><Input id="searchBy" type='select' label='Search By' defaultValue='First Name' onChange={this.handleInputChange}>
+                                <option value='firstName'>First Name</option>
+                                <option value='lastName'>Last Name</option>
+                                <option value='email'>Email</option>
+                            </Input>
+                            </Col>
+                            <Button s={2} className="homeBtn" onClick={this.handleSearch}>Search</Button>
+                            {this.state.recommendations}
+                        </div>
+                    </Col>
+                </Row>
             </>
         );
     }

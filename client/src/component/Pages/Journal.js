@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col, Icon, Button, Modal, Input } from "react-materialize";
+import { Row, Col, /*Icon,*/ Button, Modal, Input } from "react-materialize";
 import axios from "axios"
 
 class Journal extends React.Component {
@@ -10,7 +10,7 @@ class Journal extends React.Component {
     };
 
     componentWillReceiveProps(nextProps) {
-        if ( this.props.user._id === undefined && nextProps.user.journals) {
+        if (this.props.user._id === undefined && nextProps.user.journals) {
             this.getJournal(nextProps.user._id);
             this.getEntry(nextProps.user.journals);
         }

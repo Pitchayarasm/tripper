@@ -123,7 +123,7 @@ class Profile extends React.Component {
                             actions={<><Button className="cancel modal-action modal-close">Cancel</Button><Button id="signUpSubmit" className="cancel modal-action modal-close" onClick={this.handleSubmit}>Submit</Button></>}
                             > 
                             <Row id="addNewEntryForm">
-                                <Input type='textarea' id="entryTitle" label="About me.." value={this.state.about_me} onChange={this.handleInputChange} />
+                                <Input type='textarea' id="entryTitle" label="About me..." value={this.state.about_me} onChange={this.handleInputChange} />
                             </Row>
                             </Modal>
                         </div>

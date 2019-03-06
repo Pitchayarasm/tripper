@@ -8,7 +8,7 @@ class Error extends React.Component {
             <div className="SearchCard">
             <h3>Error 404</h3>
             <p>Page not found</p>
-            <img className="SearchCard" src="https://media.giphy.com/media/1BJjLjkGrG4q4/giphy.gif"/>
+            <img className="SearchCard" src="https://media.giphy.com/media/1BJjLjkGrG4q4/giphy.gif" alt="sadcat"/>
             </div>
             </div>
             </>

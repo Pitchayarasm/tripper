@@ -22,7 +22,7 @@ class Friends extends React.Component {
                 let friendsList = res.data[0].friends.map(item => {
                     i++;
                     let src = `/upload/${item.file}`;
-
+                    console.log(item);
                     return {
                         journalCount: item.journals.length,
                         firstName: item.firstName,
