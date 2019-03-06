@@ -17,8 +17,9 @@ class FriendSearch extends React.Component {
         });
     };
 
-    addFriend() {
-
+    addFriend = event => {
+        axios.post(`/submit/${this.props.user._id}/${event.target.userId}`, {
+        })
     }
 
     loadFriends(recommendations) {
@@ -39,11 +40,12 @@ class FriendSearch extends React.Component {
     generateRow(i, recommendations) {
         let html = [];
         for (let j = 0; j < 3 && i * 3 + j < recommendations.length; j++) {
+            let totInd = i * 3 + j;
             html.push(<Col s={3} className='grid-example'>
-                <div className="SearchCard">
-                    <img style={{ width: "100%" }} src={recommendations[3 * i + j].profilePic} alt="profile" />
-                    <h3>{recommendations[3 * i + j].firstName + " " + recommendations[3 * i + j].lastName}</h3>
-                    <p>Journals: {recommendations[3 * i + j].journalCount}</p>
+                <div className="SearchCard" userId = {recommendations[totInd].userId}>
+                    <img style={{ width: "100%" }} src={recommendations[totInd].profilePic} alt="profile" />
+                    <h3>{recommendations[totInd].firstName + " " + recommendations[totInd].lastName}</h3>
+                    <p>Journals: {recommendations[totInd].journalCount}</p>
                 </div>
             </Col>);
         }
@@ -64,7 +66,7 @@ class FriendSearch extends React.Component {
                         journalCount: item.journals.length,
                         firstName: item.firstName,
                         lastName: item.lastName,
-                        id: item._id,
+                        userId: item._id,
                         key: i,
                         profilePic: src
                     };
