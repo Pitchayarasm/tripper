@@ -85,7 +85,7 @@ class FriendSearch extends React.Component {
                                 <h2 className="header">Search for Friends</h2>
                             </Row>
                             <Col s={6}>
-                                <Input id="searchText" type='textarea' label="Search For..." value={this.state.searchText} onChange={this.handleInputChange} />
+                                <Input id="searchText" value={this.state.searchText} label="Search For..." onChange={this.handleInputChange} />
                             </Col>
                             <Col s={4}><Input id="searchBy" type='select' label='Search By' defaultValue='First Name' onChange={this.handleInputChange}>
                                 <option value='firstName'>First Name</option>
